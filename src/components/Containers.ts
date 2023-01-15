@@ -64,3 +64,13 @@ export const Absolute = styled.div<PositionProps>`
   right: ${({ right }) => right ? `${right}px` : "auto"};
   left: ${({ left }) => left ? `${left}px` : "auto"};
 `;
+
+export const Section = styled.section`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+`;

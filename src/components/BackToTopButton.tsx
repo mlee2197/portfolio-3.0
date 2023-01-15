@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Arrow from "../assets/arrow.svg";
 
 const BackToTop = () => {
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const scrollHandler = () =>
+      window.scrollY >= window.innerHeight / 2
+        ? setShowButton(true)
+        : setShowButton(false);
+    window.addEventListener("scroll", scrollHandler);
+
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <BackToTopWrapper>
+    <BackToTopWrapper onClick={scrollToTop} show={showButton}>
       <StyledArrow src={Arrow} alt="Back to Top" height={24} width={24} />
     </BackToTopWrapper>
   );
 };
 
-const BackToTopWrapper = styled.div`
+const BackToTopWrapper = styled.div<{ show: boolean }>`
+  position: fixed;
+  bottom: ${props => props.show ? 1.5 : -5 }rem;
+  right: 24px;
   border: 2px solid ${({ theme }) => theme.colors.yellow};
   border-radius: 50%;
   padding: 8px;
+  cursor: pointer;
+  transition: bottom 0.5s ease-in-out;
 `;
 
 const StyledArrow = styled.img`
