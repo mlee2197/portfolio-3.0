@@ -2,7 +2,7 @@ import { DefaultTheme } from "styled-components";
 
 export const baseTheme: DefaultTheme = {
   fonts: {
-    title: "Archivo Black', sans-serif",
+    title: "Archivo Black, sans-serif",
     subtitle: "DM Serif Display, serif",
     text: "Open Sans, sans-serif",
   },
