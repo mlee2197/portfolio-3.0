@@ -59,10 +59,10 @@ interface PositionProps {
 
 export const Absolute = styled.div<PositionProps>`
   position: absolute;
-  top: ${({ top }) => top ? `${top}px` : "auto"};
-  bottom: ${({ bottom }) => bottom ? `${bottom}px` : "auto"};
-  right: ${({ right }) => right ? `${right}px` : "auto"};
-  left: ${({ left }) => left ? `${left}px` : "auto"};
+  top: ${({ top }) => top !== undefined ? `${top}px` : "auto"};
+  bottom: ${({ bottom }) => bottom !== undefined ? `${bottom}px` : "auto"};
+  right: ${({ right }) => right !== undefined ? `${right}px` : "auto"};
+  left: ${({ left }) => left !== undefined ? `${left}px` : "auto"};
 `;
 
 export const Section = styled.section`
@@ -70,9 +70,9 @@ export const Section = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 40px;
+  padding-top: 15vh;
   box-sizing: border-box;
 `;

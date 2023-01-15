@@ -9,7 +9,7 @@ const Hero: React.FC<HeroProps> = () => {
   return (
     <Section>
       <Flex direction="column" align="flex-end">
-        <AppH1 style={{ marginBottom: 32 }}>MATT LEE</AppH1>
+        <AppH1 hide style={{ marginBottom: 32 }}>MATT LEE</AppH1>
         <div style={{ position: "relative" }}>
           <DecoratorText top={0} left={-82}>that's me</DecoratorText>
           <Placeholder />

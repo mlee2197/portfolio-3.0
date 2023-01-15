@@ -7,11 +7,12 @@ interface Props {
 }
 
 export const AppText = styled.p<Props>`
+  margin: 0;
   font-family: ${({ variant, theme }) =>
-    variant === "primary" ? theme.fonts.text : theme.fonts.subtitle};
+    variant === "accent" ? theme.fonts.subtitle : theme.fonts.text};
   font-size: ${({ size }) => size ?? 16}px;
   color: ${({ variant, theme }) =>
-    variant === "primary" ? theme.colors.white : theme.colors.yellow};
+    variant === "accent" ? theme.colors.yellow : theme.colors.white};
   @media ${landscapeTabletSize} {
     font-size: 18px;
   }
@@ -21,8 +22,7 @@ export const AppText = styled.p<Props>`
   }
 `;
 
-interface PositionProps {
-  
+interface PositionProps extends Props {
   top?: number;
   bottom?: number;
   right?: number;
@@ -30,13 +30,12 @@ interface PositionProps {
 }
 
 export const DecoratorText = styled(AppText).attrs({
-  variant: "accent"
+  variant: "accent",
 })<PositionProps>`
   position: absolute;
-  left: -48%;
-  top: ${({ top }) => top ? `${top}px` : "auto"};
-  bottom: ${({ bottom }) => bottom ? `${bottom}px` : "auto"};
-  right: ${({ right }) => right ? `${right}px` : "auto"};
-  left: ${({ left }) => left ? `${left}px` : "auto"};
-  font-size: 32px;
+  top: ${({ top }) => (top !== undefined ? `${top}px` : "auto")};
+  bottom: ${({ bottom }) => (bottom !== undefined ? `${bottom}px` : "auto")};
+  right: ${({ right }) => (right !== undefined ? `${right}px` : "auto")};
+  left: ${({ left }) => (left !== undefined ? `${left}px` : "auto")};
+  font-size: ${({ size }) => size ?? 32}px;
 `;

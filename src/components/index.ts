@@ -6,3 +6,4 @@ export * from "./Containers";
 export * from "./Modal";
 export * from "./ProgressNav";
 export * from "./ProjectCard";
+export * from "./ContactIcons";
