@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { AppH1, BackToTop } from "./components";
 import { ContactIcons } from "./components/ContactIcons";
-import { About, Hero, Portfolio } from "./segments";
+import { About, Cat, Hero, Portfolio } from "./segments";
 import { landscapeTabletSize } from "./utils/breakpoints";
 import { baseTheme } from "./utils/theme";
 
@@ -13,7 +13,8 @@ function App() {
         <FixedHeader>MATT LEE</FixedHeader>
         <Hero />
         <About />
-        {/* <ContactIcons /> */}
+        <Portfolio />
+        <Cat />
         <BackToTop />
       </Wrapper>
     </ThemeProvider>
@@ -21,6 +22,13 @@ function App() {
 }
 
 const Wrapper = styled.div`
+  scroll-snap-type: y mandatory;
+  height: 300vh;
+  overflow-y: auto;
+  max-height: 100vh;
+  & > section {
+    scroll-snap-align: start;
+  }
 `;
 
 const FixedHeader = styled(AppH1)`
