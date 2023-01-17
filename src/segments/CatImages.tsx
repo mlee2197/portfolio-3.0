@@ -4,8 +4,14 @@ import { useCatAnimations } from "../hooks/useCatAnimations";
 import CatPawSrc from "../assets/cat-paw.svg";
 import CatEarSrc from "../assets/cat-ear.svg";
 import CatTailSrc from "../assets/cat-tail.svg";
+import { cloudinary } from "../services/cloudinary";
+import { AdvancedImage } from "@cloudinary/react";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
+import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
+import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
 
-const CatImages= () => {
+const CatImages = () => {
   const {
     earRef,
     earRef2,
@@ -17,19 +23,56 @@ const CatImages= () => {
     AnimateTail,
     AnimateMeow,
   } = useCatAnimations();
+
+  const ellie1 = cloudinary
+    .image("portfolio/ellie1")
+    .resize(fill().width(400).height(300))
+    .toURL();
+
+  const ellie2 = cloudinary
+    .image("portfolio/ellie2")
+    .resize(fill().width(400).height(300))
+    .toURL();
+
+  const ellie3 = cloudinary
+    .image("portfolio/ellie3")
+    .resize(fill().width(400).height(300))
+    .toURL();
+
+  const ellie4 = cloudinary
+    .image("portfolio/ellie4")
+    .resize(fill().width(400).height(400).gravity(focusOn(FocusOn.face())))
+    .toURL();
+
   return (
     <ImageGrid>
-      <ImageContainer onTouchStart={AnimateEars} onMouseEnter={AnimateEars}>
+      <ImageContainer
+        src={ellie1}
+        onTouchStart={AnimateEars}
+        onMouseEnter={AnimateEars}
+      >
         <CatEar ref={earRef} />
         <CatEarAlt ref={earRef2} />
       </ImageContainer>
-      <ImageContainer onTouchStart={AnimatePaw} onMouseEnter={AnimatePaw}>
+      <ImageContainer
+        src={ellie2}
+        onTouchStart={AnimatePaw}
+        onMouseEnter={AnimatePaw}
+      >
         <CatPaw ref={pawRef} />
       </ImageContainer>
-      <ImageContainer onTouchStart={AnimateTail} onMouseEnter={AnimateTail}>
+      <ImageContainer
+        src={ellie3}
+        onTouchStart={AnimateTail}
+        onMouseEnter={AnimateTail}
+      >
         <CatTail ref={tailRef} />
       </ImageContainer>
-      <ImageContainer onTouchStart={AnimateMeow} onMouseEnter={AnimateMeow}>
+      <ImageContainer
+        src={ellie4}
+        onTouchStart={AnimateMeow}
+        onMouseEnter={AnimateMeow}
+      >
         <CatMeow ref={meowRef}>meow</CatMeow>
       </ImageContainer>
     </ImageGrid>
@@ -44,15 +87,15 @@ const ImageGrid = styled.div`
   grid-gap: 16px;
   margin-top: 28px;
   margin-bottom: 12px;
-  /* overflow-x: hidden; */
 `;
 
-const ImageContainer = styled.div`
+const ImageContainer = styled.div<{ src: string }>`
   position: relative;
-  width: 100%;
   height: 140px;
   border-radius: 12px;
-  background-color: orange;
+  background-image: url(${(props) => props.src});
+  background-size: cover;
+  background-position: center;
 `;
 
 const CatAnimated = styled.img`

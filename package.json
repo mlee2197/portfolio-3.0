@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.9.0",
+    "@cloudinary/url-gen": "^1.8.7",
     "@icons-pack/react-simple-icons": "^6.2.0",
     "@types/styled-components": "^5.1.26",
     "gsap": "^3.11.4",

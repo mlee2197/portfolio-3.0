@@ -27,6 +27,7 @@ const Cat: React.FC<CatProps> = ({ headerRef }) => {
       : headerRef.current?.classList.remove("hide");
   }, [inView]);
 
+  
   return (
     <Section id="cat" ref={ref}>
       <AppH1>
