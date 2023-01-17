@@ -67,7 +67,9 @@ const IconsContainer = styled.div<ShowIconsProp>`
   @media ${landscapeTabletSize} {
     transform: none;
     opacity: 1;
-    pointer-events: all;
+    a {
+      pointer-events: all;
+    }
   }
 `;
 
