@@ -27,15 +27,43 @@ interface PositionProps extends Props {
   bottom?: number;
   right?: number;
   left?: number;
+
+  desktopTop?: number;
+  desktopBottom?: number;
+  desktopRight?: number;
+  desktopLeft?: number;
 }
 
-export const DecoratorText = styled(AppText).attrs({
+export const DecoratorText = styled.span.attrs({
   variant: "accent",
 })<PositionProps>`
+  font-family: ${({ theme }) => theme.fonts.subtitle};
   position: absolute;
   top: ${({ top }) => (top !== undefined ? `${top}px` : "auto")};
   bottom: ${({ bottom }) => (bottom !== undefined ? `${bottom}px` : "auto")};
   right: ${({ right }) => (right !== undefined ? `${right}px` : "auto")};
   left: ${({ left }) => (left !== undefined ? `${left}px` : "auto")};
   font-size: ${({ size }) => size ?? 32}px;
+  @media ${landscapeTabletSize} {
+    top: ${({ desktopTop, top }) =>
+      desktopTop ? `${desktopTop}px` : top !== undefined ? `${top}px` : "auto"};
+    bottom: ${({ desktopBottom, bottom }) =>
+      desktopBottom
+        ? `${desktopBottom}px`
+        : bottom !== undefined
+        ? `${bottom}px`
+        : "auto"};
+    right: ${({ desktopRight, right }) =>
+      desktopRight
+        ? `${desktopRight}px`
+        : right !== undefined
+        ? `${right}px`
+        : "auto"};
+    left: ${({ desktopLeft, left }) =>
+      desktopLeft
+        ? `${desktopLeft}px`
+        : left !== undefined
+        ? `${left}px`
+        : "auto"};
+  }
 `;

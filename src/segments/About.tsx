@@ -8,20 +8,19 @@ import {
   DecoratorText,
   DownloadButton,
   Flex,
+  Relative,
   Section,
 } from "../components";
 import Pluses from "../assets/pluses.svg";
 import Arrow from "../assets/arrow.svg";
 import { TechScroller } from "./TechScroller";
 
-
-
 interface AboutProps {}
 
 const About: React.FC<AboutProps> = () => {
   return (
     <Section id="about">
-      <div style={{ position: "relative" }}>
+      <Relative>
         <AppH1 hide style={{ marginBottom: 32 }}>
           MATT LEE
         </AppH1>
@@ -31,7 +30,7 @@ const About: React.FC<AboutProps> = () => {
         <DecoratorText bottom={64} right={88} size={80}>
           ?
         </DecoratorText>
-      </div>
+      </Relative>
       <ContentWrapper>
         <Absolute left={-48} top={-40}>
           <img src={Pluses} alt="pluses" width={102} height={58} />
@@ -52,7 +51,6 @@ const About: React.FC<AboutProps> = () => {
           <img src={Arrow} height={12} style={{ rotate: "180deg" }} />
         </DownloadButton>
         <TechScroller />
-        
       </ContentWrapper>
     </Section>
   );
@@ -65,6 +63,5 @@ const ContentWrapper = styled.div`
   gap: 28px;
   margin-top: 16px;
 `;
-
 
 export { About };

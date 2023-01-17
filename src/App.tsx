@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { AppH1, BackToTop } from "./components";
 import { ContactIcons } from "./components/ContactIcons";
@@ -7,14 +7,16 @@ import { landscapeTabletSize } from "./utils/breakpoints";
 import { baseTheme } from "./utils/theme";
 
 function App() {
+  const nameRef = useRef(null);
   return (
     <ThemeProvider theme={baseTheme}>
       <Wrapper>
-        <FixedHeader>MATT LEE</FixedHeader>
+        <FixedHeader ref={nameRef}>MATT LEE</FixedHeader>
         <Hero />
         <About />
         <Portfolio />
-        <Cat />
+        <Cat headerRef={nameRef}/>
+        <ContactIcons />
         <BackToTop />
       </Wrapper>
     </ThemeProvider>
@@ -22,12 +24,16 @@ function App() {
 }
 
 const Wrapper = styled.div`
+  scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
-  height: 300vh;
   overflow-y: auto;
   max-height: 100vh;
   & > section {
     scroll-snap-align: start;
+  }
+
+  .hide {
+    opacity: 0;
   }
 `;
 
@@ -41,8 +47,14 @@ const FixedHeader = styled(AppH1)`
   font-size: 96px;
   font-family: ${({ theme }) => theme.fonts.title};
   color: ${({ theme }) => theme.colors.white};
+  opacity: 1;
+  transition: opacity 0.35s ease-in-out;
   @media ${landscapeTabletSize} {
+    top: 50vh;
+    left: 200px;
+    translate: 0 -50%;
     font-size: 128px;
+    max-width: 430px;
   }
 `;
 

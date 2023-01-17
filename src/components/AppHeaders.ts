@@ -11,6 +11,7 @@ export const AppH1 = styled.h1<{ hide?: boolean }>`
   visibility: ${({ hide }) => hide ? "hidden" : "visible"};
   @media ${landscapeTabletSize} {
     font-size: 128px;
+    max-width: 430px;
   }
 `;
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { landscapeTabletSize } from "../utils/breakpoints";
 
 // ======================================
 
@@ -25,10 +26,10 @@ interface FlexProps {
   align?: Align;
   justify?: Justify;
   gap?: number;
-  mobileDirection?: Direction;
-  mobileAlign?: Align;
-  mobileJustify?: Justify;
-  mobileGap?: number;
+  desktopDirection?: Direction;
+  desktopAlign?: Align;
+  desktopJustify?: Justify;
+  desktopGap?: number;
 }
 
 export const Flex = styled.div<FlexProps>`
@@ -37,20 +38,18 @@ export const Flex = styled.div<FlexProps>`
   align-items: ${(props) => (props.align ? props.align : "normal")};
   justify-content: ${(props) => (props.justify ? props.justify : "flex-start")};
   gap: ${(props) => (props.gap ? props.gap : 0)}px;
+  @media ${landscapeTabletSize} {
+    flex-direction: ${({ desktopDirection, direction }) =>
+      desktopDirection ? desktopDirection : direction ? direction : "row"};
+    align-items: ${({ desktopAlign, align }) =>
+      desktopAlign ? desktopAlign : align ? align : "normal"};
+    justify-content: ${({ desktopJustify, justify }) =>
+      desktopJustify ? desktopJustify : justify ? justify : "flex-start"};
+    gap: ${({ desktopGap, gap }) => (desktopGap ? desktopGap : gap ? gap : 0)}px;
+  }
 `;
-/* @media ${mobileSize} {
-    flex-direction: ${({ mobileDirection, direction }) =>
-      mobileDirection ? mobileDirection : direction ? direction : 'row'};
-    align-items: ${({ mobileAlign, align }) =>
-      mobileAlign ? mobileAlign : align ? align : 'normal'};
-    justify-content: ${({ mobileJustify, justify }) =>
-      mobileJustify ? mobileJustify : justify ? justify : 'flex-start'};
-    gap: ${({ mobileGap, gap }) =>
-      mobileGap ? mobileGap : gap ? gap : 0}px;
-  } */
 
 interface PositionProps {
-  
   top?: number;
   bottom?: number;
   right?: number;
@@ -59,20 +58,37 @@ interface PositionProps {
 
 export const Absolute = styled.div<PositionProps>`
   position: absolute;
-  top: ${({ top }) => top !== undefined ? `${top}px` : "auto"};
-  bottom: ${({ bottom }) => bottom !== undefined ? `${bottom}px` : "auto"};
-  right: ${({ right }) => right !== undefined ? `${right}px` : "auto"};
-  left: ${({ left }) => left !== undefined ? `${left}px` : "auto"};
+  top: ${({ top }) => (top !== undefined ? `${top}px` : "auto")};
+  bottom: ${({ bottom }) => (bottom !== undefined ? `${bottom}px` : "auto")};
+  right: ${({ right }) => (right !== undefined ? `${right}px` : "auto")};
+  left: ${({ left }) => (left !== undefined ? `${left}px` : "auto")};
+`;
+
+export const Relative = styled.div`
+  position: relative;
 `;
 
 export const Section = styled.section`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+
   width: 100%;
   min-height: 100vh;
   padding: 40px;
   padding-top: 15vh;
   box-sizing: border-box;
+  overflow-x: hidden;
+  @media ${landscapeTabletSize} {
+    padding: 40px;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+
+    /* justify-content: center;
+    align-items: space-around;
+    flex-direction: row; */
+  }
 `;
