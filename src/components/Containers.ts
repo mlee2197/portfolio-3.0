@@ -45,7 +45,8 @@ export const Flex = styled.div<FlexProps>`
       desktopAlign ? desktopAlign : align ? align : "normal"};
     justify-content: ${({ desktopJustify, justify }) =>
       desktopJustify ? desktopJustify : justify ? justify : "flex-start"};
-    gap: ${({ desktopGap, gap }) => (desktopGap ? desktopGap : gap ? gap : 0)}px;
+    gap: ${({ desktopGap, gap }) =>
+      desktopGap ? desktopGap : gap ? gap : 0}px;
   }
 `;
 
@@ -64,25 +65,27 @@ export const Absolute = styled.div<PositionProps>`
   left: ${({ left }) => (left !== undefined ? `${left}px` : "auto")};
 `;
 
-export const Relative = styled.div`
-  position: relative;
-`;
-
 export const Section = styled.section`
   position: relative;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 1fr 2fr;
   grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
 
   width: 100%;
   min-height: 100vh;
   padding: 40px;
-  padding-top: 15vh;
   box-sizing: border-box;
   overflow-x: hidden;
+
+  h1:first-of-type {
+    align-self: flex-end;
+  }
+
   @media ${landscapeTabletSize} {
     padding: 40px;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
@@ -90,5 +93,9 @@ export const Section = styled.section`
     /* justify-content: center;
     align-items: space-around;
     flex-direction: row; */
+    h1:first-of-type {
+      align-self: center;
+      justify-self: center;
+    }
   }
 `;

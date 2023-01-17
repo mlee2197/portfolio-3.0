@@ -8,7 +8,6 @@ import {
   DecoratorText,
   DownloadButton,
   Flex,
-  Relative,
   Section,
 } from "../components";
 import Pluses from "../assets/pluses.svg";
@@ -20,17 +19,21 @@ interface AboutProps {}
 const About: React.FC<AboutProps> = () => {
   return (
     <Section id="about">
-      <Relative>
-        <AppH1 hide style={{ marginBottom: 32 }}>
-          MATT LEE
-        </AppH1>
-        <DecoratorText top={-24} left={0}>
+      <AppH1 hide>
+        MATT LEE
+        <DecoratorText top={-8} left={0}>
           Who is
         </DecoratorText>
-        <DecoratorText bottom={64} right={88} size={80}>
+        <DecoratorText
+          bottom={40}
+          right={80}
+          desktopBottom={80}
+          desktopRight={120}
+          size={80}
+        >
           ?
         </DecoratorText>
-      </Relative>
+      </AppH1>
       <ContentWrapper>
         <Absolute left={-48} top={-40}>
           <img src={Pluses} alt="pluses" width={102} height={58} />
@@ -60,8 +63,10 @@ const ContentWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
   gap: 28px;
-  margin-top: 16px;
+  max-width: 500px;
+  margin: 16px auto;
 `;
 
 export { About };

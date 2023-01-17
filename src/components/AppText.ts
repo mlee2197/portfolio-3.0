@@ -34,20 +34,17 @@ interface PositionProps extends Props {
   desktopLeft?: number;
 }
 
-export const DecoratorText = styled.span.attrs({
-  variant: "accent",
-})<PositionProps>`
+export const DecoratorText = styled.span<PositionProps>`
   font-family: ${({ theme }) => theme.fonts.subtitle};
   color: ${({ theme }) => theme.colors.yellow};
-  font-size: 16px;
+  font-size: ${({ size }) => size ?? 18}px;
+  visibility: visible;
   position: absolute;
   top: ${({ top }) => (top !== undefined ? `${top}px` : "auto")};
   bottom: ${({ bottom }) => (bottom !== undefined ? `${bottom}px` : "auto")};
   right: ${({ right }) => (right !== undefined ? `${right}px` : "auto")};
   left: ${({ left }) => (left !== undefined ? `${left}px` : "auto")};
-  font-size: ${({ size }) => size ?? 32}px;
   @media ${landscapeTabletSize} {
-    font-size: 18px;
     top: ${({ desktopTop, top }) =>
       desktopTop ? `${desktopTop}px` : top !== undefined ? `${top}px` : "auto"};
     bottom: ${({ desktopBottom, bottom }) =>

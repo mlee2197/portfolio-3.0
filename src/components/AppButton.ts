@@ -40,9 +40,15 @@ export const DownloadButton = styled.a`
   font-size: 16px;
 
   transition: all 0.2s ease-in-out;
+  img {
+    transition: inherit;
+  }
   :hover {
     background-color: ${({ theme }) => theme.colors.yellow};
-    color: ${({ theme }) => theme.colors.background};
+    color: black;
+    img {
+      filter: grayscale(1) brightness(0);
+    }
   }
 
   @media ${landscapeTabletSize} {

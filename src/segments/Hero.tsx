@@ -1,6 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { AppH1, AppText, DecoratorText, Flex, Relative, Section } from "../components";
+import {
+  AppH1,
+  AppText,
+  DecoratorText,
+  Flex,
+  Section,
+} from "../components";
 import ChevronDown from "../assets/icons/chevron-down.svg";
 import { landscapeTabletSize } from "../utils/breakpoints";
 
@@ -9,16 +15,15 @@ interface HeroProps {}
 const Hero: React.FC<HeroProps> = () => {
   return (
     <Section id="hero">
-      <AppH1 hide style={{ marginBottom: 32 }}>
+      <AppH1 hide>
         MATT LEE
       </AppH1>
-      <Relative>
-        <DecoratorText top={0} right={124} desktopTop={300}>
+      <Placeholder>
+        <DecoratorText top={24} left={-46} desktopTop={300}>
           that's me
         </DecoratorText>
-        <Placeholder />
-        {/* <img src={CLOUDINARY_SOURCE} width={172} height={232} /> */}
-      </Relative>
+      </Placeholder>
+      {/* <img src={CLOUDINARY_SOURCE} width={172} height={232} /> */}
       <ChevronWrapper href="#about">
         <img src={ChevronDown} alt="next section" height={16} width={24} />
       </ChevronWrapper>
@@ -47,12 +52,15 @@ const Circle = styled.div`
 `;
 
 const Placeholder = styled.div`
-  float: right;
+  position: relative;
+  justify-self: flex-end;
   width: 172px;
   height: 232px;
   background-color: darkgrey;
   border-radius: 12px;
   @media ${landscapeTabletSize} {
+    float: none;
+    margin: 0 auto;
     height: 56vh;
     width: 300px;
   }

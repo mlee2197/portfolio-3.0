@@ -11,11 +11,13 @@ function App() {
   return (
     <ThemeProvider theme={baseTheme}>
       <Wrapper>
-        <FixedHeader ref={nameRef}>MATT LEE</FixedHeader>
+        <FixedWrapper>
+          <FixedHeader ref={nameRef}>MATT LEE</FixedHeader>
+        </FixedWrapper>
         <Hero />
         <About />
         <Portfolio />
-        <Cat headerRef={nameRef}/>
+        <Cat headerRef={nameRef} />
         <ContactIcons />
         <BackToTop />
       </Wrapper>
@@ -28,6 +30,7 @@ const Wrapper = styled.div`
   scroll-snap-type: y mandatory;
   overflow-y: auto;
   max-height: 100vh;
+  width: 100vw;
   & > section {
     scroll-snap-align: start;
   }
@@ -37,11 +40,35 @@ const Wrapper = styled.div`
   }
 `;
 
-const FixedHeader = styled(AppH1)`
+const FixedWrapper = styled.div`
   position: fixed;
-  top: 15vh; //Section component (Containers.ts) padding-top
-  left: 40px;
-  margin: 0;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+  box-sizing: border-box;
+
+  h1:first-of-type {
+    align-self: flex-end;
+  }
+  @media ${landscapeTabletSize} {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    h1:first-of-type {
+      align-self: center;
+      justify-self: center;
+    }
+  }
+`;
+
+const FixedHeader = styled(AppH1)`
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
   font-size: 96px;
@@ -50,9 +77,6 @@ const FixedHeader = styled(AppH1)`
   opacity: 1;
   transition: opacity 0.35s ease-in-out;
   @media ${landscapeTabletSize} {
-    top: 50vh;
-    left: 200px;
-    translate: 0 -50%;
     font-size: 128px;
     max-width: 430px;
   }

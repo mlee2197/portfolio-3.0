@@ -28,12 +28,12 @@ const Cat: React.FC<CatProps> = ({ headerRef }) => {
 
   return (
     <Section id="cat" ref={ref}>
-      <div style={{ position: "relative" }}>
-        <AppH1>Ellie</AppH1>
+      <AppH1>
+        Ellie
         <DecoratorText top={-28} left={0}>
           BONUS: My cat
         </DecoratorText>
-      </div>
+      </AppH1>
       <ContentWrapper>
         <AppText style={{ marginTop: 24 }}>
           This is Ellie. She's a {age} year old grey tabby who's hobbies include
