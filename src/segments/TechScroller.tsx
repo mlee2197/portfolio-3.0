@@ -1,72 +1,11 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import {
-  Html5,
-  CssThree,
-  Javascript,
-  Typescript,
-  ReactJs,
-  Gatsby,
-  Nextdotjs,
-  Styledcomponents,
-  Graphql,
-  Apollographql,
-  Figma,
-  Firebase,
-} from "@icons-pack/react-simple-icons";
+
 import { landscapeTabletSize } from "../utils/breakpoints";
 import { TechIcon } from "../components/TechIcon";
+import { STACK_DATA } from "../utils/variables";
 
-const STACK_DATA = [
-  {
-    text: "HTML",
-    icon: Html5,
-  },
-  {
-    text: "CSS",
-    icon: CssThree,
-  },
-  // {
-  //   text: "Javascript",
-  //   icon: Javascript,
-  // },
-  {
-    text: "Typescript",
-    icon: Typescript,
-  },
-  {
-    text: "React",
-    icon: ReactJs,
-  },
-  {
-    text: "NextJs",
-    icon: Nextdotjs,
-  },
-  {
-    text: "Gatsby",
-    icon: Gatsby,
-  },
-  {
-    text: "Styled Components",
-    icon: Styledcomponents,
-  },
-  {
-    text: "Graphql",
-    icon: Graphql,
-  },
-  {
-    text: "Apollo",
-    icon: Apollographql,
-  },
-  {
-    text: "Figna",
-    icon: Figma,
-  },
-  {
-    text: "Firebase",
-    icon: Firebase,
-  },
-];
+
 const TechScroller = () => {
   return (
     <div style={{ position: "relative" }}>
@@ -137,7 +76,7 @@ const TechStack = styled.div<{ secondary?: boolean }>`
 `;
 
 const DesktopStack = styled.div`
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -152,6 +91,9 @@ const DesktopStack = styled.div`
     :hover {
       filter: none;
     }
+  }
+  @media ${landscapeTabletSize} {
+    display: flex;
   }
 `;
 
