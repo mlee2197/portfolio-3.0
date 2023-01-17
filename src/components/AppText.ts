@@ -4,6 +4,7 @@ import { landscapeTabletSize } from "../utils/breakpoints";
 interface Props {
   variant?: "primary" | "accent";
   size?: number;
+  color?: string;
 }
 
 export const AppText = styled.p<Props>`
@@ -11,10 +12,14 @@ export const AppText = styled.p<Props>`
   font-family: ${({ variant, theme }) =>
     variant === "accent" ? theme.fonts.subtitle : theme.fonts.text};
   font-size: ${({ size }) => size ?? 16}px;
-  color: ${({ variant, theme }) =>
-    variant === "accent" ? theme.colors.yellow : theme.colors.white};
+  color: ${({ color, variant, theme }) =>
+    color
+      ? color
+      : variant === "accent"
+      ? theme.colors.yellow
+      : theme.colors.white};
   @media ${landscapeTabletSize} {
-    font-size: 18px;
+    font-size: ${({ size }) => size ?? 18}px;
   }
 
   .blue {
@@ -45,6 +50,7 @@ export const DecoratorText = styled.span<PositionProps>`
   right: ${({ right }) => (right !== undefined ? `${right}px` : "auto")};
   left: ${({ left }) => (left !== undefined ? `${left}px` : "auto")};
   @media ${landscapeTabletSize} {
+  font-size: ${({ size }) => size ?? 32}px;
     top: ${({ desktopTop, top }) =>
       desktopTop ? `${desktopTop}px` : top !== undefined ? `${top}px` : "auto"};
     bottom: ${({ desktopBottom, bottom }) =>

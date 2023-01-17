@@ -27,7 +27,7 @@ export const AppH2 = styled.h2<SizeProp>`
   font-family: ${({ theme }) => theme.fonts.subtitle};
   color: ${({ theme }) => theme.colors.yellow};
   @media ${landscapeTabletSize} {
-    font-size: ${(props) => props.desktopSize ?? 64}px;
+    /* font-size: ${(props) => props.desktopSize ?? 64}px; */
   }
 `;
 
