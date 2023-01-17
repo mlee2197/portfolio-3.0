@@ -24,11 +24,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     .resize(fill().width(400).height(300))
     .toURL();
 
-  return (
-    <ProjectCardContainer image={imgUrl}>
-  
-    </ProjectCardContainer>
-  );
+  return <ProjectCardContainer image={imgUrl} />;
 };
 
 const ProjectCardContainer = styled.div<{ image: string }>`
@@ -43,7 +39,6 @@ const ProjectCardContainer = styled.div<{ image: string }>`
   background-position: center;
   background-size: cover;
 `;
-
 
 // interface ExpandedProp {
 //   expanded: boolean;

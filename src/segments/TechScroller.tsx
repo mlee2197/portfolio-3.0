@@ -69,6 +69,7 @@ const TechStack = styled.div<{ secondary?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  /* gap: 20px; */
   width: 100vw;
   height: inherit;
   animation: ${({ secondary }) => (secondary ? translateOut : translateIn)} 10s

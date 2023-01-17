@@ -48,10 +48,10 @@ const Portfolio: React.FC<PortfolioProps> = () => {
 const Zigzag = styled.span`
   display: block;
   position: absolute;
-  bottom: -20px;
-  right: 0;
-  width: 200px;
-  height: 100px;
+  bottom: 0px;
+  right: 12px;
+  width: 150px;
+height: 75px;
   background-image: url(${ZigzagSrc});
   background-size: contain;
   background-position: center;
@@ -61,6 +61,8 @@ const Zigzag = styled.span`
   z-index: -1;
   @media ${landscapeTabletSize} {
     right: 40px;
+    width: 200px;
+    height: 100px;
   }
 `;
 
@@ -86,6 +88,8 @@ const StyledLink = styled.a`
   border-radius: 40px;
   background-color: rgba(0, 0, 0, 0.2);
   padding: 4px 8px;
+  text-decoration: none;
+  color: white;
 
   & > * {
     opacity: 0.8;

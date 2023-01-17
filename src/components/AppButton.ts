@@ -38,7 +38,7 @@ export const DownloadButton = styled.a`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.yellow};
   font-size: 14px;
-
+  cursor: pointer;
   transition: all 0.2s ease-in-out;
   img {
     transition: inherit;
@@ -50,7 +50,7 @@ export const DownloadButton = styled.a`
       filter: grayscale(1) brightness(0);
     }
   }
-/* 
+  /* 
   @media ${landscapeTabletSize} {
     font-size: 14px;
   } */

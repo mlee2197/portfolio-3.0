@@ -30,7 +30,7 @@ const Cat: React.FC<CatProps> = ({ headerRef }) => {
   
   return (
     <Section id="cat" ref={ref}>
-      <AppH1>
+      <AppH1 style={{ alignSelf: "center"}}>
         Ellie
         <DecoratorText top={-28} left={0}>
           BONUS: My cat
@@ -58,6 +58,7 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 500px;
+  /* height:; */
 `;
 
 const LineWrapper = styled.div`
