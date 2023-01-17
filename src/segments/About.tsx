@@ -13,6 +13,7 @@ import {
 import Pluses from "../assets/pluses.svg";
 import Arrow from "../assets/arrow.svg";
 import { TechScroller } from "./TechScroller";
+import { landscapeTabletSize } from "../utils/breakpoints";
 
 interface AboutProps {}
 
@@ -33,6 +34,12 @@ const About: React.FC<AboutProps> = () => {
         >
           ?
         </DecoratorText>
+        <DesktopWrapper>
+          <DownloadButton>
+            Download Resume
+            <img src={Arrow} height={12} style={{ rotate: "180deg" }} />
+          </DownloadButton>
+        </DesktopWrapper>
       </AppH1>
       <ContentWrapper>
         <Absolute left={-48} top={-40}>
@@ -48,12 +55,18 @@ const About: React.FC<AboutProps> = () => {
           Currently, I am working as an engineer at{" "}
           <span className="blue">Rapptr Labs.</span>
         </AppText>
+        <MobileWrapper>
+          <DownloadButton>
+            Download Resume
+            <img src={Arrow} height={12} style={{ rotate: "180deg" }} />
+          </DownloadButton>
+        </MobileWrapper>
+          <TechScroller />
+        <DesktopWrapper>
+          <Flex>
 
-        <DownloadButton>
-          Download Resume
-          <img src={Arrow} height={12} style={{ rotate: "180deg" }} />
-        </DownloadButton>
-        <TechScroller />
+          </Flex>
+        </DesktopWrapper>
       </ContentWrapper>
     </Section>
   );
@@ -67,6 +80,23 @@ const ContentWrapper = styled.div`
   gap: 28px;
   max-width: 500px;
   margin: 16px auto;
+`;
+
+const DesktopWrapper = styled.span`
+  display: none;
+  position: relative;
+  top: 40px;
+  visibility: visible;
+  font-family: ${({ theme }) => theme.fonts.text};
+  @media ${landscapeTabletSize} {
+    display: block;
+  }
+`;
+
+const MobileWrapper = styled.div`
+  @media ${landscapeTabletSize} {
+    display: none;
+  }
 `;
 
 export { About };

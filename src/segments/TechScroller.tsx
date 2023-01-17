@@ -14,6 +14,8 @@ import {
   Figma,
   Firebase,
 } from "@icons-pack/react-simple-icons";
+import { landscapeTabletSize } from "../utils/breakpoints";
+import { TechIcon } from "../components/TechIcon";
 
 const STACK_DATA = [
   {
@@ -44,10 +46,10 @@ const STACK_DATA = [
     text: "Gatsby",
     icon: Gatsby,
   },
-  // {
-  //   text: "Styled Components",
-  //   icon: Styledcomponents,
-  // },
+  {
+    text: "Styled Components",
+    icon: Styledcomponents,
+  },
   {
     text: "Graphql",
     icon: Graphql,
@@ -80,6 +82,11 @@ const TechScroller = () => {
           ))}
         </TechStack>
       </AnimateWrapper>
+      <DesktopStack>
+        {STACK_DATA.map((item) => (
+          <TechIcon key={item.text} Icon={item.icon} />
+        ))}
+      </DesktopStack>
     </div>
   );
 };
@@ -111,6 +118,9 @@ const AnimateWrapper = styled.div`
   width: 100vw;
   margin-top: 16px;
   overflow-x: hidden;
+  @media ${landscapeTabletSize} {
+    display: none;
+  }
 `;
 
 const TechStack = styled.div<{ secondary?: boolean }>`
@@ -124,6 +134,24 @@ const TechStack = styled.div<{ secondary?: boolean }>`
   height: inherit;
   animation: ${({ secondary }) => (secondary ? translateOut : translateIn)} 10s
     linear infinite;
+`;
+
+const DesktopStack = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  /* margin-top: 40px; */
+  padding: 40px;
+  svg {
+    /* color: white; */
+    /* fill: white; */
+    filter: grayscale(1);
+    :hover {
+      filter: none;
+    }
+  }
 `;
 
 export { TechScroller };

@@ -37,7 +37,7 @@ export const DownloadButton = styled.a`
   border-radius: 60px;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.yellow};
-  font-size: 16px;
+  font-size: 14px;
 
   transition: all 0.2s ease-in-out;
   img {
@@ -50,8 +50,8 @@ export const DownloadButton = styled.a`
       filter: grayscale(1) brightness(0);
     }
   }
-
+/* 
   @media ${landscapeTabletSize} {
-    font-size: 18px;
-  }
+    font-size: 14px;
+  } */
 `;
