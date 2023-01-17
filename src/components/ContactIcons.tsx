@@ -11,7 +11,7 @@ import { Flex } from "./Containers";
 const ContactIcons = () => {
   const { toggle, value: showIcons } = useToggle();
   return (
-    <Fixed>
+    <Fixed showIcons={showIcons}>
       <IconsContainer showIcons={showIcons}>
         <Link
           href="https://github.com/mlee2197"
@@ -40,21 +40,32 @@ interface ShowIconsProp {
   showIcons: boolean;
 }
 
-const Fixed = styled.div`
+const Fixed = styled.div<ShowIconsProp>`
   position: fixed;
   left: 24px;
   bottom: 24px;
 
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   gap: 24px;
+  height: ${({ showIcons }) => (showIcons ? 250 : 40)}px;
+  transition: height 0.5s ease-in-out;
+  border: 8px solid rgba(0,0,0, 0.4);
+  border-radius: 50px;
+  background-color: rgba(0,0,0, 0.4);
+
+  @media ${landscapeTabletSize} {
+    background: none;
+    border: none;
+  }
 `;
 
 const IconsContainer = styled.div<ShowIconsProp>`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  transform: translateY(${({ showIcons }) => (showIcons ? 0 : 24)}px);
+  transform: translateY(${({ showIcons }) => (showIcons ? 0 : 64)}px);
   opacity: ${({ showIcons }) => (showIcons ? 1 : 0)};
   transition: all 0.5s ease-in-out;
   ${({ showIcons }) =>
@@ -74,8 +85,7 @@ const IconsContainer = styled.div<ShowIconsProp>`
 `;
 
 const Link = styled.a`
-  opacity: 0.25;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.7s ease-in-out;
   img {
     filter: invert(1);
   }
@@ -89,14 +99,9 @@ const ToggleSocials = styled.img.attrs({
   height: 40,
   width: 40,
 })<ShowIconsProp>`
-  /* transform: rotateZ(180deg); */
-  opacity: 0.5;
-  ${({ showIcons }) =>
-    showIcons &&
-    css`
-      filter: invert(1);
-    `}
-  /* transition: filter 0.5s ease-in-out; */
+  filter: invert(1);
+  opacity: ${({ showIcons }) => showIcons ? 0.75 : 0.5 };
+  transition: opacity 0.25s ease-in-out;
   @media ${landscapeTabletSize} {
     display: none;
   }
