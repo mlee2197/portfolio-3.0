@@ -57,9 +57,17 @@ const IconsContainer = styled.div<ShowIconsProp>`
   transform: translateY(${({ showIcons }) => (showIcons ? 0 : 24)}px);
   opacity: ${({ showIcons }) => (showIcons ? 1 : 0)};
   transition: all 0.5s ease-in-out;
+  ${({ showIcons }) =>
+    !showIcons &&
+    css`
+      a {
+        pointer-events: none;
+      }
+    `}
   @media ${landscapeTabletSize} {
     transform: none;
     opacity: 1;
+    pointer-events: all;
   }
 `;
 
