@@ -38,6 +38,7 @@ const ProjectCardContainer = styled.div<{ image: string }>`
   background-image: url(${(props) => props.image});
   background-position: center;
   background-size: cover;
+  overflow: hidden;
 `;
 
 // interface ExpandedProp {

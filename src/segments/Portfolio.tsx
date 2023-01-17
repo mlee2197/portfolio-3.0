@@ -13,6 +13,7 @@ import { landscapeTabletSize } from "../utils/breakpoints";
 import { ProjectCarousel } from "./ProjectCarousel";
 import { Github } from "@icons-pack/react-simple-icons";
 import { PROJECT_DATA } from "../utils/variables";
+import LinkSrc from "../assets/icons/link-solid.svg";
 
 interface PortfolioProps {}
 
@@ -32,14 +33,26 @@ const Portfolio: React.FC<PortfolioProps> = () => {
         <ProjectCarousel setCurrentProject={setProject} />
         <AppH2>{project.title}</AppH2>
         <AppText>{project.description}</AppText>
-        <StyledLink
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Github color="white" />
-          <small>view on Github</small>
-        </StyledLink>
+        <Flex gap={8}>
+          <StyledLink
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Github color="white" />
+            <small>view on Github</small>
+          </StyledLink>
+          {project.link && (
+            <StyledLink
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={LinkSrc} alt="link" height={24} width={24} />
+              <small>view site</small>
+            </StyledLink>
+          )}
+        </Flex>
       </SliderContainer>
     </Section>
   );
@@ -51,7 +64,7 @@ const Zigzag = styled.span`
   bottom: 0px;
   right: 12px;
   width: 150px;
-height: 75px;
+  height: 75px;
   background-image: url(${ZigzagSrc});
   background-size: contain;
   background-position: center;

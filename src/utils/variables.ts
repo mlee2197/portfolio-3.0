@@ -69,7 +69,7 @@ export const PROJECT_DATA = [
     id: "animation-suite",
     image: "animation-suite",
     github: "https://github.com/mlee2197/animation-suite",
-    link: "",
+    link: "https://animationsuite.netlify.app/",
     title: "Animation Suite",
     description:
       "To practice CSS animation skills, I created a suite of animations to catalog some of my more complex animations done. These animations range from strict CSS to using JS and HTML Canvas.",
@@ -78,7 +78,7 @@ export const PROJECT_DATA = [
     id: "memorlee",
     image: "memorlee",
     github: "https://github.com/mlee2197/memorlee",
-    link: "",
+    link: "https://memorlee.netlify.app/",
     title: "Memorlee",
     description:
       "The goal of the project was to catalog images from past family trips. I utilized Firebase to store my image assets and firestore as the Backend.",
