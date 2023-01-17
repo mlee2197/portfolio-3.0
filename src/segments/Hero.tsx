@@ -1,29 +1,29 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  AppH1,
-  AppText,
-  DecoratorText,
-  Flex,
-  Section,
-} from "../components";
+import { AppH1, AppText, DecoratorText, Flex, Section } from "../components";
 import ChevronDown from "../assets/icons/chevron-down.svg";
 import { landscapeTabletSize } from "../utils/breakpoints";
+import { cloudinary } from "../services/cloudinary";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
+import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
 
 interface HeroProps {}
 
 const Hero: React.FC<HeroProps> = () => {
+  const imageUrl = cloudinary
+    .image("portfolio/selfie")
+    .resize(fill().width(500).height(800).gravity(focusOn(FocusOn.face())))
+    .toURL();
+
   return (
     <Section id="hero">
-      <AppH1 hide>
-        MATT LEE
-      </AppH1>
-      <Placeholder>
-        <DecoratorText top={24} left={-46} desktopTop={300}>
+      <AppH1 hide>MATT LEE</AppH1>
+      <Selfie src={imageUrl}>
+        <DecoratorText top={24} left={-46} desktopTop={300} desktopLeft={-80}>
           that's me
         </DecoratorText>
-      </Placeholder>
-      {/* <img src={CLOUDINARY_SOURCE} width={172} height={232} /> */}
+      </Selfie>
       <ChevronWrapper href="#about">
         <img src={ChevronDown} alt="next section" height={16} width={24} />
       </ChevronWrapper>
@@ -51,12 +51,14 @@ const Circle = styled.div`
   }
 `;
 
-const Placeholder = styled.div`
+const Selfie = styled.div<{ src: string }>`
   position: relative;
   justify-self: flex-end;
   width: 172px;
-  height: 232px;
-  background-color: darkgrey;
+  height: 3px;
+  background-image: url(${(props) => props.src});
+  background-size: cover;
+
   border-radius: 12px;
   @media ${landscapeTabletSize} {
     float: none;
