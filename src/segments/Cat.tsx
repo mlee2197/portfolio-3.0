@@ -6,6 +6,7 @@ import Paw from "../assets/paw.svg";
 
 import { useInView } from "../hooks/useInView";
 import { CatImages } from "./CatImages";
+import { landscapeTabletSize } from "../utils/breakpoints";
 
 interface CatProps {
   headerRef: React.RefObject<HTMLHeadingElement>;
@@ -42,10 +43,9 @@ const Cat: React.FC<CatProps> = ({ headerRef }) => {
         <CatImages />
         <LineWrapper>
           <LineText>
-            Tap Me
             <img src={Paw} alt="paw" height={16} width={20} />
           </LineText>
-          <Line src={LineSrc} alt="line" height={52} />
+          <Line src={LineSrc} alt="line" />
         </LineWrapper>
       </ContentWrapper>
     </Section>
@@ -62,15 +62,39 @@ const ContentWrapper = styled.div`
 const LineWrapper = styled.div`
   position: relative;
   left: 40px;
+  @media ${landscapeTabletSize} {
+    left: -64px;
+    bottom: 28px;
+  }
 `;
 
-const LineText = styled.p`
+const LineText = styled.div`
   position: absolute;
   left: 56px;
-  top: -12px;
+  top: -8px;
   font-size: 10px;
+
+  ::before {
+    content: "Tap me";
+  }
+
+  @media ${landscapeTabletSize} {
+    left: -40px;
+    top: -20px;
+    font-size: 12px;
+
+    ::before {
+    content: "Hover me";
+  }
+  }
 `;
 
-const Line = styled.img``;
+const Line = styled.img`
+  height: 52px;
+  @media ${landscapeTabletSize} {
+    left: -40px;
+    height: 64px;
+  }
+`;
 
 export { Cat };
