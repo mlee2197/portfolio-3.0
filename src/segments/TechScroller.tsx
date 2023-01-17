@@ -144,6 +144,7 @@ const DesktopStack = styled.div`
   gap: 40px;
   /* margin-top: 40px; */
   padding: 40px;
+  padding-bottom: 0;
   svg {
     /* color: white; */
     /* fill: white; */

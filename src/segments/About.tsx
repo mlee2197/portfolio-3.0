@@ -61,12 +61,7 @@ const About: React.FC<AboutProps> = () => {
             <img src={Arrow} height={12} style={{ rotate: "180deg" }} />
           </DownloadButton>
         </MobileWrapper>
-          <TechScroller />
-        <DesktopWrapper>
-          <Flex>
-
-          </Flex>
-        </DesktopWrapper>
+        <TechScroller />
       </ContentWrapper>
     </Section>
   );
@@ -79,7 +74,7 @@ const ContentWrapper = styled.div`
   /* align-items: center; */
   gap: 28px;
   max-width: 500px;
-  margin: 16px auto;
+  margin: 16px auto 0 auto;
 `;
 
 const DesktopWrapper = styled.span`
