@@ -38,6 +38,8 @@ export const DecoratorText = styled.span.attrs({
   variant: "accent",
 })<PositionProps>`
   font-family: ${({ theme }) => theme.fonts.subtitle};
+  color: ${({ theme }) => theme.colors.yellow};
+  font-size: 16px;
   position: absolute;
   top: ${({ top }) => (top !== undefined ? `${top}px` : "auto")};
   bottom: ${({ bottom }) => (bottom !== undefined ? `${bottom}px` : "auto")};
@@ -45,6 +47,7 @@ export const DecoratorText = styled.span.attrs({
   left: ${({ left }) => (left !== undefined ? `${left}px` : "auto")};
   font-size: ${({ size }) => size ?? 32}px;
   @media ${landscapeTabletSize} {
+    font-size: 18px;
     top: ${({ desktopTop, top }) =>
       desktopTop ? `${desktopTop}px` : top !== undefined ? `${top}px` : "auto"};
     bottom: ${({ desktopBottom, bottom }) =>
