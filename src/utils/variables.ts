@@ -90,9 +90,9 @@ export const PROJECT_DATA = [
     image: "anniversary",
     github: "https://github.com/mlee2197/anniversary-wrapped",
     link: "",
-    title: "Anniversary Wrapped",
+    title: "Isometric Room",
     description:
-      "This experience was a gift for someone to wrap up their year. Using strictly CSS, I utilized transformations and perspective to create 3D scenes. Each of which has it's own CSS and GSAP animations and scrolls horizontally as a bonus.",
+      "Using strictly CSS, I utilized transformations and perspective to create 3D scenes. Each of which has it's own CSS and GSAP animations and scrolls horizontally as a bonus.",
   },
   {
     id: "reminder-extension",
