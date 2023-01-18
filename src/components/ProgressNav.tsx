@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { landscapeTabletSize } from "../utils/breakpoints";
-import Dot from "../assets/icons/ring-pointer.png";
+import Dot from "../assets/ring-pointer.png";
 
 interface ProgressNavProps {
   wrapperRef: React.RefObject<HTMLDivElement>;

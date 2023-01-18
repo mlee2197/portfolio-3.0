@@ -13,8 +13,8 @@ import { landscapeTabletSize } from "../utils/breakpoints";
 import { ProjectCarousel } from "./ProjectCarousel";
 import { Github } from "@icons-pack/react-simple-icons";
 import { PROJECT_DATA } from "../utils/variables";
-import LinkSrc from "../assets/icons/link-solid.svg";
-import Dot from "../assets/icons/ring-pointer.png";
+import LinkSrc from "../assets/link-solid.svg";
+import Dot from "../assets/ring-pointer.png";
 
 interface PortfolioProps {}
 

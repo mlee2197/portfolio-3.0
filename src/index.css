@@ -20,5 +20,5 @@ body {
   width: 100vw;
   min-height: 100vh;
   /* box-sizing: border-box; */
-  cursor: url("./assets/icons/cursor-ring.png") 4 4, default;
+  cursor: url("./assets/cursor-ring.png") 4 4, default;
 }

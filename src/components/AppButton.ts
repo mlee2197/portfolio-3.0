@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { landscapeTabletSize } from "../utils/breakpoints";
-import Dot from "../assets/icons/ring-pointer.png";
+import Dot from "../assets/ring-pointer.png";
 
 export const AppButton = styled.button.attrs(({ type = "button" }) => ({
   type,

@@ -1,12 +1,13 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { AppH1, DecoratorText, Section } from "../components";
-import ChevronDown from "../assets/icons/chevron-down.svg";
+// import ChevronDown from "../assets/chevron-down.svg";
 import { landscapeTabletSize } from "../utils/breakpoints";
 import { cloudinary } from "../services/cloudinary";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
 import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
+import SvgIcon from "../components/SvgIcon";
 
 interface HeroProps {}
 
@@ -25,7 +26,11 @@ const Hero: React.FC<HeroProps> = () => {
         </DecoratorText>
       </Selfie>
       <ChevronWrapper href="#about">
-        <img src={ChevronDown} alt="next section" height={16} width={24} />
+        <SvgIcon
+          iconName="chevron-down"
+          // svgProp={{ width: 100, height: 100, fill: "#61dafb" }}
+        />
+        {/* <img src={ChevronDown} alt="next section" height={16} width={24} /> */}
       </ChevronWrapper>
       <Circle />
     </FadeInSection>

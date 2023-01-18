@@ -8,11 +8,10 @@ import {
   DownloadButton,
   Section,
 } from "../components";
-import Pluses from "../assets/pluses.svg";
-import Arrow from "../assets/arrow.svg";
 import { TechScroller } from "./TechScroller";
 import { landscapeTabletSize } from "../utils/breakpoints";
 import Resume from "../assets/Matthew_Lee_Resume_2020.pdf";
+import SvgIcon from "../components/SvgIcon";
 
 const About = () => {
   return (
@@ -34,13 +33,13 @@ const About = () => {
         <DesktopWrapper>
           <DownloadButton href={Resume} download>
             Download Resume
-            <Arrow />
+            <SvgIcon iconName="arrow" />
           </DownloadButton>
         </DesktopWrapper>
       </AppH1>
       <ContentWrapper>
         <Absolute left={-48} top={-40}>
-          <Pluses />
+          <SvgIcon iconName="pluses" />
         </Absolute>
         <AppText>
           I'm a New York City based, Front-End Developer. Stuck at a crossroads
@@ -55,7 +54,7 @@ const About = () => {
         <MobileWrapper>
           <DownloadButton href={Resume} download>
             Download Resume
-            <Arrow />
+            <SvgIcon iconName="arrow" />
           </DownloadButton>
         </MobileWrapper>
         <TechScroller />
