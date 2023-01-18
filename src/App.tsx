@@ -22,7 +22,7 @@ function App() {
         <Portfolio />
         <Cat headerRef={nameRef} />
         <ContactIcons />
-        <BackToTop />
+        <BackToTop wrapperRef={wrapperRef} />
         <ProgressNav wrapperRef={wrapperRef}/>
       </Wrapper>
     </ThemeProvider>
