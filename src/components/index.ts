@@ -6,4 +6,3 @@ export * from "./Containers";
 export * from "./ProgressNav";
 export * from "./ProjectCard";
 export * from "./ContactIcons";
-export * from "./SvgIcon";
