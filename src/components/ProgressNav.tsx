@@ -48,7 +48,7 @@ export const ProgressNav: React.FC<ProgressNavProps> = ({ wrapperRef }) => {
 
     return () => {
       wrapperRef.current?.removeEventListener("scroll", handleScroll);
-    }
+    };
   }, [wrapperRef?.current]);
 
   useEffect(() => {
@@ -58,10 +58,13 @@ export const ProgressNav: React.FC<ProgressNavProps> = ({ wrapperRef }) => {
   return (
     <Wrapper>
       {LINKS.map((link, i) => (
-        <a key={`circle-${link.link}`} href={"#" + link.link}>
-          <Circle highlight={progress >= i * 25}>
-            <HoverText>{link.text}</HoverText>
-          </Circle>
+        <a
+          key={`circle-${link.link}`}
+          href={"#" + link.link}
+          style={{ position: "relative" }}
+        >
+          <Circle highlight={progress >= i * 32}></Circle>
+          <HoverText>{link.text}</HoverText>
         </a>
       ))}
       <FillLine progress={progress} />
@@ -112,13 +115,22 @@ const Circle = styled.div<{ highlight: boolean }>`
   border: 2px solid rgba(255, 255, 255, 0.5);
   transition: all 0.5s ease-in-out;
   color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ highlight, theme }) =>
-    highlight ? theme.colors.white : theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.background};
+  overflow-y: hidden;
 
   cursor: url(${Dot}) 4 4, pointer;
-
+  ::before {
+    content: "";
+    position: absolute;
+    opacity: 1;
+    height: ${({ highlight }) => (highlight ? 100 : 0)}%;
+    width: inherit;
+    border-radius: inherit;
+    background-color: ${({ theme }) => theme.colors.white};
+    transition: height 0.25s ease-in-out;
+  }
   &:hover {
-    small {
+    & + small {
       opacity: 1;
     }
   }
@@ -126,7 +138,9 @@ const Circle = styled.div<{ highlight: boolean }>`
 
 const HoverText = styled.small`
   position: absolute;
+  top: 0;
   right: calc(100% + 12px);
+  color: ${({ theme }) => theme.colors.white};
   opacity: 0;
-  transition: opacity 0.25s ease-in-out; 
+  transition: opacity 0.25s ease-in-out;
 `;
