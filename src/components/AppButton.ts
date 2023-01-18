@@ -39,6 +39,7 @@ export const DownloadButton = styled.a`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.yellow};
   font-size: 14px;
+  text-decoration: none;
   cursor: url(${Dot}) 4 4 , pointer;
   transition: all 0.2s ease-in-out;
   img {

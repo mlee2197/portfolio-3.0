@@ -14,6 +14,7 @@ import Pluses from "../assets/pluses.svg";
 import Arrow from "../assets/arrow.svg";
 import { TechScroller } from "./TechScroller";
 import { landscapeTabletSize } from "../utils/breakpoints";
+import Resume from "../assets/Matthew_Lee_Resume_2020.pdf";
 
 interface AboutProps {}
 
@@ -35,7 +36,7 @@ const About: React.FC<AboutProps> = () => {
           ?
         </DecoratorText>
         <DesktopWrapper>
-          <DownloadButton>
+          <DownloadButton href={Resume} download>
             Download Resume
             <img src={Arrow} alt="^" height={12} style={{ rotate: "180deg" }} loading="lazy" />
           </DownloadButton>
@@ -56,7 +57,7 @@ const About: React.FC<AboutProps> = () => {
           <span className="blue">Rapptr Labs.</span>
         </AppText>
         <MobileWrapper>
-          <DownloadButton>
+          <DownloadButton href={Resume} download>
             Download Resume
             <img src={Arrow} alt="^" height={12} style={{ rotate: "180deg" }} loading="lazy" />
           </DownloadButton>
