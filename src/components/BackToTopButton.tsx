@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+//@ts-ignore
 import { ReactComponent as SvgArrow } from "../assets/arrow.svg";
 import Dot from "../assets/icons/ring-pointer.png";
 
