@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 //@ts-ignore
-import { ReactComponent as SvgArrow } from "../assets/arrow.svg";
+import SvgArrow from "../assets/arrow.svg";
 import Dot from "../assets/icons/ring-pointer.png";
 
 interface BackToTopProps {
@@ -62,11 +62,11 @@ const BackToTopWrapper = styled.div<{ show: boolean }>`
   box-sizing: border-box;
   cursor: url(${Dot}) 4 4, pointer;
   transition: bottom 0.5s ease-in-out;
-`;
 
-const StyledArrow = styled.img`
-  object-fit: contain;
-  color: ${({ theme }) => theme.colors.yellow};
+  svg {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 export { BackToTop };

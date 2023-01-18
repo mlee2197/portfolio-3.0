@@ -45,6 +45,11 @@ export const DownloadButton = styled.a`
   img {
     transition: inherit;
   }
+  svg {
+    rotate: 180deg;
+    height: 12px;
+    width: 20px;
+  }
   :hover {
     background-color: ${({ theme }) => theme.colors.yellow};
     color: black;

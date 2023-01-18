@@ -26,7 +26,9 @@ const ContactIcons = () => {
           <Linkedin color="white" title="Linkedin" width={40} height={40} />
         </Link>
         <Link href="mailto:mlee2197@gmail.com">
-          <img src={Mail} alt="email" width={40} height={40} color="white" />
+          <span className="mail">
+            <Mail />
+          </span>
         </Link>
       </IconsContainer>
       <ToggleSocials showIcons={showIcons} onTouchStart={() => toggle()} />
@@ -49,9 +51,9 @@ const Fixed = styled.div<ShowIconsProp>`
   gap: 24px;
   height: ${({ showIcons }) => (showIcons ? 250 : 40)}px;
   transition: height 0.5s ease-in-out;
-  border: 8px solid rgba(0,0,0, 0.4);
+  border: 8px solid rgba(0, 0, 0, 0.4);
   border-radius: 50px;
-  background-color: rgba(0,0,0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 
   @media ${landscapeTabletSize} {
     background: none;
@@ -84,9 +86,10 @@ const IconsContainer = styled.div<ShowIconsProp>`
 
 const Link = styled.a`
   transition: opacity 0.7s ease-in-out;
-  img {
+  img, .mail {
     filter: invert(1);
   }
+
   :hover {
     opacity: 1;
   }
@@ -98,7 +101,7 @@ const ToggleSocials = styled.img.attrs({
   width: 40,
 })<ShowIconsProp>`
   filter: invert(1);
-  opacity: ${({ showIcons }) => showIcons ? 0.75 : 0.5 };
+  opacity: ${({ showIcons }) => (showIcons ? 0.75 : 0.5)};
   transition: opacity 0.25s ease-in-out;
   @media ${landscapeTabletSize} {
     display: none;

@@ -34,13 +34,13 @@ const About = () => {
         <DesktopWrapper>
           <DownloadButton href={Resume} download>
             Download Resume
-            <img src={Arrow} alt="^" height={12} style={{ rotate: "180deg" }} loading="lazy" />
+            <Arrow />
           </DownloadButton>
         </DesktopWrapper>
       </AppH1>
       <ContentWrapper>
         <Absolute left={-48} top={-40}>
-          <img src={Pluses} alt="pluses" width={102} height={58} loading="lazy" />
+          <Pluses />
         </Absolute>
         <AppText>
           I'm a New York City based, Front-End Developer. Stuck at a crossroads
@@ -55,7 +55,7 @@ const About = () => {
         <MobileWrapper>
           <DownloadButton href={Resume} download>
             Download Resume
-            <img src={Arrow} alt="^" height={12} style={{ rotate: "180deg" }} loading="lazy" />
+            <Arrow />
           </DownloadButton>
         </MobileWrapper>
         <TechScroller />
