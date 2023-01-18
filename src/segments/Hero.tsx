@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { AppH1, AppText, DecoratorText, Flex, Section } from "../components";
 import ChevronDown from "../assets/icons/chevron-down.svg";
 import { landscapeTabletSize } from "../utils/breakpoints";
@@ -17,7 +17,7 @@ const Hero: React.FC<HeroProps> = () => {
     .toURL();
 
   return (
-    <Section id="hero">
+    <FadeInSection id="hero">
       <AppH1 hide>MATT LEE</AppH1>
       <Selfie src={imageUrl}>
         <DecoratorText top={24} left={-46} desktopTop={300} desktopLeft={-80}>
@@ -28,9 +28,24 @@ const Hero: React.FC<HeroProps> = () => {
         <img src={ChevronDown} alt="next section" height={16} width={24} />
       </ChevronWrapper>
       <Circle />
-    </Section>
+    </FadeInSection>
   );
 };
+
+const FadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const FadeInSection = styled(Section)`
+  opacity: 0;
+  animation: ${FadeIn} 2s ease-in-out forwards;
+  animation-delay: 1s;
+`;
 
 const Circle = styled.div`
   position: absolute;
@@ -55,7 +70,7 @@ const Selfie = styled.div<{ src: string }>`
   position: relative;
   justify-self: flex-end;
   width: 172px;
-  height: 3px;
+  height: 300px;
   background-image: url(${(props) => props.src});
   background-size: cover;
 

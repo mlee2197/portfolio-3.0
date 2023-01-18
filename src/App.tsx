@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import styled, { keyframes, ThemeProvider } from "styled-components";
 import { AppH1, BackToTop } from "./components";
 import { ContactIcons } from "./components/ContactIcons";
 import { About, Cat, Hero, Portfolio } from "./segments";
@@ -68,7 +68,25 @@ const FixedWrapper = styled.div`
   }
 `;
 
+const HeaderAnimation = keyframes`
+  0% {
+    left: 200%;
+    letter-spacing: 300px;
+  }
+  80% {
+    left: 0%;
+  }
+  100% {
+    left: 0%;
+    letter-spacing: 0px;
+
+  }
+`;
+
 const FixedHeader = styled(AppH1)`
+  position:relative;
+  /* left: 200%; */
+  letter-spacing: 20px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
   font-size: 96px;
@@ -76,6 +94,9 @@ const FixedHeader = styled(AppH1)`
   color: ${({ theme }) => theme.colors.white};
   opacity: 1;
   transition: opacity 0.35s ease-in-out;
+
+  animation: ${HeaderAnimation} 2s ease-in-out forwards;
+
   @media ${landscapeTabletSize} {
     font-size: 128px;
     max-width: 430px;
