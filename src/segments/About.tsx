@@ -37,13 +37,13 @@ const About: React.FC<AboutProps> = () => {
         <DesktopWrapper>
           <DownloadButton>
             Download Resume
-            <img src={Arrow} height={12} style={{ rotate: "180deg" }} />
+            <img src={Arrow} alt="^" height={12} style={{ rotate: "180deg" }} loading="lazy" />
           </DownloadButton>
         </DesktopWrapper>
       </AppH1>
       <ContentWrapper>
         <Absolute left={-48} top={-40}>
-          <img src={Pluses} alt="pluses" width={102} height={58} />
+          <img src={Pluses} alt="pluses" width={102} height={58} loading="lazy" />
         </Absolute>
         <AppText>
           I'm a New York City based, Front-End Developer. Stuck at a crossroads
@@ -58,7 +58,7 @@ const About: React.FC<AboutProps> = () => {
         <MobileWrapper>
           <DownloadButton>
             Download Resume
-            <img src={Arrow} height={12} style={{ rotate: "180deg" }} />
+            <img src={Arrow} alt="^" height={12} style={{ rotate: "180deg" }} loading="lazy" />
           </DownloadButton>
         </MobileWrapper>
         <TechScroller />

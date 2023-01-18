@@ -13,6 +13,8 @@ import {
   Firebase,
 } from "@icons-pack/react-simple-icons";
 
+export const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+
 export const STACK_DATA = [
   {
     text: "HTML",

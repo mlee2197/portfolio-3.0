@@ -49,7 +49,7 @@ const Portfolio: React.FC<PortfolioProps> = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={LinkSrc} alt="link" height={24} width={24} />
+              <img src={LinkSrc} alt="link" height={24} width={24} loading="lazy" />
               <small>view site</small>
             </StyledLink>
           )}

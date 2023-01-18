@@ -1,7 +1,10 @@
 import { Cloudinary } from "@cloudinary/url-gen";
+import { CLOUDINARY_CLOUD_NAME } from "../utils/variables";
 
 export const cloudinary = new Cloudinary({
   cloud: {
-    cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
+    cloudName: CLOUDINARY_CLOUD_NAME
   }
 }); 
+
+export const addBasePath = (name: string) => "portfolio/" + name;

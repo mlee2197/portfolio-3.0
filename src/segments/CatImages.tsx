@@ -97,7 +97,9 @@ const ImageContainer = styled.div<{ src: string }>`
   background-position: center;
 `;
 
-const CatAnimated = styled.img`
+const CatAnimated = styled.img.attrs({
+  loading: "lazy",
+})`
   position: absolute;
   z-index: -1;
 `;

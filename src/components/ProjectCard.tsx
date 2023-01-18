@@ -21,23 +21,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   // const { value: expanded, toggle: toggleExpanded } = useToggle();
   const imgUrl = cloudinary
     .image("portfolio/" + image)
-    .resize(fill().width(400).height(300))
+    .resize(fill().width(600).height(400))
     .toURL();
 
-  return <ProjectCardContainer image={imgUrl} />;
+  return <ProjectCardContainer>
+    <img src={imgUrl} loading="lazy" />
+  </ProjectCardContainer>;
 };
 
-const ProjectCardContainer = styled.div<{ image: string }>`
+const ProjectCardContainer = styled.div`
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   max-width: 100%;
   width: 312px;
   height: 186px;
   border-radius: 1rem;
-
-  /* background-color: orange; */
-  background-image: url(${(props) => props.image});
-  background-position: center;
-  background-size: cover;
+  /* object-fit: cover; */
   overflow: hidden;
 `;
 
