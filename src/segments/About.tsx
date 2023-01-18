@@ -1,13 +1,11 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import {
   Absolute,
-  AppButton,
   AppH1,
   AppText,
   DecoratorText,
   DownloadButton,
-  Flex,
   Section,
 } from "../components";
 import Pluses from "../assets/pluses.svg";
@@ -16,9 +14,7 @@ import { TechScroller } from "./TechScroller";
 import { landscapeTabletSize } from "../utils/breakpoints";
 import Resume from "../assets/Matthew_Lee_Resume_2020.pdf";
 
-interface AboutProps {}
-
-const About: React.FC<AboutProps> = () => {
+const About = () => {
   return (
     <Section id="about">
       <AppH1 hide>

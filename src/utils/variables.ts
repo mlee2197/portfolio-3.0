@@ -1,7 +1,7 @@
 import {
   Html5,
   CssThree,
-  Javascript,
+  // Javascript,
   Typescript,
   ReactJs,
   Gatsby,

@@ -5,7 +5,6 @@ import CatPawSrc from "../assets/cat-paw.svg";
 import CatEarSrc from "../assets/cat-ear.svg";
 import CatTailSrc from "../assets/cat-tail.svg";
 import { cloudinary } from "../services/cloudinary";
-import { AdvancedImage } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
 import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";

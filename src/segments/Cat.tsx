@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { AppH1, AppText, DecoratorText, Flex, Section } from "../components";
+import { AppH1, AppText, DecoratorText, Section } from "../components";
 import styled from "styled-components";
 import LineSrc from "../assets/line.svg";
 import Paw from "../assets/paw.svg";

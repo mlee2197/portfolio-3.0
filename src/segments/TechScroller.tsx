@@ -82,12 +82,9 @@ const DesktopStack = styled.div`
   justify-content: center;
   align-items: center;
   gap: 40px;
-  /* margin-top: 40px; */
   padding: 40px;
   padding-bottom: 0;
   svg {
-    /* color: white; */
-    /* fill: white; */
     filter: grayscale(1);
     :hover {
       filter: none;

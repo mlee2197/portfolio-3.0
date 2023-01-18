@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { AppH1, AppText, DecoratorText, Flex, Section } from "../components";
+import { AppH1, DecoratorText, Section } from "../components";
 import ChevronDown from "../assets/icons/chevron-down.svg";
 import { landscapeTabletSize } from "../utils/breakpoints";
 import { cloudinary } from "../services/cloudinary";

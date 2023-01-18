@@ -1,18 +1,4 @@
 import React, { useState } from "react";
-import {
-  Html5,
-  CssThree,
-  Javascript,
-  Typescript,
-  ReactJs,
-  Gatsby,
-  Nextdotjs,
-  Styledcomponents,
-  Graphql,
-  Apollographql,
-  Figma,
-  Firebase,
-} from "@icons-pack/react-simple-icons";
 import styled from "styled-components";
 
 interface TechIconProps {

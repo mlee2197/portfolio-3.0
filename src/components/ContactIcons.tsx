@@ -2,11 +2,9 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { Github, Linkedin } from "@icons-pack/react-simple-icons";
 import Mail from "../assets/icons/envelope-solid.svg";
-import Chevron from "../assets/icons/chevron-down.svg";
 import { useToggle } from "../hooks/useToggle";
 import { landscapeTabletSize } from "../utils/breakpoints";
 import User from "../assets/icons/circle-user-solid.svg";
-import { Flex } from "./Containers";
 
 const ContactIcons = () => {
   const { toggle, value: showIcons } = useToggle();
