@@ -11,9 +11,8 @@ import {
 import { TechScroller } from "./TechScroller";
 import { landscapeTabletSize } from "../utils/breakpoints";
 import Resume from "../assets/Matthew_Lee_Resume_2020.pdf";
-import Pluses from "../assets/pluses.svg";
 import Arrow from "../assets/arrow.svg";
-import { SvgIcon } from "../components";
+import Pluses from "../assets/pluses.png";
 
 const About = () => {
   return (
@@ -47,7 +46,7 @@ const About = () => {
       </AppH1>
       <ContentWrapper>
         <Absolute left={-48} top={-40}>
-          <SvgIcon iconName="pluses" />
+          <img src={Pluses} alt="pluses" width={102} height={58} loading="lazy" />
         </Absolute>
         <AppText>
           I'm a New York City based, Front-End Developer. Stuck at a crossroads
