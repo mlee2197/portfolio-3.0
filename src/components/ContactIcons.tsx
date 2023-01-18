@@ -5,7 +5,7 @@ import { Github, Linkedin } from "@icons-pack/react-simple-icons";
 import { useToggle } from "../hooks/useToggle";
 import { landscapeTabletSize } from "../utils/breakpoints";
 import User from "../assets/circle-user-solid.svg";
-import SvgIcon from "./SvgIcon";
+import { SvgIcon } from "./SvgIcon";
 
 const ContactIcons = () => {
   const { toggle, value: showIcons } = useToggle();
@@ -87,7 +87,8 @@ const IconsContainer = styled.div<ShowIconsProp>`
 
 const Link = styled.a`
   transition: opacity 0.7s ease-in-out;
-  img, .mail {
+  img,
+  .mail {
     filter: invert(1);
   }
 

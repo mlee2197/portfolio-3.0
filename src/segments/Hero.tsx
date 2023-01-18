@@ -7,7 +7,7 @@ import { cloudinary } from "../services/cloudinary";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
 import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
-import SvgIcon from "../components/SvgIcon";
+import { SvgIcon } from "../components/SvgIcon";
 
 interface HeroProps {}
 

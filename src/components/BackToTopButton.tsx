@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Dot from "../assets/ring-pointer.png";
-import SvgIcon from "./SvgIcon";
+import { SvgIcon } from "./SvgIcon";
 
 interface BackToTopProps {
   wrapperRef: React.RefObject<HTMLDivElement>;
@@ -38,7 +38,7 @@ const BackToTop: React.FC<BackToTopProps> = ({ wrapperRef }) => {
 
   return (
     <BackToTopWrapper onClick={scrollToTop} show={showButton}>
-      <SvgIcon iconName="arrow"/>
+      <SvgIcon iconName="arrow" />
       {/* jaslk */}
     </BackToTopWrapper>
   );

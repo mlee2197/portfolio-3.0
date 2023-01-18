@@ -6,7 +6,7 @@ interface IProps {
   svgProp?: React.SVGProps<SVGSVGElement>;
 }
 
-function SvgIcon(props: IProps) {
+export function SvgIcon(props: IProps) {
   const { iconName, wrapperStyle, svgProp } = props;
   const { loading, SvgIcon } = useDynamicSvgImport(iconName);
 
@@ -21,4 +21,3 @@ function SvgIcon(props: IProps) {
   );
 }
 
-export default SvgIcon;
