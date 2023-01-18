@@ -1,22 +1,33 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Arrow from "../assets/arrow.svg";
+import { ReactComponent as SvgArrow } from "../assets/arrow.svg";
 import Dot from "../assets/icons/ring-pointer.png";
 
-const BackToTop = () => {
+interface BackToTopProps {
+  wrapperRef: React.RefObject<HTMLDivElement>;
+}
+
+const BackToTop: React.FC<BackToTopProps> = ({ wrapperRef }) => {
   const [showButton, setShowButton] = useState(false);
 
+  const scrollHandler = () => {
+    if (!wrapperRef?.current) return;
+    wrapperRef.current.scrollTop >= wrapperRef.current.offsetHeight
+      ? setShowButton(true)
+      : setShowButton(false);
+  };
+
   useEffect(() => {
-    const scrollHandler = () =>
-      window.scrollY >= window.innerHeight / 2
-        ? setShowButton(true)
-        : setShowButton(false);
-    window.addEventListener("scroll", scrollHandler);
+    if (!wrapperRef?.current) return;
+
+    wrapperRef.current.addEventListener("scroll", scrollHandler, {
+      passive: true,
+    });
 
     return () => {
-      window.removeEventListener("scroll", scrollHandler);
+      wrapperRef.current?.removeEventListener("scroll", scrollHandler);
     };
-  }, []);
+  }, [wrapperRef?.current]);
 
   const scrollToTop = () => {
     window.scroll({
@@ -27,14 +38,15 @@ const BackToTop = () => {
 
   return (
     <BackToTopWrapper onClick={scrollToTop} show={showButton}>
-      <StyledArrow src={Arrow} alt="Back to Top" height={20} width={20} />
+      <SvgArrow />
+      {/* jaslk */}
     </BackToTopWrapper>
   );
 };
 
 const BackToTopWrapper = styled.div<{ show: boolean }>`
   position: fixed;
-  bottom: ${props => props.show ? 1.5 : -5 }rem;
+  bottom: ${(props) => (props.show ? 1.5 : -5)}rem;
   right: 24px;
 
   display: flex;
@@ -42,12 +54,12 @@ const BackToTopWrapper = styled.div<{ show: boolean }>`
   justify-content: center;
   height: 40px;
   width: 40px;
-  
+
   border: 2px solid ${({ theme }) => theme.colors.yellow};
   border-radius: 50%;
   padding: 8px;
   box-sizing: border-box;
-  cursor: url(${Dot}) 4 4 , pointer;
+  cursor: url(${Dot}) 4 4, pointer;
   transition: bottom 0.5s ease-in-out;
 `;
 
