@@ -45,7 +45,11 @@ export const ProgressNav: React.FC<ProgressNavProps> = ({ wrapperRef }) => {
     wrapperRef.current.addEventListener("scroll", handleScroll, {
       passive: true,
     });
-  }, [wrapperRef.current]);
+
+    return () => {
+      wrapperRef.current?.removeEventListener("scroll", handleScroll);
+    }
+  }, [wrapperRef?.current]);
 
   useEffect(() => {
     setProgress((scrollPosition / maxScroll) * 100);
