@@ -90,7 +90,7 @@ const FillLine = styled.div.attrs((props: { progress: number }) => ({
     backgroundColor: "#f0f0f0",
     zIndex: -1,
   },
-}))``;
+}))<{ progress: number }>``;
 
 const Line = styled.div`
   position: absolute;
