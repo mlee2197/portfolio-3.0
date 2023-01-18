@@ -11,7 +11,7 @@ import {
 import { TechScroller } from "./TechScroller";
 import { landscapeTabletSize } from "../utils/breakpoints";
 import Resume from "../assets/Matthew_Lee_Resume_2020.pdf";
-import Arrow from "../assets/arrow.svg";
+import Arrow from "../assets/arrow.png";
 import Pluses from "../assets/pluses.png";
 
 const About = () => {

@@ -1,11 +1,10 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { Github, Linkedin } from "@icons-pack/react-simple-icons";
-// import Mail from "../assets/envelope-solid.svg";
+import Mail from "../assets/envelope-solid.svg";
 import { useToggle } from "../hooks/useToggle";
 import { landscapeTabletSize } from "../utils/breakpoints";
 import User from "../assets/circle-user-solid.svg";
-import { SvgIcon } from "./SvgIcon";
 
 const ContactIcons = () => {
   const { toggle, value: showIcons } = useToggle();
@@ -27,9 +26,7 @@ const ContactIcons = () => {
           <Linkedin color="white" title="Linkedin" width={40} height={40} />
         </Link>
         <Link href="mailto:mlee2197@gmail.com">
-          <span className="mail">
-            <SvgIcon iconName="envelope-solid" />
-          </span>
+          <img src={Mail} alt="email" width={40} height={40} color="white" />
         </Link>
       </IconsContainer>
       <ToggleSocials showIcons={showIcons} onTouchStart={() => toggle()} />
