@@ -1,16 +1,19 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import styled, { keyframes, ThemeProvider } from "styled-components";
 import { AppH1, BackToTop } from "./components";
 import { ContactIcons } from "./components/ContactIcons";
 import { About, Cat, Hero, Portfolio } from "./segments";
 import { landscapeTabletSize } from "./utils/breakpoints";
 import { baseTheme } from "./utils/theme";
+import { ProgressNav } from "./components";
 
 function App() {
   const nameRef = useRef(null);
+  const wrapperRef = useRef(null);
+
   return (
     <ThemeProvider theme={baseTheme}>
-      <Wrapper>
+      <Wrapper ref={wrapperRef}>
         <FixedWrapper>
           <FixedHeader ref={nameRef}>MATT LEE</FixedHeader>
         </FixedWrapper>
@@ -20,6 +23,7 @@ function App() {
         <Cat headerRef={nameRef} />
         <ContactIcons />
         <BackToTop />
+        <ProgressNav wrapperRef={wrapperRef}/>
       </Wrapper>
     </ThemeProvider>
   );
