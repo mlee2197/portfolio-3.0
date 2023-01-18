@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { landscapeTabletSize } from "../utils/breakpoints";
+import Dot from "../assets/icons/ring-pointer.png";
 
 export const AppButton = styled.button.attrs(({ type = "button" }) => ({
   type,
@@ -38,7 +39,7 @@ export const DownloadButton = styled.a`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.yellow};
   font-size: 14px;
-  cursor: pointer;
+  cursor: url(${Dot}) 4 4 , pointer;
   transition: all 0.2s ease-in-out;
   img {
     transition: inherit;

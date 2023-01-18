@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Arrow from "../assets/arrow.svg";
+import Dot from "../assets/icons/ring-pointer.png";
 
 const BackToTop = () => {
   const [showButton, setShowButton] = useState(false);
@@ -46,7 +47,7 @@ const BackToTopWrapper = styled.div<{ show: boolean }>`
   border-radius: 50%;
   padding: 8px;
   box-sizing: border-box;
-  cursor: pointer;
+  cursor: url(${Dot}) 4 4 , pointer;
   transition: bottom 0.5s ease-in-out;
 `;
 

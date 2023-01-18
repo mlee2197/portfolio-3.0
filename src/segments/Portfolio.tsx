@@ -14,6 +14,7 @@ import { ProjectCarousel } from "./ProjectCarousel";
 import { Github } from "@icons-pack/react-simple-icons";
 import { PROJECT_DATA } from "../utils/variables";
 import LinkSrc from "../assets/icons/link-solid.svg";
+import Dot from "../assets/icons/ring-pointer.png";
 
 interface PortfolioProps {}
 
@@ -103,6 +104,7 @@ const StyledLink = styled.a`
   padding: 4px 8px;
   text-decoration: none;
   color: white;
+  cursor: url(${Dot}) 4 4 , pointer;
 
   & > * {
     opacity: 0.8;
