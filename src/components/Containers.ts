@@ -76,6 +76,7 @@ export const Section = styled.section`
   width: 100%;
   min-height: 100vh;
   padding: 40px;
+  padding-top: 0;
   box-sizing: border-box;
   overflow-x: hidden;
 
