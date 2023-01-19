@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Dot from "../assets/ring-pointer.png";
-import Arrow from "../assets/arrow.png";
+import Arrow from "../assets/arrow.svg";
 import { tabletSize } from "../utils/breakpoints";
 
 interface BackToTopProps {
@@ -39,7 +39,7 @@ const BackToTop: React.FC<BackToTopProps> = ({ wrapperRef }) => {
 
   return (
     <BackToTopWrapper onClick={scrollToTop} show={showButton}>
-      <img src={Arrow} alt="^" />
+      <img src={Arrow} alt="^" height={20} style={{ transform: "rotate(180deg)" }} />
       {/* jaslk */}
     </BackToTopWrapper>
   );
@@ -63,14 +63,8 @@ const BackToTopWrapper = styled.div<{ show: boolean }>`
   cursor: url(${Dot}) 4 4, pointer;
   transition: bottom 0.5s ease-in-out;
 
-  svg {
-    width: 40px;
-    height: 40px;
-  }
-
   @media ${tabletSize} {
     display: flex;
-
   }
 `;
 

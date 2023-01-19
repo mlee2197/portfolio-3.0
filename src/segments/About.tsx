@@ -11,7 +11,7 @@ import {
 import { TechScroller } from "./TechScroller";
 import { landscapeTabletSize, tabletSize } from "../utils/breakpoints";
 import Resume from "../assets/Matthew_Lee_Resume_2020.pdf";
-import Arrow from "../assets/arrow.png";
+import Arrow from "../assets/arrow.svg";
 import Pluses from "../assets/pluses.png";
 
 const About = () => {
@@ -37,7 +37,6 @@ const About = () => {
             <img
               src={Arrow}
               alt="^"
-              style={{ rotate: "180deg" }}
               loading="lazy"
             />
           </DownloadButton>
