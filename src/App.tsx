@@ -2,13 +2,14 @@ import React, { Suspense, useRef } from "react";
 import styled, { keyframes, ThemeProvider } from "styled-components";
 import { AppH1 } from "./components";
 import { ContactIcons } from "./components/ContactIcons";
-import { About, Hero } from "./segments";
+import { Hero } from "./segments";
 import { landscapeTabletSize } from "./utils/breakpoints";
 import { baseTheme } from "./utils/theme";
 import { ProgressNav } from "./components";
 
 const Portfolio = React.lazy(() => import("./segments/Portfolio"));
 const Cat = React.lazy(() => import("./segments/Cat"));
+const About = React.lazy(() => import("./segments/About"));
 const BackToTop = React.lazy(() => import("./components/BackToTopButton"));
 
 function App() {
@@ -22,8 +23,8 @@ function App() {
           <FixedHeader ref={nameRef}>MATT LEE</FixedHeader>
         </FixedWrapper>
         <Hero />
-        <About />
         <Suspense fallback={<div>...loading</div>}>
+          <About />
           <Portfolio />
           <Cat headerRef={nameRef} />
           <BackToTop wrapperRef={wrapperRef} />

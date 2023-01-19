@@ -109,4 +109,4 @@ const MobileWrapper = styled.div`
   }
 `;
 
-export { About };
+export default About;
