@@ -99,18 +99,17 @@ const Zigzag = styled.img`
 const SliderContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 8px;
 
   height: 100%;
   width: 100%;
   max-width: 440px;
-  margin: 56px auto 0 auto;
+  margin: 0 auto;
   text-align: left;
 
   @media ${landscapeTabletSize} {
-    justify-content: center;
     gap: 16px;
-    margin: 0 auto;
   }
 `;
 

@@ -34,17 +34,19 @@ const About = () => {
         <DesktopWrapper>
           <DownloadButton href={Resume} download>
             Download Resume
-            <img
-              src={Arrow}
-              alt="^"
-              loading="lazy"
-            />
+            <img src={Arrow} alt="^" loading="lazy" />
           </DownloadButton>
         </DesktopWrapper>
       </AppH1>
       <ContentWrapper>
         <Absolute left={-48} top={-40}>
-          <img src={Pluses} alt="pluses" width={102} height={58} loading="lazy" />
+          <img
+            src={Pluses}
+            alt="pluses"
+            width={102}
+            height={58}
+            loading="lazy"
+          />
         </Absolute>
         <AppText>
           I'm a New York City based, Front-End Developer. Stuck at a crossroads
@@ -54,7 +56,10 @@ const About = () => {
         </AppText>
         <AppText>
           Currently, I am working as an engineer at{" "}
-          <span className="blue">Rapptr Labs.</span>
+          <span className="blue">Rapptr Labs.</span> Feel free to contact me at{" "}
+          <a className="blue" href="mailto:mlee2197@gmail.com">
+            mlee2197@gmail.com
+          </a>
         </AppText>
         <MobileWrapper>
           <DownloadButton href={Resume} download>
