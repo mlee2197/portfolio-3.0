@@ -49,9 +49,9 @@ const Fixed = styled.div<ShowIconsProp>`
   gap: 24px;
   height: ${({ showIcons }) => (showIcons ? 250 : 40)}px;
   transition: height 0.5s ease-in-out;
-  border: 8px solid rgba(0, 0, 0, 0.4);
+  border: 8px solid #0d2a7d;
   border-radius: 50px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: #0d2a7d;
 
   @media ${landscapeTabletSize} {
     background: none;
@@ -99,7 +99,6 @@ const ToggleSocials = styled.img.attrs({
   height: 40,
   width: 40,
 })<ShowIconsProp>`
-  filter: invert(1);
   opacity: ${({ showIcons }) => (showIcons ? 0.75 : 0.5)};
   transition: opacity 0.25s ease-in-out;
   @media ${landscapeTabletSize} {
