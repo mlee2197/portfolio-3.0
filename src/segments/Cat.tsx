@@ -3,6 +3,7 @@ import { AppH1, AppText, DecoratorText, Section } from "../components";
 import styled from "styled-components";
 import LineSrc from "../assets/line.svg";
 import Paw from "../assets/paw.svg";
+import Loops from "../assets/underline.svg";
 
 import { useInView } from "../hooks/useInView";
 import { CatImages } from "./CatImages";
@@ -35,6 +36,7 @@ const Cat: React.FC<CatProps> = ({ headerRef }) => {
         <DecoratorText top={-28} left={4} desktopLeft={8}>
           BONUS: My cat
         </DecoratorText>
+        <Underline src={Loops} alt="=========" height={80} width={200}/>
       </AppH1>
       <ContentWrapper>
         <AppText>
@@ -96,6 +98,20 @@ const Line = styled.img`
   @media ${landscapeTabletSize} {
     left: -40px;
     height: 64px;
+  }
+`;
+
+const Underline = styled.img`
+  display: block;
+  position: absolute;
+  bottom: -56px;
+  left: 0px;
+  color: black;
+  visibility: visible;
+  z-index: -1;
+  @media ${landscapeTabletSize} {
+    right: 40px;
+    width: 300px;
   }
 `;
 
