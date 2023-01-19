@@ -39,9 +39,7 @@ export const ProgressNav: React.FC<ProgressNavProps> = ({ wrapperRef }) => {
   useEffect(() => {
     if (!wrapperRef?.current) return;
 
-    setMaxScroll(
-      wrapperRef.current.scrollHeight + wrapperRef.current.clientHeight
-    );
+    setMaxScroll(wrapperRef.current.clientHeight * 3);
     wrapperRef.current.addEventListener("scroll", handleScroll, {
       passive: true,
     });
