@@ -25,16 +25,30 @@ const Portfolio: React.FC<PortfolioProps> = () => {
     <Section id="portfolio">
       <AppH1 hide>
         MATT LEE
-        <DecoratorText top={-8} left={0} desktopTop={-16} desktopLeft={10}>
+        <DecoratorText top={-16} left={12} desktopTop={-24} desktopLeft={4}>
           Projects by:
         </DecoratorText>
         <Zigzag />
       </AppH1>
       <SliderContainer>
         <ProjectCarousel setCurrentProject={setProject} />
-        <AppH2>{project.title}</AppH2>
+        <Flex gap={24} align="center" justify="space-between">
+          <AppH2>{project.title}</AppH2>
+          <MobileIcons>
+            {project.link && (
+              <img
+                src={LinkSrc}
+                alt="link"
+                height={20}
+                width={20}
+                loading="lazy"
+              />
+            )}
+            <Github color="white" size={16} />
+          </MobileIcons>
+        </Flex>
         <AppText>{project.description}</AppText>
-        <Flex gap={8}>
+        <DesktopIcons>
           <StyledLink
             href={project.github}
             target="_blank"
@@ -49,11 +63,17 @@ const Portfolio: React.FC<PortfolioProps> = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={LinkSrc} alt="link" height={24} width={24} loading="lazy" />
+              <img
+                src={LinkSrc}
+                alt="link"
+                height={24}
+                width={24}
+                loading="lazy"
+              />
               <small>view site</small>
             </StyledLink>
           )}
-        </Flex>
+        </DesktopIcons>
       </SliderContainer>
     </Section>
   );
@@ -63,9 +83,9 @@ const Zigzag = styled.span`
   display: block;
   position: absolute;
   bottom: 0px;
-  right: 12px;
-  width: 150px;
-  height: 75px;
+  right: 68px;
+  width: 110px;
+  height: 70px;
   background-image: url(${ZigzagSrc});
   background-size: contain;
   background-position: center;
@@ -83,14 +103,19 @@ const Zigzag = styled.span`
 const SliderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 16px;
+  gap: 8px;
 
   height: 100%;
   width: 100%;
   max-width: 440px;
-  margin: 0 auto;
+  margin: 56px auto 0 auto;
   text-align: left;
+
+  @media ${landscapeTabletSize} {
+    justify-content: center;
+    gap: 16px;
+    margin: 0 auto;
+  }
 `;
 
 const StyledLink = styled.a`
@@ -104,11 +129,36 @@ const StyledLink = styled.a`
   padding: 4px 8px;
   text-decoration: none;
   color: white;
-  cursor: url(${Dot}) 4 4 , pointer;
+  cursor: url(${Dot}) 4 4, pointer;
 
   & > * {
     opacity: 0.8;
   }
 `;
 
-export { Portfolio };
+const MobileIcons = styled(Flex)`
+  display: flex;
+  gap: 12px;
+
+  & > * {
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 20px;
+    width: 20px;
+    padding: 6px;
+    border-radius: 50%;
+  }
+
+  @media ${landscapeTabletSize} {
+    display: none;
+  }
+`;
+
+const DesktopIcons = styled(Flex)`
+  display: none;
+  @media ${landscapeTabletSize} {
+    display: flex;
+    gap: 8px;
+  }
+`;
+
+export default Portfolio;

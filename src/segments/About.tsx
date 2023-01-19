@@ -9,7 +9,7 @@ import {
   Section,
 } from "../components";
 import { TechScroller } from "./TechScroller";
-import { landscapeTabletSize } from "../utils/breakpoints";
+import { landscapeTabletSize, tabletSize } from "../utils/breakpoints";
 import Resume from "../assets/Matthew_Lee_Resume_2020.pdf";
 import Arrow from "../assets/arrow.png";
 import Pluses from "../assets/pluses.png";
@@ -19,15 +19,15 @@ const About = () => {
     <Section id="about">
       <AppH1 hide>
         MATT LEE
-        <DecoratorText top={-8} left={0}>
+        <DecoratorText top={-16} left={0}>
           Who is
         </DecoratorText>
         <DecoratorText
-          bottom={40}
-          right={80}
-          desktopBottom={80}
-          desktopRight={120}
-          size={80}
+          bottom={36}
+          left={160}
+          desktopBottom={88}
+          desktopLeft={260}
+          size={64}
         >
           ?
         </DecoratorText>
@@ -83,7 +83,10 @@ const ContentWrapper = styled.div`
   /* align-items: center; */
   gap: 28px;
   max-width: 500px;
-  margin: 16px auto 0 auto;
+  margin: 0 auto;
+  @media ${tabletSize} {
+    margin: 16px auto 0 auto;
+  }
 `;
 
 const DesktopWrapper = styled.span`

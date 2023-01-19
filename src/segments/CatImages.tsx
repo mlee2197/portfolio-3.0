@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { useCatAnimations } from "../hooks/useCatAnimations";
 import CatPawSrc from "../assets/cat-paw.svg";
@@ -6,8 +5,9 @@ import CatEarSrc from "../assets/cat-ear.svg";
 import CatTailSrc from "../assets/cat-tail.svg";
 import { cloudinary } from "../services/cloudinary";
 import { fill } from "@cloudinary/url-gen/actions/resize";
-import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
-import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
+import { AdvancedImage, responsive } from "@cloudinary/react";
+import { lazyload } from "@cloudinary/react";
+import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
 
 const CatImages = () => {
   const {
@@ -24,53 +24,69 @@ const CatImages = () => {
 
   const ellie1 = cloudinary
     .image("portfolio/ellie1")
-    .resize(fill().width(400).height(300))
-    .toURL();
+    .resize(fill(400, 240))
+    .roundCorners(byRadius(16))
+    .quality("auto:best")
+    .format("png");
+  // .toURL();
 
   const ellie2 = cloudinary
     .image("portfolio/ellie2")
-    .resize(fill().width(400).height(300))
-    .toURL();
+    .resize(fill(400, 240))
+    .roundCorners(byRadius(16))
+    .quality("auto:best")
+    .format("png");
 
   const ellie3 = cloudinary
     .image("portfolio/ellie3")
-    .resize(fill().width(400).height(300))
-    .toURL();
+    .resize(fill(400, 240))
+    .roundCorners(byRadius(16))
+    .quality("auto:best")
+    .format("png");
 
   const ellie4 = cloudinary
     .image("portfolio/ellie4")
-    .resize(fill().width(400).height(400).gravity(focusOn(FocusOn.face())))
-    .toURL();
+    .resize(fill(400, 240))
+    .roundCorners(byRadius(16))
+    .quality("auto:best")
+    .format("png");
 
   return (
     <ImageGrid>
       <ImageContainer
-        src={ellie1}
         onTouchStart={AnimateEars}
         onMouseEnter={AnimateEars}
       >
+        <AdvancedImage
+          cldImg={ellie1}
+          style={{ width: "100%", height: "100%" }}
+          plugins={[lazyload()]}
+        />
         <CatEar ref={earRef} />
         <CatEarAlt ref={earRef2} />
       </ImageContainer>
-      <ImageContainer
-        src={ellie2}
-        onTouchStart={AnimatePaw}
-        onMouseEnter={AnimatePaw}
-      >
+      <ImageContainer onTouchStart={AnimatePaw} onMouseEnter={AnimatePaw}>
+        <AdvancedImage
+          cldImg={ellie2}
+          style={{ width: "100%", height: "100%" }}
+          plugins={[lazyload()]}
+        />
         <CatPaw ref={pawRef} />
       </ImageContainer>
-      <ImageContainer
-        src={ellie3}
-        onTouchStart={AnimateTail}
-        onMouseEnter={AnimateTail}
-      >
+      <ImageContainer onTouchStart={AnimateTail} onMouseEnter={AnimateTail}>
+        <AdvancedImage
+          cldImg={ellie3}
+          style={{ width: "100%", height: "100%" }}
+          plugins={[lazyload()]}
+        />
         <CatTail ref={tailRef} />
       </ImageContainer>
-      <ImageContainer
-        src={ellie4}
-        onTouchStart={AnimateMeow}
-        onMouseEnter={AnimateMeow}
-      >
+      <ImageContainer onTouchStart={AnimateMeow} onMouseEnter={AnimateMeow}>
+        <AdvancedImage
+          cldImg={ellie4}
+          style={{ width: "100%", height: "100%" }}
+          plugins={[lazyload()]}
+        />
         <CatMeow ref={meowRef}>meow</CatMeow>
       </ImageContainer>
     </ImageGrid>
@@ -87,13 +103,11 @@ const ImageGrid = styled.div`
   margin-bottom: 12px;
 `;
 
-const ImageContainer = styled.div<{ src: string }>`
+const ImageContainer = styled.div`
   position: relative;
-  height: 140px;
+  max-height: 160px;
+  aspect-ratio: 8/5;
   border-radius: 12px;
-  background-image: url(${(props) => props.src});
-  background-size: cover;
-  background-position: center;
 `;
 
 const CatAnimated = styled.img.attrs({
@@ -131,6 +145,7 @@ const CatTail = styled(CatAnimated).attrs({
   src: CatTailSrc,
 })`
   top: 25%;
+  left: 0;
   transform-origin: right bottom;
 `;
 

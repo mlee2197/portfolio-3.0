@@ -14,15 +14,21 @@ const Hero: React.FC<HeroProps> = () => {
   const imageUrl = cloudinary
     .image("portfolio/selfie")
     .resize(fill().width(500).height(800).gravity(focusOn(FocusOn.face())))
-    .quality(75)
-    .format('webp')
+    .quality("auto:good")
+    .format("auto")
     .toURL();
 
   return (
     <FadeInSection id="hero">
       <AppH1 hide>MATT LEE</AppH1>
       <Selfie src={imageUrl}>
-        <DecoratorText top={24} left={-46} desktopTop={300} desktopLeft={-80}>
+        <DecoratorText
+          top={24}
+          left={-60}
+          desktopTop={300}
+          desktopLeft={-80}
+          style={{ textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)" }}
+        >
           that's me
         </DecoratorText>
       </Selfie>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Dot from "../assets/ring-pointer.png";
 import Arrow from "../assets/arrow.png";
+import { tabletSize } from "../utils/breakpoints";
 
 interface BackToTopProps {
   wrapperRef: React.RefObject<HTMLDivElement>;
@@ -49,7 +50,7 @@ const BackToTopWrapper = styled.div<{ show: boolean }>`
   bottom: ${(props) => (props.show ? 1.5 : -5)}rem;
   right: 24px;
 
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   height: 40px;
@@ -66,6 +67,11 @@ const BackToTopWrapper = styled.div<{ show: boolean }>`
     width: 40px;
     height: 40px;
   }
+
+  @media ${tabletSize} {
+    display: flex;
+    
+  }
 `;
 
-export { BackToTop };
+export default BackToTop;

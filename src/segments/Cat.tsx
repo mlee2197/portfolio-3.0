@@ -32,12 +32,12 @@ const Cat: React.FC<CatProps> = ({ headerRef }) => {
     <Section id="cat" ref={ref}>
       <AppH1 style={{ alignSelf: "center"}}>
         Ellie
-        <DecoratorText top={-28} left={0}>
+        <DecoratorText top={-28} left={4} desktopLeft={8}>
           BONUS: My cat
         </DecoratorText>
       </AppH1>
       <ContentWrapper>
-        <AppText style={{ marginTop: 24 }}>
+        <AppText>
           This is Ellie. She's a {age} year old grey tabby who's hobbies include
           getting brushies, fetching treats, and sleeping.
         </AppText>
@@ -99,4 +99,4 @@ const Line = styled.img`
   }
 `;
 
-export { Cat };
+export default Cat;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { landscapeTabletSize } from "../utils/breakpoints";
+import { landscapeTabletSize, tabletSize } from "../utils/breakpoints";
 
 interface Props {
   variant?: "primary" | "accent";
@@ -11,13 +11,18 @@ export const AppText = styled.p<Props>`
   margin: 0;
   font-family: ${({ variant, theme }) =>
     variant === "accent" ? theme.fonts.subtitle : theme.fonts.text};
-  font-size: ${({ size }) => size ?? 16}px;
+  font-size: ${({ size }) => size ?? 14}px;
   color: ${({ color, variant, theme }) =>
     color
       ? color
       : variant === "accent"
       ? theme.colors.yellow
       : theme.colors.white};
+  
+  @media ${tabletSize} {
+    font-size: ${({ size }) => size ?? 16}px;
+  }
+
   @media ${landscapeTabletSize} {
     font-size: ${({ size }) => size ?? 18}px;
   }
@@ -42,7 +47,7 @@ interface PositionProps extends Props {
 export const DecoratorText = styled.span<PositionProps>`
   font-family: ${({ theme }) => theme.fonts.subtitle};
   color: ${({ theme }) => theme.colors.yellow};
-  font-size: ${({ size }) => size ?? 18}px;
+  font-size: ${({ size }) => size ?? 24}px;
   visibility: visible;
   position: absolute;
   top: ${({ top }) => (top !== undefined ? `${top}px` : "auto")};
@@ -50,7 +55,7 @@ export const DecoratorText = styled.span<PositionProps>`
   right: ${({ right }) => (right !== undefined ? `${right}px` : "auto")};
   left: ${({ left }) => (left !== undefined ? `${left}px` : "auto")};
   @media ${landscapeTabletSize} {
-  font-size: ${({ size }) => size ?? 32}px;
+  font-size: ${({ size }) => size ? size + 16 : 32}px;
     top: ${({ desktopTop, top }) =>
       desktopTop ? `${desktopTop}px` : top !== undefined ? `${top}px` : "auto"};
     bottom: ${({ desktopBottom, bottom }) =>

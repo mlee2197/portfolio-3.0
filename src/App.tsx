@@ -1,11 +1,15 @@
-import { useRef } from "react";
+import React, { Suspense, useRef } from "react";
 import styled, { keyframes, ThemeProvider } from "styled-components";
-import { AppH1, BackToTop } from "./components";
+import { AppH1 } from "./components";
 import { ContactIcons } from "./components/ContactIcons";
-import { About, Cat, Hero, Portfolio } from "./segments";
+import { About, Hero } from "./segments";
 import { landscapeTabletSize } from "./utils/breakpoints";
 import { baseTheme } from "./utils/theme";
 import { ProgressNav } from "./components";
+
+const Portfolio = React.lazy(() => import("./segments/Portfolio"));
+const Cat = React.lazy(() => import("./segments/Cat"));
+const BackToTop = React.lazy(() => import("./components/BackToTopButton"));
 
 function App() {
   const nameRef = useRef(null);
@@ -19,11 +23,13 @@ function App() {
         </FixedWrapper>
         <Hero />
         <About />
-        <Portfolio />
-        <Cat headerRef={nameRef} />
+        <Suspense fallback={<div>...loading</div>}>
+          <Portfolio />
+          <Cat headerRef={nameRef} />
+          <BackToTop wrapperRef={wrapperRef} />
+        </Suspense>
         <ContactIcons />
-        <BackToTop wrapperRef={wrapperRef} />
-        <ProgressNav wrapperRef={wrapperRef}/>
+        <ProgressNav wrapperRef={wrapperRef} />
       </Wrapper>
     </ThemeProvider>
   );
@@ -88,12 +94,13 @@ const HeaderAnimation = keyframes`
 `;
 
 const FixedHeader = styled(AppH1)`
-  position:relative;
+  position: relative;
+  max-width: 450px;
   /* left: 200%; */
   letter-spacing: 20px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
-  font-size: 96px;
+
   font-family: ${({ theme }) => theme.fonts.title};
   color: ${({ theme }) => theme.colors.white};
   opacity: 1;
