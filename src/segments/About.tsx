@@ -37,7 +37,6 @@ const About = () => {
             <img
               src={Arrow}
               alt="^"
-              height={12}
               style={{ rotate: "180deg" }}
               loading="lazy"
             />

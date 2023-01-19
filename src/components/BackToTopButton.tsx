@@ -39,7 +39,7 @@ const BackToTop: React.FC<BackToTopProps> = ({ wrapperRef }) => {
 
   return (
     <BackToTopWrapper onClick={scrollToTop} show={showButton}>
-      <img src={Arrow} alt="^" height={24} />
+      <img src={Arrow} alt="^" />
       {/* jaslk */}
     </BackToTopWrapper>
   );
@@ -70,7 +70,7 @@ const BackToTopWrapper = styled.div<{ show: boolean }>`
 
   @media ${tabletSize} {
     display: flex;
-    
+
   }
 `;
 

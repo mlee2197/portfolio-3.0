@@ -28,7 +28,7 @@ const Portfolio: React.FC<PortfolioProps> = () => {
         <DecoratorText top={-16} left={12} desktopTop={-24} desktopLeft={4}>
           Projects by:
         </DecoratorText>
-        <Zigzag />
+        <Zigzag src={ZigzagSrc} alt="^^^^^^" loading="lazy"/>
       </AppH1>
       <SliderContainer>
         <ProjectCarousel setCurrentProject={setProject} />
@@ -79,17 +79,13 @@ const Portfolio: React.FC<PortfolioProps> = () => {
   );
 };
 
-const Zigzag = styled.span`
+const Zigzag = styled.img`
   display: block;
   position: absolute;
   bottom: 0px;
   right: 68px;
   width: 110px;
   height: 70px;
-  background-image: url(${ZigzagSrc});
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
   color: black;
   visibility: visible;
   z-index: -1;

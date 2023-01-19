@@ -100,6 +100,7 @@ const ToggleSocials = styled.img.attrs({
   src: User,
   height: 24,
   width: 24,
+  alt: "contact"
 })<ShowIconsProp>`
   opacity: ${({ showIcons }) => (showIcons ? 0.75 : 0.5)};
   transition: opacity 0.25s ease-in-out;

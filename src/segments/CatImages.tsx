@@ -5,7 +5,7 @@ import CatEarSrc from "../assets/cat-ear.svg";
 import CatTailSrc from "../assets/cat-tail.svg";
 import { cloudinary } from "../services/cloudinary";
 import { fill } from "@cloudinary/url-gen/actions/resize";
-import { AdvancedImage, responsive } from "@cloudinary/react";
+import { AdvancedImage } from "@cloudinary/react";
 import { lazyload } from "@cloudinary/react";
 import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
 
@@ -24,7 +24,7 @@ const CatImages = () => {
 
   const ellie1 = cloudinary
     .image("portfolio/ellie1")
-    .resize(fill(400, 240))
+    .resize(fill(417, 261))
     .roundCorners(byRadius(16))
     .quality("auto:best")
     .format("png");
@@ -32,21 +32,21 @@ const CatImages = () => {
 
   const ellie2 = cloudinary
     .image("portfolio/ellie2")
-    .resize(fill(400, 240))
+    .resize(fill(417, 261))
     .roundCorners(byRadius(16))
     .quality("auto:best")
     .format("png");
 
   const ellie3 = cloudinary
     .image("portfolio/ellie3")
-    .resize(fill(400, 240))
+    .resize(fill(417, 261))
     .roundCorners(byRadius(16))
     .quality("auto:best")
     .format("png");
 
   const ellie4 = cloudinary
     .image("portfolio/ellie4")
-    .resize(fill(400, 240))
+    .resize(fill(417, 261))
     .roundCorners(byRadius(16))
     .quality("auto:best")
     .format("png");
@@ -61,6 +61,7 @@ const CatImages = () => {
           cldImg={ellie1}
           style={{ width: "100%", height: "100%" }}
           plugins={[lazyload()]}
+          alt="ellie in a box"
         />
         <CatEar ref={earRef} />
         <CatEarAlt ref={earRef2} />
@@ -70,6 +71,7 @@ const CatImages = () => {
           cldImg={ellie2}
           style={{ width: "100%", height: "100%" }}
           plugins={[lazyload()]}
+          alt="ellie scratching"
         />
         <CatPaw ref={pawRef} />
       </ImageContainer>
@@ -78,6 +80,7 @@ const CatImages = () => {
           cldImg={ellie3}
           style={{ width: "100%", height: "100%" }}
           plugins={[lazyload()]}
+          alt="ellie sleeping"
         />
         <CatTail ref={tailRef} />
       </ImageContainer>
@@ -86,6 +89,7 @@ const CatImages = () => {
           cldImg={ellie4}
           style={{ width: "100%", height: "100%" }}
           plugins={[lazyload()]}
+          alt="ellie looking out a window"
         />
         <CatMeow ref={meowRef}>meow</CatMeow>
       </ImageContainer>
@@ -119,6 +123,7 @@ const CatAnimated = styled.img.attrs({
 
 const CatEar = styled(CatAnimated).attrs({
   src: CatEarSrc,
+  alt: "cat ear"
 })`
   top: 0;
   left: 24px;
@@ -126,6 +131,7 @@ const CatEar = styled(CatAnimated).attrs({
 `;
 const CatEarAlt = styled(CatAnimated).attrs({
   src: CatEarSrc,
+  alt: "cat ear"
 })`
   top: 0;
   right: 24px;
@@ -135,6 +141,7 @@ const CatEarAlt = styled(CatAnimated).attrs({
 
 const CatPaw = styled(CatAnimated).attrs({
   src: CatPawSrc,
+  alt: "cat paw"
 })`
   top: 0;
   right: 0;
@@ -143,6 +150,7 @@ const CatPaw = styled(CatAnimated).attrs({
 
 const CatTail = styled(CatAnimated).attrs({
   src: CatTailSrc,
+  alt: "cat tail"
 })`
   top: 25%;
   left: 0;

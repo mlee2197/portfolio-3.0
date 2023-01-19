@@ -25,7 +25,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     .toURL();
 
   return <ProjectCardContainer>
-    <img src={imgUrl} />
+    <img src={imgUrl} alt={title}/>
   </ProjectCardContainer>;
 };
 

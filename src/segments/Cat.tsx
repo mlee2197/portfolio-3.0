@@ -28,15 +28,20 @@ const Cat: React.FC<CatProps> = ({ headerRef }) => {
       : headerRef.current?.classList.remove("hide");
   }, [inView]);
 
-  
   return (
     <Section id="cat" ref={ref}>
-      <AppH1 style={{ alignSelf: "center"}}>
+      <AppH1 style={{ alignSelf: "center" }}>
         Ellie
         <DecoratorText top={-28} left={4} desktopLeft={8}>
           BONUS: My cat
         </DecoratorText>
-        <Underline src={Loops} alt="=========" height={80} width={200}/>
+        <Underline
+          src={Loops}
+          alt="========="
+          height={80}
+          width={200}
+          loading="lazy"
+        />
       </AppH1>
       <ContentWrapper>
         <AppText>
@@ -46,7 +51,7 @@ const Cat: React.FC<CatProps> = ({ headerRef }) => {
         <CatImages />
         <LineWrapper>
           <LineText>
-            <img src={Paw} alt="paw" height={16} width={20} />
+            <img src={Paw} alt="paw" height={16} width={20} loading="lazy" />
           </LineText>
           <Line src={LineSrc} alt="line" />
         </LineWrapper>
@@ -88,8 +93,8 @@ const LineText = styled.div`
     font-size: 12px;
 
     ::before {
-    content: "Hover me";
-  }
+      content: "Hover me";
+    }
   }
 `;
 
