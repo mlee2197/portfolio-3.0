@@ -14,6 +14,8 @@ const Hero: React.FC<HeroProps> = () => {
   const imageUrl = cloudinary
     .image("portfolio/selfie")
     .resize(fill().width(500).height(800).gravity(focusOn(FocusOn.face())))
+    .quality(75)
+    .format('webp')
     .toURL();
 
   return (
