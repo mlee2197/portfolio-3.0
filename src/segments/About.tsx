@@ -10,7 +10,7 @@ import {
 } from "../components";
 import { TechScroller } from "./TechScroller";
 import { landscapeTabletSize, tabletSize } from "../utils/breakpoints";
-import Resume from "../assets/Matthew_Lee_Resume_2020.pdf";
+import Resume from "../assets/Matthew_Lee_Resume_2023.pdf";
 import Arrow from "../assets/arrow.svg";
 import Pluses from "../assets/pluses.png";
 
