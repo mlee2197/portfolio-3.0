@@ -31,7 +31,8 @@ const BackToTop: React.FC<BackToTopProps> = ({ wrapperRef }) => {
   }, [wrapperRef?.current]);
 
   const scrollToTop = () => {
-    window.scroll({
+    if (!wrapperRef?.current) return;
+    wrapperRef.current.scroll({
       top: 0,
       behavior: "smooth",
     });
@@ -39,7 +40,12 @@ const BackToTop: React.FC<BackToTopProps> = ({ wrapperRef }) => {
 
   return (
     <BackToTopWrapper onClick={scrollToTop} show={showButton}>
-      <img src={Arrow} alt="^" height={20} style={{ transform: "rotate(180deg)" }} />
+      <img
+        src={Arrow}
+        alt="^"
+        height={20}
+        style={{ transform: "rotate(180deg)" }}
+      />
       {/* jaslk */}
     </BackToTopWrapper>
   );
