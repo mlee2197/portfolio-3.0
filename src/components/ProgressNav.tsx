@@ -36,6 +36,14 @@ export const ProgressNav: React.FC<ProgressNavProps> = ({ wrapperRef }) => {
     setScrollPosition(position);
   };
 
+  const resizeHandler = () => {
+    console.log("resized")
+    const position = wrapperRef.current!.scrollTop;
+    // console.log(position);
+    setScrollPosition(position);
+    setMaxScroll(wrapperRef.current!.clientHeight * 3);
+  };
+
   useEffect(() => {
     if (!wrapperRef?.current) return;
 
@@ -43,9 +51,13 @@ export const ProgressNav: React.FC<ProgressNavProps> = ({ wrapperRef }) => {
     wrapperRef.current.addEventListener("scroll", handleScroll, {
       passive: true,
     });
+    window.addEventListener("resize", resizeHandler, {
+      passive: true,
+    });
 
     return () => {
       wrapperRef.current?.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", resizeHandler);
     };
   }, [wrapperRef?.current]);
 
