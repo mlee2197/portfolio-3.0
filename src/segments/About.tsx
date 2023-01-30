@@ -23,7 +23,7 @@ const About = () => {
           Who is
         </DecoratorText>
         <DecoratorText
-          bottom={36}
+          bottom={30}
           left={160}
           desktopBottom={88}
           desktopLeft={260}
