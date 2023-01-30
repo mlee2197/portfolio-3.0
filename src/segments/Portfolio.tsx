@@ -28,7 +28,7 @@ const Portfolio: React.FC<PortfolioProps> = () => {
         <DecoratorText top={-16} left={12} desktopTop={-24} desktopLeft={4}>
           Projects by:
         </DecoratorText>
-        <Zigzag src={ZigzagSrc} alt="^^^^^^" loading="lazy"/>
+        <Zigzag src={ZigzagSrc} alt="^^^^^^" loading="lazy" />
       </AppH1>
       <SliderContainer>
         <ProjectCarousel setCurrentProject={setProject} />
@@ -36,15 +36,19 @@ const Portfolio: React.FC<PortfolioProps> = () => {
           <AppH2>{project.title}</AppH2>
           <MobileIcons>
             {project.link && (
-              <img
-                src={LinkSrc}
-                alt="link"
-                height={20}
-                width={20}
-                loading="lazy"
-              />
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                <img
+                  src={LinkSrc}
+                  alt="link"
+                  height={20}
+                  width={20}
+                  loading="lazy"
+                />
+              </a>
             )}
-            <Github color="white" size={16} />
+            <a href={project.github} target="_blank" rel="noopener noreferrer">
+              <Github color="white" size={20} />
+            </a>
           </MobileIcons>
         </Flex>
         <AppText>{project.description}</AppText>
@@ -125,6 +129,7 @@ const StyledLink = styled.a`
   text-decoration: none;
   color: white;
   cursor: url(${Dot}) 4 4, pointer;
+  z-index: 2;
 
   & > * {
     opacity: 0.8;
