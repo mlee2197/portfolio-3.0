@@ -152,7 +152,7 @@ const CatTail = styled(CatAnimated).attrs({
   src: CatTailSrc,
   alt: "cat tail"
 })`
-  top: 25%;
+  top: 20%;
   left: 0;
   transform-origin: right bottom;
 `;
