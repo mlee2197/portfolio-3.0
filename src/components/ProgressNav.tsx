@@ -37,7 +37,7 @@ export const ProgressNav: React.FC<ProgressNavProps> = ({ wrapperRef }) => {
   };
 
   const resizeHandler = () => {
-    console.log("resized")
+    console.log("resized");
     const position = wrapperRef.current!.scrollTop;
     // console.log(position);
     setScrollPosition(position);
@@ -132,15 +132,15 @@ const Circle = styled.div<{ highlight: boolean }>`
   ::before {
     content: "";
     position: absolute;
-    opacity: 1;
+    opacity: ${({ highlight }) => (highlight ? 1 : 0)};
     /* height: ${({ highlight }) => (highlight ? 100 : 0)}%; */
     height: 100%;
     width: inherit;
     border-radius: inherit;
     background-color: ${({ theme }) => theme.colors.white};
 
-    transform: translateY(${({ highlight }) => (highlight ? 0 : -100)}%);
-    transition: transform 0.15s ease-in-out;
+    /* transform: translateY(${({ highlight }) => (highlight ? 0 : -100)}%); */
+    transition: opacity 0.15s ease-in-out;
   }
   &:hover {
     & + small {
