@@ -60,8 +60,9 @@ const FixedWrapper = styled.div`
   align-items: center;
 
   height: 100%;
-  width: 100%;
+  width: calc(100% - 20px);
   padding: 40px;
+  overflow: hidden;
   box-sizing: border-box;
 
   h1:first-of-type {
