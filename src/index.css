@@ -22,5 +22,9 @@ body {
   width: 100vw;
   min-height: 100vh;
   /* box-sizing: border-box; */
-  cursor: url("./assets/cursor-ring.png") 4 4, default;
+  cursor: url("./assets/cursor-ring.png"), auto;
+}
+
+a:hover {
+  cursor: url("./assets/ring-pointer.png"), auto;
 }
