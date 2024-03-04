@@ -68,6 +68,15 @@ export const STACK_DATA = [
 
 export const PROJECT_DATA = [
   {
+    id: "dc-in-review",
+    image: "dc-in-review",
+    github: "https://github.com/mlee2197/dc-in-review",
+    link: "https://dc-in-review.vercel.app/",
+    title: "DC in Review",
+    description:
+      "Follow my trip to Washington D.C. See small snippets of my trip through complex animations built using GSAP and CSS.",
+  },
+  {
     id: "animation-suite",
     image: "animation-suite",
     github: "https://github.com/mlee2197/animation-suite",
@@ -92,7 +101,7 @@ export const PROJECT_DATA = [
     link: "",
     title: "Isometric Room",
     description:
-      "Using strictly CSS, I utilized transformations and perspective to create 3D scenes. Each of which has it's own CSS and GSAP animations and scrolls horizontally as a bonus.",
+      "This experience was a gift for someone to wrap up their year (sorry no link for this one). Using strictly CSS, I utilized transformations and perspective to create 3D scenes. Each of which has it's own CSS and GSAP animations and scrolls horizontally as a bonus.",
   },
   {
     id: "reminder-extension",
