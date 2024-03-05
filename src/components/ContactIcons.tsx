@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { Github, Linkedin } from "@icons-pack/react-simple-icons";
+import { SiGithub, SiLinkedin } from "@icons-pack/react-simple-icons";
 import Mail from "../assets/envelope-solid.svg";
 import { useToggle } from "../hooks/useToggle";
 import { landscapeTabletSize } from "../utils/breakpoints";
@@ -16,14 +16,14 @@ const ContactIcons = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Github color="white" title="Github" width={24} height={24} />
+          <SiGithub color="white" title="Github" width={24} height={24} />
         </Link>
         <Link
           href="https://www.linkedin.com/in/matthewlee1297/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Linkedin color="white" title="Linkedin" width={24} height={24} />
+          <SiLinkedin color="white" title="Linkedin" width={24} height={24} />
         </Link>
         <Link href="mailto:mlee2197@gmail.com">
           <img src={Mail} alt="email" width={24} height={24} color="white" />

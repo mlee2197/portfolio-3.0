@@ -1,16 +1,16 @@
 import {
-  Html5,
-  CssThree,
+  SiHtml5,
+  SiCssThree,
   // Javascript,
-  Typescript,
-  ReactJs,
-  Gatsby,
-  Nextdotjs,
-  Styledcomponents,
-  Graphql,
-  Apollographql,
-  Figma,
-  Firebase,
+  SiTypescript,
+  SiReactJs,
+  SiGatsby,
+  SiNextdotjs,
+  SiStyledcomponents,
+  SiGraphql,
+  SiApollographql,
+  SiFigma,
+  SiFirebase,
 } from "@icons-pack/react-simple-icons";
 
 export const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
@@ -18,11 +18,11 @@ export const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 export const STACK_DATA = [
   {
     text: "HTML",
-    icon: Html5,
+    icon: SiHtml5,
   },
   {
     text: "CSS",
-    icon: CssThree,
+    icon: SiCssThree,
   },
   // {
   //   text: "Javascript",
@@ -30,39 +30,39 @@ export const STACK_DATA = [
   // },
   {
     text: "Typescript",
-    icon: Typescript,
+    icon: SiTypescript,
   },
   {
     text: "React",
-    icon: ReactJs,
+    icon: SiReactJs,
   },
   {
     text: "NextJs",
-    icon: Nextdotjs,
+    icon: SiNextdotjs,
   },
   {
     text: "Gatsby",
-    icon: Gatsby,
+    icon: SiGatsby,
   },
   {
     text: "Styled Components",
-    icon: Styledcomponents,
+    icon: SiStyledcomponents,
   },
   {
     text: "Graphql",
-    icon: Graphql,
+    icon: SiGraphql,
   },
   {
     text: "Apollo",
-    icon: Apollographql,
+    icon: SiApollographql,
   },
   {
     text: "Figna",
-    icon: Figma,
+    icon: SiFigma,
   },
   {
     text: "Firebase",
-    icon: Firebase,
+    icon: SiFirebase,
   },
 ];
 
