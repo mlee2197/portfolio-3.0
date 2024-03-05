@@ -9,17 +9,17 @@ declare module '@icons-pack/react-simple-icons' {
     height?: string | number;
   }
 
-  export class SiGithub extends React.Component<IconProps, any> {}
-  export class SiLinkedin extends React.Component<IconProps, any> {}
-  export class SiHtml5 extends React.Component<IconProps, any> {}
-  export class SiCssThree extends React.Component<IconProps, any> {}
-  export class SiTypescript extends React.Component<IconProps, any> {}
-  export class SiReactJs extends React.Component<IconProps, any> {}
-  export class SiGatsby extends React.Component<IconProps, any> {}
-  export class SiNextdotjs extends React.Component<IconProps, any> {}
-  export class SiStyledcomponents extends React.Component<IconProps, any> {}
-  export class SiGraphql extends React.Component<IconProps, any> {}
-  export class SiApollographql extends React.Component<IconProps, any> {}
-  export class SiFigma extends React.Component<IconProps, any> {}
-  export class SiFirebase extends React.Component<IconProps, any> {}
+  export class Sigithub extends React.Component<IconProps, any> {}
+  export class Silinkedin extends React.Component<IconProps, any> {}
+  export class Sihtml5 extends React.Component<IconProps, any> {}
+  export class SicssThree extends React.Component<IconProps, any> {}
+  export class Sitypescript extends React.Component<IconProps, any> {}
+  export class Sireact extends React.Component<IconProps, any> {}
+  export class Sigatsby extends React.Component<IconProps, any> {}
+  export class Sinextdotjs extends React.Component<IconProps, any> {}
+  export class Sistyledcomponents extends React.Component<IconProps, any> {}
+  export class Sigraphql extends React.Component<IconProps, any> {}
+  export class Siapollographql extends React.Component<IconProps, any> {}
+  export class Sifigma extends React.Component<IconProps, any> {}
+  export class Sifirebase extends React.Component<IconProps, any> {}
 }

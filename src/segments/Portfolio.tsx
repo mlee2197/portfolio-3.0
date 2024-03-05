@@ -11,7 +11,7 @@ import ZigzagSrc from "../assets/zigzag.svg";
 import styled from "styled-components";
 import { landscapeTabletSize } from "../utils/breakpoints";
 import { ProjectCarousel } from "./ProjectCarousel";
-import { Github } from "@icons-pack/react-simple-icons";
+import { Sigithub } from "@icons-pack/react-simple-icons";
 import { PROJECT_DATA } from "../utils/variables";
 import LinkSrc from "../assets/link-solid.svg";
 import Dot from "../assets/ring-pointer.png";
@@ -47,7 +47,7 @@ const Portfolio: React.FC<PortfolioProps> = () => {
               </a>
             )}
             <a href={project.github} target="_blank" rel="noopener noreferrer">
-              <Github color="white" size={20} />
+              <Sigithub color="white" size={20} />
             </a>
           </MobileIcons>
         </Flex>
@@ -58,7 +58,7 @@ const Portfolio: React.FC<PortfolioProps> = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Github color="white" />
+            <Sigithub color="white" />
             <small>view on Github</small>
           </StyledLink>
           {project.link && (
