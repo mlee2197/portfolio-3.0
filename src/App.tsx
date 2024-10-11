@@ -6,6 +6,7 @@ import { Hero } from "./segments";
 import { landscapeTabletSize } from "./utils/breakpoints";
 import { baseTheme } from "./utils/theme";
 import { ProgressNav } from "./components";
+import TiledBackground from "./components/TiledBackground";
 
 const Portfolio = React.lazy(() => import("./segments/Portfolio"));
 const Cat = React.lazy(() => import("./segments/Cat"));
@@ -20,6 +21,7 @@ function App() {
     <ThemeProvider theme={baseTheme}>
       <Wrapper ref={wrapperRef}>
         <FixedWrapper>
+          <TiledBackground />
           <FixedHeader ref={nameRef}>MATT LEE</FixedHeader>
         </FixedWrapper>
         <Hero />
@@ -70,7 +72,7 @@ const FixedWrapper = styled.div`
   }
   @media ${landscapeTabletSize} {
     grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     justify-content: center;
     align-items: center;
     h1:first-of-type {
