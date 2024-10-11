@@ -87,7 +87,7 @@ export const Section = styled.section`
   @media ${landscapeTabletSize} {
     padding: 40px;
     grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     justify-content: center;
     align-items: center;
 
