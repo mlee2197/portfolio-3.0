@@ -65,18 +65,39 @@ export const Absolute = styled.div<PositionProps>`
   left: ${({ left }) => (left !== undefined ? `${left}px` : "auto")};
 `;
 
-export const Section = styled.section`
+
+export const ScrollSnapWrapper = styled.div`
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  max-height: 100vh;
+  width: 100vw;
+  padding: -0;
+  & > section {
+    scroll-snap-align: start;
+  }
+
+  .hide {
+    opacity: 0;
+  }
+`;
+
+interface SectionProps {
+  noPadding?: boolean;
+}
+
+export const Section = styled.section<SectionProps>`
   position: relative;
   display: grid;
-  grid-template-rows: 1fr 2fr;
   grid-template-columns: 1fr;
   justify-content: center;
   align-items: center;
 
   width: 100%;
   min-height: 100vh;
-  padding: 40px;
-  padding-top: 0;
+  max-height: 100vh;
+  padding: ${props => props.noPadding ? '0' : '40px'};
+  padding-top: ${props => props.noPadding ? '0' : '0'};
   box-sizing: border-box;
   overflow-x: hidden;
 
@@ -85,7 +106,7 @@ export const Section = styled.section`
   }
 
   @media ${landscapeTabletSize} {
-    padding: 40px;
+    padding: ${props => props.noPadding ? '0' : '40px'};
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 2fr;
     justify-content: center;

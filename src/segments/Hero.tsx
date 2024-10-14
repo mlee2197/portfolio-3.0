@@ -1,44 +1,117 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { AppH1, DecoratorText, Section } from "../components";
+import { Section } from "../components";
 import { landscapeTabletSize } from "../utils/breakpoints";
-import { cloudinary } from "../services/cloudinary";
-import { fill } from "@cloudinary/url-gen/actions/resize";
-import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
-import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
 import ChevronDown from "../assets/chevron-down.svg";
+import gsap from "gsap";
+import Name from "./Name";
 
 interface HeroProps {}
+const DURATION = 0.05;
+const STAGGER = 0.1;
 
 const Hero: React.FC<HeroProps> = () => {
-  const imageUrl = cloudinary
-    .image("portfolio/selfie")
-    .resize(fill().width(500).height(800).gravity(focusOn(FocusOn.face())))
-    .quality("auto:good")
-    .format("auto")
-    .toURL();
+  const [inView, setInView] = useState(true);
+  const textsRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!textsRef.current) return;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+      tl.to(textsRef.current!.children, {
+        opacity: 0.5,
+        duration: DURATION,
+        stagger: STAGGER,
+      });
+      tl.to(textsRef.current!.children, {
+        opacity: (index) => (index === 5 ? 0.5 : 0.25),
+        duration: DURATION,
+        stagger: STAGGER,
+      }, "-=0.25");
+    }, textsRef);
+
+    return () => ctx.revert();
+  }, [textsRef.current]);
+
+  useEffect(() => {
+    if (!textsRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setInView(true);
+            console.log("in view");
+          } else {
+            setInView(false);
+            console.log("not in view");
+          }
+          // entry.isIntersecting ? setInView(true) : setInView(false);
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    observer.observe(textsRef.current);
+
+    return () => {
+      if (textsRef.current) {
+        observer.unobserve(textsRef.current);
+      }
+    };
+  }, [textsRef.current]);
 
   return (
-    <FadeInSection id="hero">
-      <AppH1 hide>MATT LEE</AppH1>
-      <Selfie src={imageUrl}>
-        <DecoratorText
-          top={24}
-          left={-60}
-          desktopTop={300}
-          desktopLeft={-80}
-          style={{ textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)" }}
-        >
-          that's me
-        </DecoratorText>
-      </Selfie>
+    <Section id="hero" noPadding>
+      <Name shrink={!inView} />
+      <TextContainer ref={textsRef}>
+        <H2>that's me</H2>
+        <H2>that's me</H2>
+        <H2>that's me</H2>
+        <H2>that's me</H2>
+        <H2>that's me</H2>
+        <H2>that's me</H2>
+        <H2>that's me</H2>
+        <H2>that's me</H2>
+        <H2>that's me</H2>
+      </TextContainer>
       <ChevronWrapper href="#about">
         <img src={ChevronDown} alt="next section" height={16} width={24} />
       </ChevronWrapper>
-      <Circle />
-    </FadeInSection>
+    </Section>
   );
 };
+
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  height: min(100%, 100vh);
+  margin: 0 auto;
+  margin-top: -64px;
+  translate: 25% 0;
+  overflow: hidden;
+
+  @media ${landscapeTabletSize} {
+    grid-column: 2/3;
+    translate: 0;
+  }
+`;
+
+const H2 = styled.h2`
+  width: max-content;
+  margin: 0;
+  opacity: 0;
+
+  font-family: ${(props) => props.theme.fonts.subtitle};
+  font-size: 64px;
+  line-height: 0.5;
+  color: ${(props) => props.theme.colors.yellow};
+
+  @media ${landscapeTabletSize} {
+    font-size: 116px;
+  }
+`;
 
 const FadeIn = keyframes`
   from {
@@ -93,7 +166,7 @@ const Selfie = styled.div<{ src: string }>`
 
 const ChevronWrapper = styled.a`
   position: absolute;
-  bottom: 24px;
+  bottom: 2px;
   left: 50%;
   translate: -50% 0;
   opacity: 0.6;

@@ -32,7 +32,7 @@ const TiledBackground = () => {
 };
 
 const Svg = styled.svg`
-  position: absolute;
+  position: fixed;
 `;
 
 export default TiledBackground;
