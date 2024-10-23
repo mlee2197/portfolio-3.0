@@ -6,6 +6,7 @@ import {
   AppText,
   DecoratorText,
   DownloadButton,
+  HiddenH1,
   Section,
 } from "../components";
 import { TechScroller } from "./TechScroller";
@@ -17,27 +18,27 @@ import Pluses from "../assets/pluses.png";
 const About = () => {
   return (
     <Section id="about">
-      <AppH1 hide>
+      <HiddenH1>
         MATT LEE
-        <DecoratorText top={-16} left={0}>
+        <DecoratorText top={0} left={0}>
           Who is
         </DecoratorText>
         <DecoratorText
-          bottom={30}
-          left={160}
-          desktopBottom={88}
-          desktopLeft={260}
-          size={64}
+          bottom={-30}
+          left={0}
+          desktopBottom={90}
+          desktopLeft={212}
+          size={44}
         >
           ?
         </DecoratorText>
         <DesktopWrapper>
           <DownloadButton href={Resume} download>
-            Download Resume
+            <span>Download Resume</span>
             <img src={Arrow} alt="^" loading="lazy" />
           </DownloadButton>
         </DesktopWrapper>
-      </AppH1>
+      </HiddenH1>
       <ContentWrapper>
         <Absolute left={-48} top={-40}>
           <img
@@ -95,7 +96,7 @@ const ContentWrapper = styled.div`
 const DesktopWrapper = styled.span`
   display: none;
   position: relative;
-  top: 40px;
+  top: 20px;
   visibility: visible;
   font-family: ${({ theme }) => theme.fonts.text};
   @media ${landscapeTabletSize} {

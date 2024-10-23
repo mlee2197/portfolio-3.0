@@ -5,6 +5,7 @@ import {
   AppText,
   DecoratorText,
   Flex,
+  HiddenH1,
   Section,
 } from "../components";
 import ZigzagSrc from "../assets/zigzag.svg";
@@ -23,13 +24,13 @@ const Portfolio: React.FC<PortfolioProps> = () => {
 
   return (
     <Section id="portfolio">
-      <AppH1 hide>
+      <HiddenH1 hide>
         MATT LEE
         <DecoratorText top={-16} left={12} desktopTop={-24} desktopLeft={4}>
           Projects by:
         </DecoratorText>
         <Zigzag src={ZigzagSrc} alt="^^^^^^" loading="lazy" />
-      </AppH1>
+      </HiddenH1>
       <SliderContainer>
         <ProjectCarousel setCurrentProject={setProject} />
         <Flex gap={24} align="center" justify="space-between">
