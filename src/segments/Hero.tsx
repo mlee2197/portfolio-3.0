@@ -5,36 +5,62 @@ import { landscapeTabletSize } from "../utils/breakpoints";
 import ChevronDown from "../assets/chevron-down.svg";
 import gsap from "gsap";
 import Name from "./Name";
+import ImageTrail from "../components/ImageTrailWrapper";
 
-interface HeroProps {}
-const DURATION = 0.05;
-const STAGGER = 0.1;
+interface HeroProps { }
+const TEXTS_DURATION = 0.05;
+const STAGGER = 0.075;
 
 const Hero: React.FC<HeroProps> = () => {
   const [inView, setInView] = useState(true);
-  const textsRef = React.useRef<HTMLDivElement>(null);
+  const sectionRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!textsRef.current) return;
+    if (!sectionRef.current) return;
     const ctx = gsap.context(() => {
+      const sectionQuery = gsap.utils.selector(sectionRef.current);
+      const texts = sectionQuery("#thats-me h2");
+      const filter = sectionQuery("#turbulent-text--filter feTurbulence");
+      const header = sectionQuery("#name");
       const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-      tl.to(textsRef.current!.children, {
-        opacity: 0.5,
-        duration: DURATION,
-        stagger: STAGGER,
+      tl.to(header, {
+        opacity: 1,
+        duration: 0.1,
+        ease: "linear"
       });
-      tl.to(textsRef.current!.children, {
-        opacity: (index) => (index === 5 ? 0.5 : 0.25),
-        duration: DURATION,
+      tl.to(
+        filter,
+        {
+          attr: {
+            baseFrequency: "0 0.2",
+          },
+          duration: 0.20,
+          ease: "linear",
+          yoyo: true,
+          repeat: 1,
+        },
+        "-=0.1"
+      );
+
+      tl.to(texts, {
+        opacity: 0.5,
+        duration: TEXTS_DURATION,
         stagger: STAGGER,
-      }, "-=0.25");
-    }, textsRef);
+        delay: 0.2,
+      });
+      tl.to(texts, {
+        opacity: (index) => (index === 6 ? 0.5 : 0.25),
+        duration: TEXTS_DURATION,
+        stagger: STAGGER,
+      }, `-=${TEXTS_DURATION * 3}`);
+      
+    }, sectionRef);
 
     return () => ctx.revert();
-  }, [textsRef.current]);
+  }, [sectionRef]);
 
   useEffect(() => {
-    if (!textsRef.current) return;
+    if (!sectionRef.current) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -46,25 +72,27 @@ const Hero: React.FC<HeroProps> = () => {
             setInView(false);
             console.log("not in view");
           }
-          // entry.isIntersecting ? setInView(true) : setInView(false);
         });
       },
       { threshold: 0.6 }
     );
 
-    observer.observe(textsRef.current);
+    observer.observe(sectionRef.current);
 
     return () => {
-      if (textsRef.current) {
-        observer.unobserve(textsRef.current);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
       }
     };
-  }, [textsRef.current]);
+  }, [sectionRef.current]);
 
   return (
-    <Section id="hero" noPadding>
+    <Section id="hero" ref={sectionRef} noPadding>
       <Name shrink={!inView} />
-      <TextContainer ref={textsRef}>
+      <TextContainer id="thats-me">
+        <H2>that's me</H2>
+        <H2>that's me</H2>
+        <H2>that's me</H2>
         <H2>that's me</H2>
         <H2>that's me</H2>
         <H2>that's me</H2>
@@ -78,6 +106,7 @@ const Hero: React.FC<HeroProps> = () => {
       <ChevronWrapper href="#about">
         <img src={ChevronDown} alt="next section" height={16} width={24} />
       </ChevronWrapper>
+      <ImageTrail />
     </Section>
   );
 };
