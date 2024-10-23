@@ -13,21 +13,42 @@ interface NameProps {
 
 const Name: React.FC<NameProps> = ({ shrink }) => {
   return (
-    <FixedHeaderWrapper>
-      <StyledH1 shrink={shrink}>MATT LEE</StyledH1>
+    <FixedHeaderWrapper shrink={shrink}>
+      <svg id="turbulent-text--svg" style={{ position: "absolute" }}>
+        <filter id="turbulent-text--filter">
+          <feTurbulence
+            id="glitched"
+            baseFrequency="0 0"
+            type="fractalNoise"
+            numOctaves="6"
+            result="noise"
+          ></feTurbulence>
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="noise"
+            scale="50"
+            xChannelSelector="R"
+            yChannelSelector="R"
+          ></feDisplacementMap>
+        </filter>
+      </svg>
+      <StyledH1 id="name">MATT LEE</StyledH1>
     </FixedHeaderWrapper>
   );
 };
 
-const FixedHeaderWrapper = styled.div`
+const FixedHeaderWrapper = styled.div<NameProps>`
   position: fixed;
-  left: 0;
+  left: 100px;
   top: 50%;
   z-index: 50;
-  translate: 30% -50%;
+  translate: 0% -50%;
+  scale: ${({ shrink }) => (shrink ? 0.6 : 1)};
+  transition: scale 0.35s ease-in-out;
+  transform-origin: left;
 `;
 
-const StyledH1 = styled(AppH1)<NameProps>`
+const StyledH1 = styled(AppH1)`
   max-width: 4ch;
 
   font-size: 80px;
@@ -37,9 +58,8 @@ const StyledH1 = styled(AppH1)<NameProps>`
   font-family: ${({ theme }) => theme.fonts.title};
   color: ${({ theme }) => theme.colors.yellow};
 
-  scale: ${({ shrink }) => (shrink ? 0.5 : 1)};
-  transition: scale 0.35s ease-in-out;
-  transform-origin: left;
+  filter: url(#turbulent-text--filter);
+  opacity: 0;
 
   &::before {
     content: "MATT LEE";
