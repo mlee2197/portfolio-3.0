@@ -1,59 +1,112 @@
-"use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import useMousePosition from "../hooks/useMousePosition";
 import styled from "styled-components";
+import { cloudinary } from "../services/cloudinary";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
 
-const SENTENCES = ["Hi how are you?", "Are you having a good day?", "How's the weather?", "The chicken or the egg?", "Do you like this animation?"]
+const IMAGE_WIDTH = 200;
+const IMAGE_HEIGHT = 124;
+const IMAGE_RADIUS = 16;
+const ellie1 = cloudinary
+  .image("portfolio/ellie1")
+  .resize(fill(IMAGE_WIDTH, IMAGE_HEIGHT))
+  .roundCorners(byRadius(IMAGE_RADIUS))
+  .quality("auto:best")
+  .format("png")
+  .toURL();
+
+const ellie2 = cloudinary
+  .image("portfolio/ellie2")
+  .resize(fill(IMAGE_WIDTH, IMAGE_HEIGHT))
+  .roundCorners(byRadius(IMAGE_RADIUS))
+  .quality("auto:best")
+  .format("png")
+  .toURL();
+
+const ellie3 = cloudinary
+  .image("portfolio/ellie3")
+  .resize(fill(IMAGE_WIDTH, IMAGE_HEIGHT))
+  .roundCorners(byRadius(IMAGE_RADIUS))
+  .quality("auto:best")
+  .format("png")
+  .toURL();
+
+const ellie4 = cloudinary
+  .image("portfolio/ellie4")
+  .resize(fill(IMAGE_WIDTH, IMAGE_HEIGHT))
+  .roundCorners(byRadius(IMAGE_RADIUS))
+  .quality("auto:best")
+  .format("png")
+  .toURL();
+
+const IMAGE_URLS = [ellie1, ellie2, ellie3, ellie4];
 
 const ImageTrail = () => {
   const { ref, mouseX, mouseY } = useMousePosition();
-  const [sentenceIndex, setSentenceIndex] = useState(0);
-  const [letterIndex, setLetterIndex] = useState(0);
-  const [lastLetterPosition, setLastLetterPosition] = useState({ x: 0, y: 0 });
+  const [imageIndex, setImageIndex] = useState(0);
+  const [lastImagePosition, setLastImagePosition] = useState({ x: 0, y: 0 });
+  const imageCache = useRef<Map<string, string>>(new Map());
 
-  const nextLetter = () => {
-    const sentence = SENTENCES[sentenceIndex];
-    if (letterIndex < sentence.length - 1) {
-      setLetterIndex(letterIndex + 1);
-    } else {
-      setSentenceIndex((prevIndex) => (prevIndex + 1) % SENTENCES.length);
-      setLetterIndex(0);
-    }
+  const nextImage = () => {
+    setImageIndex((prevIndex) => (prevIndex + 1) % IMAGE_URLS.length);
+  };
+
+  const updateImagePosition = () => {
+    setLastImagePosition({ x: mouseX, y: mouseY });
   }
 
-  const updateLetterPosition = () => {
-    setLastLetterPosition({ x: mouseX, y: mouseY });
-  }
-
-  const renderLetterOnScreen = (letter: string) => {
+  const renderImageOnScreen = (imageUrl: string) => {
     if (!ref.current) return;
-    const letterDiv = document.createElement('div');
-    letterDiv.textContent = letter;
-    letterDiv.classList.add("trail-letter");
-    letterDiv.style.position = "absolute";
-    letterDiv.style.left = `${mouseX}px`;
-    letterDiv.style.top = `${mouseY}px`;
+    const imgElement = document.createElement('img');
 
-    ref.current.appendChild(letterDiv);
-    nextLetter();
-    updateLetterPosition();
+    if (imageCache.current.has(imageUrl)) {
+      imgElement.src = imageCache.current.get(imageUrl)!;
+    } else {
+      imgElement.src = imageUrl;
+      // Cache the image URL
+      fetch(imageUrl)
+        .then(response => response.blob())
+        .then(blob => {
+          const objectURL = URL.createObjectURL(blob);
+          imageCache.current.set(imageUrl, objectURL);
+        });
+    }
+
+    imgElement.style.position = "absolute";
+    imgElement.style.left = `${mouseX - (IMAGE_WIDTH / 2)}px`;
+    imgElement.style.top = `${mouseY - (IMAGE_HEIGHT / 2)}px`;
+    imgElement.style.opacity = "1";
+    imgElement.style.transition = "opacity 1s ease-out";
+    imgElement.classList.add("trail-image");
+
+    ref.current.appendChild(imgElement);
+    nextImage();
+    updateImagePosition();
+
     setTimeout(() => {
-      if (!ref.current) return;
-      ref.current.removeChild(letterDiv);
-    }, 1000); // disappear after 1.5 seconds
+      imgElement.style.opacity = "0";
+    }, 10);
+
+    // Remove the element after the fade-out animation completes
+    imgElement.addEventListener('transitionend', () => {
+      if (ref.current && ref.current.contains(imgElement)) {
+        ref.current.removeChild(imgElement);
+      }
+    });
   }
 
   useEffect(() => {
-    const sentence = SENTENCES[sentenceIndex];
-    const letter = sentence[letterIndex];
-    const distance = Math.sqrt(Math.pow(mouseX - lastLetterPosition.x, 2) + Math.pow(mouseY - lastLetterPosition.y, 2));
-    if (letter && distance >= 20) {
-      renderLetterOnScreen(letter);
+    const url = IMAGE_URLS[imageIndex];
+    const distance = Math.sqrt(Math.pow(mouseX - lastImagePosition.x, 2) + Math.pow(mouseY - lastImagePosition.y, 2));
+    if (url && distance >= IMAGE_WIDTH / 2) {
+      renderImageOnScreen(url);
     }
-  }, [mouseX, mouseY, sentenceIndex, letterIndex, lastLetterPosition]);
+  }, [mouseX, mouseY, imageIndex, lastImagePosition]);
 
   return (
-    <Wrapper ref={ref}></Wrapper>
+    <Wrapper ref={ref}>
+    </Wrapper>
   )
 }
 
@@ -63,7 +116,6 @@ const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  /* pointer-events: none; */
 `;
 
 export default ImageTrail;
