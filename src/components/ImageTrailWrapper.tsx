@@ -99,7 +99,7 @@ const ImageTrail = () => {
   useEffect(() => {
     const url = IMAGE_URLS[imageIndex];
     const distance = Math.sqrt(Math.pow(mouseX - lastImagePosition.x, 2) + Math.pow(mouseY - lastImagePosition.y, 2));
-    if (url && distance >= IMAGE_WIDTH / 2) {
+    if (url && distance >= IMAGE_WIDTH * 1) {
       renderImageOnScreen(url);
     }
   }, [mouseX, mouseY, imageIndex, lastImagePosition]);

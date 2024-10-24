@@ -13,7 +13,7 @@ interface NameProps {
 
 const Name: React.FC<NameProps> = ({ shrink }) => {
   return (
-    <FixedHeaderWrapper shrink={shrink}>
+    <FixedHeaderWrapper>
       <svg id="turbulent-text--svg" style={{ position: "absolute" }}>
         <filter id="turbulent-text--filter">
           <feTurbulence
@@ -32,23 +32,22 @@ const Name: React.FC<NameProps> = ({ shrink }) => {
           ></feDisplacementMap>
         </filter>
       </svg>
-      <StyledH1 id="name">MATT LEE</StyledH1>
+      <StyledH1 id="name" shrink={shrink}>MATT LEE</StyledH1>
     </FixedHeaderWrapper>
   );
 };
 
-const FixedHeaderWrapper = styled.div<NameProps>`
+const FixedHeaderWrapper = styled.div`
   position: fixed;
-  left: 100px;
-  top: 50%;
+  display: block;
+  max-width: 1280px;
+  width: 100vw;
+  padding: 40px;
   z-index: 50;
-  translate: 0% -50%;
-  scale: ${({ shrink }) => (shrink ? 0.6 : 1)};
-  transition: scale 0.35s ease-in-out;
-  transform-origin: left;
+  pointer-events: none;
 `;
 
-const StyledH1 = styled(AppH1)`
+const StyledH1 = styled(AppH1)<NameProps>`
   max-width: 4ch;
 
   font-size: 80px;
@@ -60,6 +59,10 @@ const StyledH1 = styled(AppH1)`
 
   filter: url(#turbulent-text--filter);
   opacity: 0;
+
+  scale: ${({ shrink }) => (shrink ? 0.6 : 1)};
+  transition: scale 0.35s ease-in-out;
+  transform-origin: left;
 
   &::before {
     content: "MATT LEE";

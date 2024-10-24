@@ -94,8 +94,11 @@ export const Section = styled.section<SectionProps>`
   align-items: center;
 
   width: 100%;
+  max-width: 1280px;
   min-height: 100vh;
   max-height: 100vh;
+
+  margin: 0 auto;
   padding: ${props => props.noPadding ? '0' : '40px'};
   padding-top: ${props => props.noPadding ? '0' : '0'};
   box-sizing: border-box;

@@ -53,7 +53,7 @@ const Hero: React.FC<HeroProps> = () => {
         duration: TEXTS_DURATION,
         stagger: STAGGER,
       }, `-=${TEXTS_DURATION * 3}`);
-      
+
     }, sectionRef);
 
     return () => ctx.revert();
@@ -87,29 +87,35 @@ const Hero: React.FC<HeroProps> = () => {
   }, [sectionRef.current]);
 
   return (
-    <Section id="hero" ref={sectionRef} noPadding>
-      <Name shrink={!inView} />
-      <TextContainer id="thats-me">
-        <H2>that's me</H2>
-        <H2>that's me</H2>
-        <H2>that's me</H2>
-        <H2>that's me</H2>
-        <H2>that's me</H2>
-        <H2>that's me</H2>
-        <H2>that's me</H2>
-        <H2>that's me</H2>
-        <H2>that's me</H2>
-        <H2>that's me</H2>
-        <H2>that's me</H2>
-        <H2>that's me</H2>
-      </TextContainer>
-      <ChevronWrapper href="#about">
-        <img src={ChevronDown} alt="next section" height={16} width={24} />
-      </ChevronWrapper>
+    <Wrapper>
       <ImageTrail />
-    </Section>
+      <Section id="hero" ref={sectionRef} noPadding>
+        <Name shrink={!inView} />
+        <TextContainer id="thats-me">
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+        </TextContainer>
+        <ChevronWrapper href="#about">
+          <img src={ChevronDown} alt="next section" height={16} width={24} />
+        </ChevronWrapper>
+      </Section>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.section`
+  position: relative;
+`;
 
 const TextContainer = styled.div`
   display: flex;

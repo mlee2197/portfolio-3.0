@@ -19,7 +19,6 @@ export const AppH1 = styled.h1<{ hide?: boolean }>`
 
 export const HiddenH1 = styled(AppH1)`
   visibility: hidden;
-  left: 60px;
 `;
 
 interface SizeProp {
