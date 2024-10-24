@@ -43,7 +43,7 @@ const FixedHeaderWrapper = styled.div`
   max-width: 1280px;
   width: 100vw;
   padding: 40px;
-  z-index: 50;
+  z-index: 5;
   pointer-events: none;
 `;
 
