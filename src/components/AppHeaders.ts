@@ -3,17 +3,17 @@ import { landscapeTabletSize } from "../utils/breakpoints";
 
 export const AppH1 = styled.h1<{ hide?: boolean }>`
   position: relative;
-  max-width: 450px;
+  max-width: 4ch;
+
   margin: 0;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   line-height: 1.1;
-  font-size: 80px;
+  font-size: 70px;
   font-family: ${({ theme }) => theme.fonts.title};
   color: ${({ theme }) => theme.colors.white};
   visibility: ${({ hide }) => (hide ? "hidden" : "visible")};
   @media ${landscapeTabletSize} {
     font-size: 128px;
-    max-width: 430px;
   }
 `;
 

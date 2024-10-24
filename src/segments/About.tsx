@@ -20,13 +20,13 @@ const About = () => {
     <Section id="about">
       <HiddenH1>
         MATT LEE
-        <DecoratorText top={0} left={0}>
+        <DecoratorText top={48} left={0} desktopBottom={0}>
           Who is
         </DecoratorText>
         <DecoratorText
-          bottom={-30}
-          left={0}
-          desktopBottom={90}
+          bottom={-52}
+          left={152}
+          desktopBottom={60}
           desktopLeft={212}
           size={44}
         >

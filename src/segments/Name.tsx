@@ -3,7 +3,7 @@ import styled from "styled-components";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { AppH1 } from "../components";
-import { landscapeTabletSize } from "../utils/breakpoints";
+import { landscapeTabletSize, largeMobileSize } from "../utils/breakpoints";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,30 +39,35 @@ const Name: React.FC<NameProps> = ({ shrink }) => {
 
 const FixedHeaderWrapper = styled.div`
   position: fixed;
+  top: 0;
   display: block;
   max-width: 1280px;
   width: 100vw;
   padding: 40px;
+  box-sizing: border-box;
   z-index: 5;
   pointer-events: none;
+  @media ${landscapeTabletSize} {
+    top: auto;
+  }
 `;
 
-const StyledH1 = styled(AppH1)<NameProps>`
+const StyledH1 = styled(AppH1) <NameProps>`
   max-width: 4ch;
 
-  font-size: 80px;
+  font-size: calc(80px + 8vw);
   letter-spacing: 2px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
   font-family: ${({ theme }) => theme.fonts.title};
   color: ${({ theme }) => theme.colors.yellow};
-
+  
   filter: url(#turbulent-text--filter);
   opacity: 0;
 
-  scale: ${({ shrink }) => (shrink ? 0.6 : 1)};
-  transition: scale 0.35s ease-in-out;
-  transform-origin: left;
+  scale: ${({ shrink }) => (shrink ? 0.50 : 1)};
+  transition: all 0.35s ease-in-out;
+  transform-origin: 0% 40%;
 
   &::before {
     content: "MATT LEE";
@@ -74,7 +79,8 @@ const StyledH1 = styled(AppH1)<NameProps>`
   }
 
   @media ${landscapeTabletSize} {
-    font-size: 164px;
+  transform-origin: left;
+  font-size: 164px;
   }
 `;
 

@@ -104,6 +104,9 @@ const Hero: React.FC<HeroProps> = () => {
           <H2>that's me</H2>
           <H2>that's me</H2>
           <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
         </TextContainer>
         <ChevronWrapper href="#about">
           <img src={ChevronDown} alt="next section" height={16} width={24} />

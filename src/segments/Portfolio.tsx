@@ -26,7 +26,7 @@ const Portfolio: React.FC<PortfolioProps> = () => {
     <Section id="portfolio">
       <HiddenH1 hide>
         MATT LEE
-        <DecoratorText top={-16} left={12} desktopTop={-24} desktopLeft={4}>
+        <DecoratorText top={40} left={0} desktopTop={-24} desktopLeft={4}>
           Projects by:
         </DecoratorText>
         <Zigzag src={ZigzagSrc} alt="^^^^^^" loading="lazy" />

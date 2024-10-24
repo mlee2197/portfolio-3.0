@@ -90,8 +90,8 @@ export const Section = styled.section<SectionProps>`
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
 
   width: 100%;
   max-width: 1280px;
@@ -104,13 +104,8 @@ export const Section = styled.section<SectionProps>`
   box-sizing: border-box;
   overflow-x: hidden;
 
-  h1:first-of-type {
-    align-self: flex-end;
-  }
-
   @media ${landscapeTabletSize} {
-    padding: ${props => props.noPadding ? '0' : '40px'};
-    grid-template-rows: 1fr;
+    display: grid;
     grid-template-columns: 1fr 2fr;
     justify-content: center;
     align-items: center;
