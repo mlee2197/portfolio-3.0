@@ -93,7 +93,7 @@ export const DownloadButton = styled.a`
   }
   :hover {
     ::before {
-      animation: ${DownloadChevron} 1.5s ;
+      animation: ${DownloadChevron} 1.5s;
     }
   }
   /* 
