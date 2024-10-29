@@ -7,7 +7,7 @@ import gsap from "gsap";
 import Name from "./Name";
 import ImageTrail from "../components/ImageTrailWrapper";
 
-interface HeroProps { }
+interface HeroProps {}
 const TEXTS_DURATION = 0.05;
 const STAGGER = 0.075;
 
@@ -26,7 +26,7 @@ const Hero: React.FC<HeroProps> = () => {
       tl.to(header, {
         opacity: 1,
         duration: 0.1,
-        ease: "linear"
+        ease: "linear",
       });
       tl.to(
         filter,
@@ -34,7 +34,7 @@ const Hero: React.FC<HeroProps> = () => {
           attr: {
             baseFrequency: "0 0.2",
           },
-          duration: 0.20,
+          duration: 0.2,
           ease: "linear",
           yoyo: true,
           repeat: 1,
@@ -48,12 +48,15 @@ const Hero: React.FC<HeroProps> = () => {
         stagger: STAGGER,
         delay: 0.2,
       });
-      tl.to(texts, {
-        opacity: (index) => (index === 6 ? 0.5 : 0.25),
-        duration: TEXTS_DURATION,
-        stagger: STAGGER,
-      }, `-=${TEXTS_DURATION * 3}`);
-
+      tl.to(
+        texts,
+        {
+          opacity: (index) => (index === 6 ? 0.5 : 0.25),
+          duration: TEXTS_DURATION,
+          stagger: STAGGER,
+        },
+        `-=${TEXTS_DURATION * 3}`
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -118,13 +121,21 @@ const Hero: React.FC<HeroProps> = () => {
 
 const Wrapper = styled.section`
   position: relative;
+
+  section {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari and Opera */
+    }
+  }
 `;
 
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  height: min(100%, 100vh);
+  top: 0;
   margin: 0 auto;
   margin-top: -64px;
   translate: 25% 0;
