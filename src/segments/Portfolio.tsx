@@ -1,164 +1,84 @@
 import React, { useState } from "react";
-import {
-  AppH1,
-  AppH2,
-  AppText,
-  DecoratorText,
-  Flex,
-  Section,
-} from "../components";
-import ZigzagSrc from "../assets/zigzag.svg";
+import { Absolute, DecoratorText, HiddenH1, ProjectCard, Section } from "../components";
 import styled from "styled-components";
-import { landscapeTabletSize } from "../utils/breakpoints";
-import { ProjectCarousel } from "./ProjectCarousel";
-import { Sigithub } from "@icons-pack/react-simple-icons";
+import { tabletSize } from "../utils/breakpoints";
 import { PROJECT_DATA } from "../utils/variables";
-import LinkSrc from "../assets/link-solid.svg";
-import Dot from "../assets/ring-pointer.png";
 
 interface PortfolioProps {}
 
 const Portfolio: React.FC<PortfolioProps> = () => {
   const [project, setProject] = useState(PROJECT_DATA[0]);
 
+  const nextProject = () => {
+    const currentIndex = PROJECT_DATA.indexOf(project);
+    const nextIndex = (currentIndex + 1) % PROJECT_DATA.length;
+    setProject(PROJECT_DATA[nextIndex]);
+  };
+
+  const previousProject = () => {
+    const currentIndex = PROJECT_DATA.indexOf(project);
+    const previousIndex =
+      (currentIndex - 1 + PROJECT_DATA.length) % PROJECT_DATA.length;
+    setProject(PROJECT_DATA[previousIndex]);
+  };
+
   return (
     <Section id="portfolio">
-      <AppH1 hide>
+      <HiddenH1 hide>
         MATT LEE
-        <DecoratorText top={-16} left={12} desktopTop={-24} desktopLeft={4}>
+        <DecoratorText
+          top={12}
+          left={0}
+          right={0}
+          desktopLeft={4}
+          desktopTop={-12}
+        >
           Projects by:
         </DecoratorText>
-        <Zigzag src={ZigzagSrc} alt="^^^^^^" loading="lazy" />
-      </AppH1>
-      <SliderContainer>
-        <ProjectCarousel setCurrentProject={setProject} />
-        <Flex gap={24} align="center" justify="space-between">
-          <AppH2>{project.title}</AppH2>
-          <MobileIcons>
-            {project.link && (
-              <a href={project.link} target="_blank" rel="noopener noreferrer">
-                <img
-                  src={LinkSrc}
-                  alt="link"
-                  height={20}
-                  width={20}
-                  loading="lazy"
-                />
-              </a>
-            )}
-            <a href={project.github} target="_blank" rel="noopener noreferrer">
-              <Sigithub color="white" size={20} />
-            </a>
-          </MobileIcons>
-        </Flex>
-        <AppText>{project.description}</AppText>
-        <DesktopIcons>
-          <StyledLink
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Sigithub color="white" />
-            <small>view on Github</small>
-          </StyledLink>
-          {project.link && (
-            <StyledLink
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={LinkSrc}
-                alt="link"
-                height={24}
-                width={24}
-                loading="lazy"
-              />
-              <small>view site</small>
-            </StyledLink>
-          )}
-        </DesktopIcons>
-      </SliderContainer>
+      </HiddenH1>
+      <ContentWrapper>
+        <Absolute top={-75} left={-75}>
+          <Donut width={150} height={150} />
+        </Absolute>
+        <Absolute bottom={100} right={-50}>
+          <Donut width={80} height={80} />
+        </Absolute>
+        <Absolute bottom={-80} left={50}>
+          <Donut width={64} height={64} />
+        </Absolute>
+        <ProjectCard
+          {...project}
+          nextProject={nextProject}
+          previousProject={previousProject}
+        />
+      </ContentWrapper>
     </Section>
   );
 };
 
-const Zigzag = styled.img`
-  display: block;
-  position: absolute;
-  bottom: 0px;
-  right: 68px;
-  width: 110px;
-  height: 70px;
-  color: black;
-  visibility: visible;
-  z-index: -1;
-  @media ${landscapeTabletSize} {
-    right: 40px;
-    width: 200px;
-    height: 100px;
-  }
-`;
-
-const SliderContainer = styled.div`
+const ContentWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 8px;
-
-  height: 100%;
-  width: 100%;
-  max-width: 440px;
+  gap: 28px;
+  max-width: 500px;
   margin: 0 auto;
-  text-align: left;
-
-  @media ${landscapeTabletSize} {
-    gap: 16px;
+  @media ${tabletSize} {
+    margin: 16px auto 0 auto;
   }
 `;
 
-const StyledLink = styled.a`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: max-content;
-  /* border: 2px solid ${({ theme }) => theme.colors.yellow}; */
-  border-radius: 40px;
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 4px 8px;
-  text-decoration: none;
-  color: white;
-  cursor: url(${Dot}) 4 4, pointer;
-  z-index: 2;
+interface DonutProps {
+  width: number;
+  height: number;
+}
 
-  & > * {
-    opacity: 0.8;
-  }
-`;
-
-const MobileIcons = styled(Flex)`
-  display: flex;
-  gap: 12px;
-
-  & > * {
-    background-color: rgba(0, 0, 0, 0.2);
-    height: 20px;
-    width: 20px;
-    padding: 6px;
-    border-radius: 50%;
-  }
-
-  @media ${landscapeTabletSize} {
-    display: none;
-  }
-`;
-
-const DesktopIcons = styled(Flex)`
-  display: none;
-  @media ${landscapeTabletSize} {
-    display: flex;
-    gap: 8px;
-  }
+const Donut = styled.div<DonutProps>`
+  width: ${props => props.width}px;
+  height: ${props => props.height}px;
+  border-radius: 50%;
+  border: 32px solid white;
+  opacity: 0.15;
 `;
 
 export default Portfolio;

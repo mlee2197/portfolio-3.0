@@ -28,3 +28,15 @@ body {
 a:hover {
   cursor: url("./assets/ring-pointer.png"), auto;
 }
+
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(30%); }
+  10% { opacity: 1; transform: translateY(0%); }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.trail-image {
+  animation: fade-up 1.5s ease-out;
+  pointer-events: none;
+}

@@ -65,35 +65,53 @@ export const Absolute = styled.div<PositionProps>`
   left: ${({ left }) => (left !== undefined ? `${left}px` : "auto")};
 `;
 
-export const Section = styled.section`
-  position: relative;
-  display: grid;
-  grid-template-rows: 1fr 2fr;
-  grid-template-columns: 1fr;
-  justify-content: center;
-  align-items: center;
 
-  width: 100%;
-  min-height: 100vh;
-  padding: 40px;
-  padding-top: 0;
-  box-sizing: border-box;
+export const ScrollSnapWrapper = styled.div`
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
   overflow-x: hidden;
-
-  h1:first-of-type {
-    align-self: flex-end;
+  max-height: 100vh;
+  width: 100vw;
+  padding: -0;
+  & > section {
+    scroll-snap-align: start;
   }
 
+  .hide {
+    opacity: 0;
+  }
+`;
+
+interface SectionProps {
+  noPadding?: boolean;
+}
+
+export const Section = styled.section<SectionProps>`
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: start;
+  align-items: start;
+
+  width: 100%;
+  max-width: 1280px;
+  min-height: 100vh;
+  max-height: 100vh;
+
+  margin: 0 auto;
+  padding: ${props => props.noPadding ? '0' : '12px'};
+  padding-top: ${props => props.noPadding ? '0' : '0'};
+  box-sizing: border-box;
+  overflow: hidden;
+  box-sizing: border-box;
+
   @media ${landscapeTabletSize} {
-    padding: 40px;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     justify-content: center;
     align-items: center;
 
-    /* justify-content: center;
-    align-items: space-around;
-    flex-direction: row; */
     h1:first-of-type {
       align-self: center;
       justify-self: center;
