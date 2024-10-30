@@ -12,7 +12,7 @@ const Card: React.FC<CardProps> = ({ width, height, children }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || window.innerWidth <= 768) return;
 
     const card = cardRef.current;
 
