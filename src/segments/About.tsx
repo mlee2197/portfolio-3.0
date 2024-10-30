@@ -6,14 +6,16 @@ import {
   AppText,
   DecoratorText,
   DownloadButton,
+  Flex,
   HiddenH1,
   Section,
 } from "../components";
 import { TechScroller } from "./TechScroller";
 import { landscapeTabletSize, tabletSize } from "../utils/breakpoints";
-import Resume from "../assets/Matthew_Lee_Resume_2023.pdf";
+import Resume from "../assets/Matthew_Lee_Resume_2025-compressed.pdf";
 import Arrow from "../assets/arrow.svg";
 import Pluses from "../assets/pluses.png";
+import Card from "../components/Card";
 
 const About = () => {
   return (
@@ -49,7 +51,35 @@ const About = () => {
             loading="lazy"
           />
         </Absolute>
-        <AppText>
+        <Card>
+          <Flex direction="column">
+            <img src="" alt="Matt Lee that's me" />
+            <div>
+              <svg width="100%" height="100%" viewBox="0 0 100 100" style={{ }}>
+                <defs>
+                  <pattern id="dots" width="3" height="3" patternUnits="userSpaceOnUse">
+                    <circle cx="2" cy="2" r="0.3" fill="currentColor" opacity="0.5" />
+                  </pattern>
+                  <filter id="tile">
+                    <feTile />
+                  </filter>
+                </defs>
+                <rect width="100%" height="10" fill="url(#dots)" filter="url(#tile)" />
+              </svg>
+            </div>
+            <AppText>
+              <TextBubble>I’m Matthew</TextBubble>, a Front-end web developer
+              with 4 years of experience, based in{" "}
+              <TextBubble>New York</TextBubble>. My passion lies in creating
+              interactive, unique, and user-friendly{" "}
+              <TextBubble>web experiences</TextBubble>. Specializing in React
+              and modern JavaScript frameworks, with a keen eye for design and
+              UX Currently, I am working as an{" "}
+              <TextBubble>front-end web engineer</TextBubble> at Rapptr Labs.
+            </AppText>
+          </Flex>
+        </Card>
+        {/* <AppText>
           I'm a New York City based, Front-End Developer. Stuck at a crossroads
           of what career path to pursue, I was entranced by the blending of code
           and design. Some of my hobbies include bouldering, hiking, video
@@ -61,10 +91,10 @@ const About = () => {
           <a className="blue" href="mailto:mlee2197@gmail.com">
             mlee2197@gmail.com
           </a>
-        </AppText>
+        </AppText> */}
         <MobileWrapper>
           <DownloadButton href={Resume} download>
-            Download Resume
+            <span>Download Resume</span>
             <img
               src={Arrow}
               alt="^"
@@ -108,6 +138,13 @@ const MobileWrapper = styled.div`
   @media ${landscapeTabletSize} {
     display: none;
   }
+`;
+
+const TextBubble = styled.span`
+  border-radius: 24px;
+  padding: 2px 4px;
+  background-color: white;
+  color: black;
 `;
 
 export default About;

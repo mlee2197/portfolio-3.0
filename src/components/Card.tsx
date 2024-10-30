@@ -62,6 +62,7 @@ const Card: React.FC<CardProps> = ({ width, height, children }) => {
 const StyledCard = styled.div<CardProps>`
   /* height: 200px; */
   /* width: auto; */
+  backdrop-filter: blur(8px);
   background-color: rgba(0,0,0,0.5);
   border: 8px solid rgba(255, 255, 255, 0.8);
   border-radius: 10px;
