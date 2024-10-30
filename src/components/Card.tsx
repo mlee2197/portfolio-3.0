@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
+import { landscapeTabletSize } from "../utils/breakpoints";
 
 interface CardProps {
   width?: string;
@@ -82,7 +83,8 @@ const Card: React.FC<CardProps> = ({ width, height, children }) => {
 };
 
 const StyledCard = styled.div<CardProps>`
-  max-height: 90vh;
+  height: 100%;
+  max-height: 55vh;
   max-width: 600px;
   backdrop-filter: blur(8px);
   background-color: rgba(0,0,0,0.5);
@@ -92,11 +94,16 @@ const StyledCard = styled.div<CardProps>`
   perspective: 1000px;
   transform-style: preserve-3d;
   /* overflow: hidden; */
+  @media ${landscapeTabletSize} {
+    max-height: 80vh;
+  }
 `;
 
 const ContentWrapper = styled.div`
+
   width: 100%;
   height: 100%;
+  /* overflow: hidden; */
   transform-style: preserve-3d;
 `;
 

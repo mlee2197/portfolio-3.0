@@ -26,8 +26,8 @@ const About = () => {
         <DecoratorText
           bottom={-52}
           left={152}
-          desktopBottom={24}
-          desktopLeft={136}
+          desktopBottom={48}
+          desktopLeft={186}
           size={44}
         >
           ?

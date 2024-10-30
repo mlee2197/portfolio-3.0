@@ -70,6 +70,7 @@ export const ScrollSnapWrapper = styled.div`
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
   overflow-y: auto;
+  overflow-x: hidden;
   max-height: 100vh;
   width: 100vw;
   padding: -0;
@@ -99,7 +100,7 @@ export const Section = styled.section<SectionProps>`
   max-height: 100vh;
 
   margin: 0 auto;
-  padding: ${props => props.noPadding ? '0' : '40px'};
+  padding: ${props => props.noPadding ? '0' : '12px'};
   padding-top: ${props => props.noPadding ? '0' : '0'};
   box-sizing: border-box;
   overflow-x: hidden;

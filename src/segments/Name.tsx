@@ -48,7 +48,7 @@ const FixedHeaderWrapper = styled.div`
 
   max-width: 1280px;
   width: 100vw;
-  padding: 40px;
+  padding: 40px 12px;
   box-sizing: border-box;
   z-index: 5;
   pointer-events: none;
@@ -56,7 +56,8 @@ const FixedHeaderWrapper = styled.div`
     top: auto;
     grid-template-columns: 1fr 2fr;
     margin: 0 auto;
-  }
+    padding-left: calc(8px + 4%);
+}
 `;
 
 const StyledH1 = styled(AppH1)<NameProps>`

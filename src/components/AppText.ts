@@ -54,6 +54,7 @@ export const DecoratorText = styled.span<PositionProps>`
   bottom: ${({ bottom }) => (bottom !== undefined ? `${bottom}px` : "auto")};
   right: ${({ right }) => (right !== undefined ? `${right}px` : "auto")};
   left: ${({ left }) => (left !== undefined ? `${left}px` : "auto")};
+  width: max-content;
   @media ${landscapeTabletSize} {
     font-size: ${({ size }) => (size ? size + 16 : 32)}px;
     top: ${({ desktopTop, top }) =>

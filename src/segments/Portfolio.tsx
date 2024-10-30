@@ -6,6 +6,7 @@ import {
   DecoratorText,
   Flex,
   HiddenH1,
+  ProjectCard,
   Section,
 } from "../components";
 import ZigzagSrc from "../assets/zigzag.svg";
@@ -16,22 +17,46 @@ import { Sigithub } from "@icons-pack/react-simple-icons";
 import { PROJECT_DATA } from "../utils/variables";
 import LinkSrc from "../assets/link-solid.svg";
 import Dot from "../assets/ring-pointer.png";
+import Card from "../components/Card";
 
 interface PortfolioProps {}
 
 const Portfolio: React.FC<PortfolioProps> = () => {
   const [project, setProject] = useState(PROJECT_DATA[0]);
 
+  const nextProject = () => {
+    const currentIndex = PROJECT_DATA.indexOf(project);
+    const nextIndex = (currentIndex + 1) % PROJECT_DATA.length;
+    setProject(PROJECT_DATA[nextIndex]);
+  };
+
+  const previousProject = () => {
+    const currentIndex = PROJECT_DATA.indexOf(project);
+    const previousIndex =
+      (currentIndex - 1 + PROJECT_DATA.length) % PROJECT_DATA.length;
+    setProject(PROJECT_DATA[previousIndex]);
+  };
+
   return (
     <Section id="portfolio">
       <HiddenH1 hide>
         MATT LEE
-        <DecoratorText top={40} left={0} desktopTop={-24} desktopLeft={4}>
+        <DecoratorText
+          top={12}
+          left={0}
+          right={0}
+          desktopLeft={4}
+          desktopTop={-12}
+        >
           Projects by:
         </DecoratorText>
-        <Zigzag src={ZigzagSrc} alt="^^^^^^" loading="lazy" />
       </HiddenH1>
-      <SliderContainer>
+      <ProjectCard
+        {...project}
+        nextProject={nextProject}
+        previousProject={previousProject}
+      />
+      {/* <SliderContainer>
         <ProjectCarousel setCurrentProject={setProject} />
         <Flex gap={24} align="center" justify="space-between">
           <AppH2>{project.title}</AppH2>
@@ -79,10 +104,14 @@ const Portfolio: React.FC<PortfolioProps> = () => {
             </StyledLink>
           )}
         </DesktopIcons>
-      </SliderContainer>
+      </SliderContainer> */}
     </Section>
   );
 };
+
+const CardContainer = styled.div`
+  display: flex;
+`;
 
 const Zigzag = styled.img`
   display: block;
