@@ -1,8 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 import {
   Absolute,
-  AppH1,
   AppText,
   DecoratorText,
   DownloadButton,
@@ -22,14 +20,14 @@ const About = () => {
     <Section id="about">
       <HiddenH1>
         MATT LEE
-        <DecoratorText top={48} left={0} desktopBottom={0}>
+        <DecoratorText top={20} left={0}>
           Who is
         </DecoratorText>
         <DecoratorText
           bottom={-52}
           left={152}
-          desktopBottom={60}
-          desktopLeft={212}
+          desktopBottom={24}
+          desktopLeft={136}
           size={44}
         >
           ?
@@ -54,20 +52,44 @@ const About = () => {
         <Card>
           <Flex direction="column">
             <img src="" alt="Matt Lee that's me" />
-            <div>
-              <svg width="100%" height="100%" viewBox="0 0 100 100" style={{ }}>
+            <MarqueWrapper>
+              <svg
+                width="100%"
+                height="40px"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ position: "absolute" }}
+              >
                 <defs>
-                  <pattern id="dots" width="3" height="3" patternUnits="userSpaceOnUse">
-                    <circle cx="2" cy="2" r="0.3" fill="currentColor" opacity="0.5" />
+                  <pattern
+                    id="dot-pattern"
+                    width="24"
+                    height="18"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <circle
+                      cx="1.5"
+                      cy="1.5"
+                      r="1.5"
+                      fill="white"
+                      fillOpacity="0.5"
+                    />
                   </pattern>
                   <filter id="tile">
                     <feTile />
                   </filter>
                 </defs>
-                <rect width="100%" height="10" fill="url(#dots)" filter="url(#tile)" />
+                <rect
+                  width="100%"
+                  height="100%"
+                  fill="url(#dot-pattern)"
+                  filter="url(#tile)"
+                />
               </svg>
-            </div>
-            <AppText>
+              <TechScroller />
+            </MarqueWrapper>
+            {/* <div style={{ backgroundImage: `url("")`, backgroundRepeat: 'repeat', width: '100%', height: '100%' }}> */}
+            {/* </div> */}
+            <AppText style={{ padding: "0 12px 12px 12px" }}>
               <TextBubble>I’m Matthew</TextBubble>, a Front-end web developer
               with 4 years of experience, based in{" "}
               <TextBubble>New York</TextBubble>. My passion lies in creating
@@ -79,19 +101,6 @@ const About = () => {
             </AppText>
           </Flex>
         </Card>
-        {/* <AppText>
-          I'm a New York City based, Front-End Developer. Stuck at a crossroads
-          of what career path to pursue, I was entranced by the blending of code
-          and design. Some of my hobbies include bouldering, hiking, video
-          games, and coding.
-        </AppText>
-        <AppText>
-          Currently, I am working as an engineer at{" "}
-          <span className="blue">Rapptr Labs.</span> Feel free to contact me at{" "}
-          <a className="blue" href="mailto:mlee2197@gmail.com">
-            mlee2197@gmail.com
-          </a>
-        </AppText> */}
         <MobileWrapper>
           <DownloadButton href={Resume} download>
             <span>Download Resume</span>
@@ -104,7 +113,6 @@ const About = () => {
             />
           </DownloadButton>
         </MobileWrapper>
-        <TechScroller />
       </ContentWrapper>
     </Section>
   );
@@ -140,11 +148,25 @@ const MobileWrapper = styled.div`
   }
 `;
 
+const MarqueWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+  height: 40px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 12px 0;
+`;
+
 const TextBubble = styled.span`
   border-radius: 24px;
   padding: 2px 4px;
   background-color: white;
   color: black;
+  white-space: nowrap;
 `;
 
 export default About;

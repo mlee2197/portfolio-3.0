@@ -62,6 +62,7 @@ const FixedHeaderWrapper = styled.div`
 const StyledH1 = styled(AppH1)<NameProps>`
   max-width: 4ch;
   margin-right: auto;
+  /* margin: 0 auto; */
   font-size: calc(80px + 8vw);
   letter-spacing: 2px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -74,7 +75,7 @@ const StyledH1 = styled(AppH1)<NameProps>`
 
   scale: ${({ shrink }) => (shrink ? 0.5 : 1)};
   transition: all 0.35s ease-in-out;
-  transform-origin: 0% 40%;
+  transform-origin: 0% 10%;
 
   &::before {
     content: "MATT LEE";

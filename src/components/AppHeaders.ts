@@ -18,7 +18,12 @@ export const AppH1 = styled.h1<{ hide?: boolean }>`
 `;
 
 export const HiddenH1 = styled(AppH1)`
+  /* scale: 0.5; */
+  font-size: calc((80px + 8vw)/2);
   visibility: hidden;
+  @media ${landscapeTabletSize} {
+    font-size: 100px;
+  }
 `;
 
 interface SizeProp {

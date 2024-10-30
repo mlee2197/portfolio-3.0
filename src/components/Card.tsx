@@ -10,11 +10,13 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ width, height, children }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!cardRef.current || window.innerWidth <= 768) return;
+    if (!cardRef.current || !contentRef.current || window.innerWidth <= 768) return;
 
     const card = cardRef.current;
+    const content = contentRef.current;
 
     const handleMouseMove = (e: MouseEvent) => {
       const { left, top, width, height } = card.getBoundingClientRect();
@@ -26,9 +28,20 @@ const Card: React.FC<CardProps> = ({ width, height, children }) => {
       const rotateX = (mouseY / height) * 20; // Max rotation of 20 degrees
       const rotateY = (mouseX / width) * -20; // Max rotation of 20 degrees
 
+      // Move content in opposite direction for parallax effect
+      const moveX = (mouseX / width) * 10; // Max movement of 20px
+      const moveY = (mouseY / height) * 10; // Max movement of 20px
+
       gsap.to(card, {
         rotationX: rotateX,
         rotationY: rotateY,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+
+      gsap.to(content, {
+        x: moveX,
+        y: moveY,
         duration: 0.3,
         ease: "power2.out",
       });
@@ -38,6 +51,13 @@ const Card: React.FC<CardProps> = ({ width, height, children }) => {
       gsap.to(card, {
         rotationX: 0,
         rotationY: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+
+      gsap.to(content, {
+        x: 0,
+        y: 0,
         duration: 0.5,
         ease: "power2.out",
       });
@@ -54,20 +74,29 @@ const Card: React.FC<CardProps> = ({ width, height, children }) => {
 
   return (
     <StyledCard ref={cardRef}>
-      {children}
+      <ContentWrapper ref={contentRef}>
+        {children}
+      </ContentWrapper>
     </StyledCard>
   );
 };
 
 const StyledCard = styled.div<CardProps>`
-  /* height: 200px; */
-  /* width: auto; */
+  max-height: 90vh;
+  max-width: 600px;
   backdrop-filter: blur(8px);
   background-color: rgba(0,0,0,0.5);
   border: 8px solid rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   perspective: 1000px;
+  transform-style: preserve-3d;
+  /* overflow: hidden; */
+`;
+
+const ContentWrapper = styled.div`
+  width: 100%;
+  height: 100%;
   transform-style: preserve-3d;
 `;
 
