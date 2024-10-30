@@ -4,7 +4,7 @@ import { cloudinary } from "../services/cloudinary";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import Card from "./Card";
 import { Flex } from "./Containers";
-import { landscapeTabletSize } from "../utils/breakpoints";
+import { landscapeTabletSize, tabletSize } from "../utils/breakpoints";
 
 import { Sigithub } from "@icons-pack/react-simple-icons";
 import ArrowRight from "../assets/arrow-right-thick.svg";
@@ -32,7 +32,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   // const { value: expanded, toggle: toggleExpanded } = useToggle();
   const imgUrl = cloudinary
     .image("portfolio/" + image)
-    .resize(fill().width(600).height(400))
+    .resize(fill().width(800).height(400))
     .toURL();
 
   return (
@@ -75,21 +75,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             />
           </IconButton>
         </ButtonsContainer>
-        <img
-          src={imgUrl}
-          alt={title}
-          loading="lazy"
-          style={{
-            maxHeight: 200,
-            height: "100%",
-            width: "100%",
-            objectFit: "cover",
-          }}
-        />
+        <ProjectImage src={imgUrl} alt={title} loading="lazy" />
         <DotsWrapper>
           <svg
             width="100%"
-            height="24px"
+            height="32px"
             xmlns="http://www.w3.org/2000/svg"
             style={{ position: "absolute" }}
           >
@@ -120,8 +110,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             />
           </svg>
         </DotsWrapper>
-        <div style={{ padding: 8, overflow: "auto" }}>
-          <h3>{title}</h3>
+        <div style={{ padding: 8, overflow: "auto", height: "100%" }}>
+          <H3>{title}</H3>
           <p>{description}</p>
         </div>
       </Grid>
@@ -130,10 +120,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 };
 
 const Grid = styled.div`
-  display: grid;
+  display: flex;
   flex-direction: column;
-  grid-template-rows: 30% 32px 3fr;
   height: 100%;
+  max-height: inherit;
 `;
 
 const ButtonsContainer = styled(Flex)`
@@ -152,10 +142,21 @@ const ButtonsContainer = styled(Flex)`
   }
 `;
 
+const ProjectImage = styled.img`
+  max-height: 150px;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+
+  @media ${tabletSize} {
+    max-height: 225px;
+  }
+`;
+
 const DotsWrapper = styled.div`
   position: relative;
   overflow: hidden;
-  height: 24px;
+  height: 32px;
   width: 100%;
 
   display: flex;
@@ -182,61 +183,10 @@ const IconButton = styled.button`
   }
 `;
 
-const ProjectCardContainer = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 100%;
-  width: 312px;
-  height: 186px;
-  border-radius: 1rem;
-  /* object-fit: cover; */
-  overflow: hidden;
+const H3 = styled.h3`
+  color: ${(props) => props.theme.colors.yellow};
+  font-family: ${props => props.theme.fonts.title};
+  margin-top: 0;
 `;
-
-// interface ExpandedProp {
-//   expanded: boolean;
-// }
-
-// const Expand = styled.div<ExpandedProp>`
-//   position: absolute;
-//   top: 0px;
-//   left: 0;
-//   display: flex;
-//   align-items: baseline;
-//   gap: 8px;
-//   min-width: max-content;
-//   width: 36%;
-//   height: 16%;
-
-//   padding: 4px 8px;
-//   border-radius: 16px 0px;
-//   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-//   background-color: rgba(0, 0, 0, 0.6);
-
-//   z-index: 100;
-//   transition: all 0.5s ease-in-out;
-
-//   ${({ expanded }) =>
-//     expanded &&
-//     css`
-//       width: 100%;
-//       height: 100%;
-//       border-radius: 16px;
-//     `};
-
-//   ::after {
-//     content: "";
-//     display: block;
-//     width: 0px;
-//     height: 0px;
-//     border: 4px solid white;
-//     border-top-color: transparent;
-//     border-left-color: transparent;
-//     rotate: ${({ expanded }) => expanded ? -180 : 0}deg;
-//     transition: rotate 0.5s ease-in-out;
-//   }
-// `;
 
 export { ProjectCard };

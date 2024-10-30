@@ -93,17 +93,17 @@ const StyledCard = styled.div<CardProps>`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   perspective: 1000px;
   transform-style: preserve-3d;
-  /* overflow: hidden; */
   @media ${landscapeTabletSize} {
     max-height: 80vh;
   }
 `;
 
 const ContentWrapper = styled.div`
-
-  width: 100%;
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  /* overflow: hidden; */
+  max-height: inherit;
+  width: 100%;
   transform-style: preserve-3d;
 `;
 

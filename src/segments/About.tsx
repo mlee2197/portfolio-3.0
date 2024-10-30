@@ -14,6 +14,15 @@ import Resume from "../assets/Matthew_Lee_Resume_2025-compressed.pdf";
 import Arrow from "../assets/arrow.svg";
 import Pluses from "../assets/pluses.png";
 import Card from "../components/Card";
+import { cloudinary } from "../services/cloudinary";
+import { AdvancedImage } from "@cloudinary/react";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+
+const headshot = cloudinary
+  .image("portfolio/headshot")
+  .resize(fill(500, 400))
+  .quality("auto:best")
+  .format("png")
 
 const About = () => {
   return (
@@ -40,18 +49,35 @@ const About = () => {
         </DesktopWrapper>
       </HiddenH1>
       <ContentWrapper>
-        <Absolute left={-48} top={-40}>
+        <Absolute left={-52} top={-52}>
           <img
             src={Pluses}
             alt="pluses"
-            width={102}
-            height={58}
+            width={220}
+            height={200}
             loading="lazy"
+            style={{ opacity: 0.5 }}
+          />
+        </Absolute>
+        <Absolute bottom={-52} right={-52}>
+          <img
+            src={Pluses}
+            alt="pluses"
+            width={220}
+            height={200}
+            loading="lazy"
+            style={{ opacity: 0.5 }}
           />
         </Absolute>
         <Card>
-          <Flex direction="column">
-            <img src="" alt="Matt Lee that's me" />
+          <CardContent direction="column">
+            <AdvancedImage 
+              id="headshot"
+              cldImg={headshot}
+              alt="Matt Lee"
+              style={{ maxHeight: "200px", objectFit: "cover" }}
+            />
+            {/* <img src="" alt="Matt Lee that's me" /> */}
             <MarqueWrapper>
               <svg
                 width="100%"
@@ -87,9 +113,7 @@ const About = () => {
               </svg>
               <TechScroller />
             </MarqueWrapper>
-            {/* <div style={{ backgroundImage: `url("")`, backgroundRepeat: 'repeat', width: '100%', height: '100%' }}> */}
-            {/* </div> */}
-            <AppText style={{ padding: "0 12px 12px 12px" }}>
+            <AppText style={{ padding: "0 12px 12px 12px", overflow: "auto",  }}>
               <TextBubble>I’m Matthew</TextBubble>, a Front-end web developer
               with 4 years of experience, based in{" "}
               <TextBubble>New York</TextBubble>. My passion lies in creating
@@ -99,7 +123,7 @@ const About = () => {
               UX Currently, I am working as an{" "}
               <TextBubble>front-end web engineer</TextBubble> at Rapptr Labs.
             </AppText>
-          </Flex>
+          </CardContent>
         </Card>
         <MobileWrapper>
           <DownloadButton href={Resume} download>
@@ -145,6 +169,19 @@ const DesktopWrapper = styled.span`
 const MobileWrapper = styled.div`
   @media ${landscapeTabletSize} {
     display: none;
+  }
+`;
+
+const CardContent = styled(Flex)`
+  height: 100%;
+  max-height: inherit;
+
+  #headshot {
+    height: 125px;
+    @media ${tabletSize} {
+      height: 50%;
+      max-height: 250px;
+    }
   }
 `;
 

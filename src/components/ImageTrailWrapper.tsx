@@ -5,42 +5,58 @@ import { cloudinary } from "../services/cloudinary";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
 
-const IMAGE_WIDTH = 200;
-const IMAGE_HEIGHT = 124;
+const IMAGE_WIDTH = 124;
+const IMAGE_HEIGHT = 200;
 const IMAGE_RADIUS = 16;
-const ellie1 = cloudinary
-  .image("portfolio/ellie1")
+const trail1 = cloudinary
+  .image("portfolio/trail1")
   .resize(fill(IMAGE_WIDTH, IMAGE_HEIGHT))
   .roundCorners(byRadius(IMAGE_RADIUS))
   .quality("auto:best")
   .format("png")
   .toURL();
 
-const ellie2 = cloudinary
-  .image("portfolio/ellie2")
+const trail2 = cloudinary
+  .image("portfolio/trail2")
   .resize(fill(IMAGE_WIDTH, IMAGE_HEIGHT))
   .roundCorners(byRadius(IMAGE_RADIUS))
   .quality("auto:best")
   .format("png")
   .toURL();
 
-const ellie3 = cloudinary
-  .image("portfolio/ellie3")
+const trail3 = cloudinary
+  .image("portfolio/trail3")
   .resize(fill(IMAGE_WIDTH, IMAGE_HEIGHT))
   .roundCorners(byRadius(IMAGE_RADIUS))
   .quality("auto:best")
   .format("png")
   .toURL();
 
-const ellie4 = cloudinary
-  .image("portfolio/ellie4")
+const trail4 = cloudinary
+  .image("portfolio/trail4")
   .resize(fill(IMAGE_WIDTH, IMAGE_HEIGHT))
   .roundCorners(byRadius(IMAGE_RADIUS))
   .quality("auto:best")
   .format("png")
   .toURL();
 
-const IMAGE_URLS = [ellie1, ellie2, ellie3, ellie4];
+const trail5 = cloudinary
+  .image("portfolio/trail5")
+  .resize(fill(IMAGE_WIDTH, IMAGE_HEIGHT))
+  .roundCorners(byRadius(IMAGE_RADIUS))
+  .quality("auto:best")
+  .format("png")
+  .toURL();
+
+const trail6 = cloudinary
+  .image("portfolio/trail6")
+  .resize(fill(IMAGE_WIDTH, IMAGE_HEIGHT))
+  .roundCorners(byRadius(IMAGE_RADIUS))
+  .quality("auto:best")
+  .format("png")
+  .toURL();
+
+const IMAGE_URLS = [trail1, trail2, trail3, trail4, trail5, trail6];
 
 const ImageTrail = () => {
   const { ref, mouseX, mouseY } = useMousePosition();

@@ -69,6 +69,7 @@ export const STACK_DATA = [
 export const PROJECT_DATA = [
   {
     id: "alter",
+    image: "alter",
     link: "https://www.alterme.com/",
     title: "Alter",
     description:
@@ -76,6 +77,7 @@ export const PROJECT_DATA = [
   },
   {
     id: "Imprint",
+    image: "imprint",
     link: "https://imprintapp.com/",
     title: "Imprint",
     description:
@@ -83,6 +85,7 @@ export const PROJECT_DATA = [
   },
   {
     id: "sightglass",
+    image: "sightglass",
     link: "https://www.usesightglass.com/",
     title: "Sightglass",
     description:
@@ -90,6 +93,7 @@ export const PROJECT_DATA = [
   },
   {
     id: "sellfire",
+    image: "sellfire",
     link: "https://sellfire.com/",
     title: "Sellfire",
     description:
@@ -97,14 +101,16 @@ export const PROJECT_DATA = [
   },
   {
     id: "motion-script",
+    image: "motion-script",
     link: "https://motion-script.vercel.app/",
+    github: "https://github.com/mlee2197/motion-script",
     title: "Motion Script",
     description:
       "Motion Script is a side project where I set a personal challenge to create 25 unique web animations in 25 days. The goal was to explore different CSS properties and techniques, pushing the boundaries of front-end animation capabilities while enhancing my creative coding skills. One of the biggest challenges was creating a wide variety of animations within a limited timeframe, while ensuring they remained performant across different browsers. I utilized GSAP to create smooth animations and reduced the amount of concurrent animations while maintaining visual appeal."
   },
   {
     id: "dalo-portfolio",
-    image: "",
+    image: "dalo-portfolio",
     link: "https://www.dachellealo.com/",
     title: "Portfolio Freelance",
     description:
@@ -137,13 +143,13 @@ export const PROJECT_DATA = [
     description:
       "The goal of the project was to catalog images from past family trips. I utilized Firebase to store my image assets and firestore as the Backend.",
   },
-  {
-    id: "reminder-extension",
-    image: "reminder_extension",
-    github: "https://github.com/mlee2197/Reminder-Chrome-Extension",
-    link: "",
-    title: "Reminder Extention",
-    description:
-      "By implementing a module pattern, I'm developing a reminder extension that allows the user to quickly add self-reminders and quickly view the reminders for the day",
-  },
+  // {
+  //   id: "reminder-extension",
+  //   image: "reminder_extension",
+  //   github: "https://github.com/mlee2197/Reminder-Chrome-Extension",
+  //   link: "",
+  //   title: "Reminder Extention",
+  //   description:
+  //     "By implementing a module pattern, I'm developing a reminder extension that allows the user to quickly add self-reminders and quickly view the reminders for the day",
+  // },
 ];

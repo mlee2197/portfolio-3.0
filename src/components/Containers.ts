@@ -103,7 +103,8 @@ export const Section = styled.section<SectionProps>`
   padding: ${props => props.noPadding ? '0' : '12px'};
   padding-top: ${props => props.noPadding ? '0' : '0'};
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow: hidden;
+  box-sizing: border-box;
 
   @media ${landscapeTabletSize} {
     display: grid;
@@ -111,9 +112,6 @@ export const Section = styled.section<SectionProps>`
     justify-content: center;
     align-items: center;
 
-    /* justify-content: center;
-    align-items: space-around;
-    flex-direction: row; */
     h1:first-of-type {
       align-self: center;
       justify-self: center;
