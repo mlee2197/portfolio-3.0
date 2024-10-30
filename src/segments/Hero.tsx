@@ -1,44 +1,166 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { AppH1, DecoratorText, Section } from "../components";
+import { Section } from "../components";
 import { landscapeTabletSize } from "../utils/breakpoints";
-import { cloudinary } from "../services/cloudinary";
-import { fill } from "@cloudinary/url-gen/actions/resize";
-import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
-import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
 import ChevronDown from "../assets/chevron-down.svg";
+import gsap from "gsap";
+import Name from "./Name";
+import ImageTrail from "../components/ImageTrailWrapper";
 
 interface HeroProps {}
+const TEXTS_DURATION = 0.05;
+const STAGGER = 0.075;
 
 const Hero: React.FC<HeroProps> = () => {
-  const imageUrl = cloudinary
-    .image("portfolio/selfie")
-    .resize(fill().width(500).height(800).gravity(focusOn(FocusOn.face())))
-    .quality("auto:good")
-    .format("auto")
-    .toURL();
+  const [inView, setInView] = useState(true);
+  const sectionRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const ctx = gsap.context(() => {
+      const sectionQuery = gsap.utils.selector(sectionRef.current);
+      const texts = sectionQuery("#thats-me h2");
+      const filter = sectionQuery("#turbulent-text--filter feTurbulence");
+      const header = sectionQuery("#name");
+      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+      tl.to(header, {
+        opacity: 1,
+        duration: 0.1,
+        ease: "linear",
+      });
+      tl.to(
+        filter,
+        {
+          attr: {
+            baseFrequency: "0 0.2",
+          },
+          duration: 0.2,
+          ease: "linear",
+          yoyo: true,
+          repeat: 1,
+        },
+        "-=0.1"
+      );
+
+      tl.to(texts, {
+        opacity: 0.5,
+        duration: TEXTS_DURATION,
+        stagger: STAGGER,
+        delay: 0.2,
+      });
+      tl.to(
+        texts,
+        {
+          opacity: (index) => (index === 6 ? 0.5 : 0.25),
+          duration: TEXTS_DURATION,
+          stagger: STAGGER,
+        },
+        `-=${TEXTS_DURATION * 3}`
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [sectionRef]);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setInView(true);
+            console.log("in view");
+          } else {
+            setInView(false);
+            console.log("not in view");
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [sectionRef.current]);
 
   return (
-    <FadeInSection id="hero">
-      <AppH1 hide>MATT LEE</AppH1>
-      <Selfie src={imageUrl}>
-        <DecoratorText
-          top={24}
-          left={-60}
-          desktopTop={300}
-          desktopLeft={-80}
-          style={{ textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)" }}
-        >
-          that's me
-        </DecoratorText>
-      </Selfie>
-      <ChevronWrapper href="#about">
-        <img src={ChevronDown} alt="next section" height={16} width={24} />
-      </ChevronWrapper>
-      <Circle />
-    </FadeInSection>
+    <Wrapper>
+      <ImageTrail />
+      <Section id="hero" ref={sectionRef} noPadding>
+        <Name shrink={!inView} />
+        <TextContainer id="thats-me">
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+          <H2>that's me</H2>
+        </TextContainer>
+        <ChevronWrapper href="#about">
+          <img src={ChevronDown} alt="next section" height={16} width={24} />
+        </ChevronWrapper>
+      </Section>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.section`
+  position: relative;
+
+  section {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari and Opera */
+    }
+  }
+`;
+
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  top: 0;
+  margin: 0 auto;
+  margin-top: -64px;
+  translate: 25% 0;
+  overflow: hidden;
+
+  @media ${landscapeTabletSize} {
+    grid-column: 2/3;
+    translate: 0;
+  }
+`;
+
+const H2 = styled.h2`
+  width: max-content;
+  margin: 0;
+  opacity: 0;
+
+  font-family: ${(props) => props.theme.fonts.subtitle};
+  font-size: 64px;
+  line-height: 0.5;
+  color: ${(props) => props.theme.colors.yellow};
+
+  @media ${landscapeTabletSize} {
+    font-size: 116px;
+  }
+`;
 
 const FadeIn = keyframes`
   from {
@@ -93,7 +215,7 @@ const Selfie = styled.div<{ src: string }>`
 
 const ChevronWrapper = styled.a`
   position: absolute;
-  bottom: 24px;
+  bottom: 2px;
   left: 50%;
   translate: -50% 0;
   opacity: 0.6;

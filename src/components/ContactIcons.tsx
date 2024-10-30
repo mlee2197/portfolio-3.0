@@ -52,12 +52,14 @@ const Fixed = styled.div<ShowIconsProp>`
   border: 8px solid #0d2a7d;
   border-radius: 50px;
   background-color: #0d2a7d;
+  overflow: hidden;
 
   @media ${landscapeTabletSize} {
     left: 24px;
     bottom: 24px;
     background: none;
     border: none;
+    overflow: visible;
   }
 `;
 

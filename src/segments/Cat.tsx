@@ -8,47 +8,47 @@ import Loops from "../assets/underline.svg";
 import { useInView } from "../hooks/useInView";
 import { CatImages } from "./CatImages";
 import { landscapeTabletSize } from "../utils/breakpoints";
+import RoundedArrow from "../assets/rounded-arrow.svg";
 
-interface CatProps {
-  headerRef: React.RefObject<HTMLHeadingElement>;
+const CAT_TEXT = {
+  ellie: `This is Ellie. She's a ${new Date().getFullYear() - 2016} year old grey tabby who's hobbies include getting brushies, fetching treats, and sleeping.`,
+  sesame: `This is Sesame. She's a friendly ${new Date().getFullYear() - 2022} year old bombay who loves playing with USB cords, cuddling, and eating.`
 }
 
-const age = new Date().getFullYear() - 2016;
+export type CatType = "ellie" | "sesame";
+const Cat: React.FC = () => {
+  const [currCat, setCurrCat] = React.useState<CatType>("ellie");
 
-const Cat: React.FC<CatProps> = ({ headerRef }) => {
+  const toggleCat = () => {
+    setCurrCat((prev) => (prev === "ellie" ? "sesame" : "ellie"));
+  };
+
   const { inView, ref } = useInView({
     threshold: 0.5,
   });
 
   useEffect(() => {
-    if (!headerRef.current) return;
+    const header = document.getElementById("name");
+    if (!header) return;
 
-    inView
-      ? headerRef.current?.classList.add("hide")
-      : headerRef.current?.classList.remove("hide");
+    inView ? header.classList.add("hide") : header.classList.remove("hide");
   }, [inView]);
 
   return (
     <Section id="cat" ref={ref}>
-      <AppH1 style={{ alignSelf: "center" }}>
-        Ellie
+      <CatHeader onClick={toggleCat} catType={currCat}>
+        <span id="cat-name">{currCat === "ellie" ? "Ellie" : "Sesame"}</span>
         <DecoratorText top={-28} left={4} desktopLeft={8}>
           BONUS: My cat
         </DecoratorText>
-        <Underline
-          src={Loops}
-          alt="========="
-          height={80}
-          width={200}
-          loading="lazy"
-        />
-      </AppH1>
+        <TopArrow src={RoundedArrow} />
+        <BottomArrow src={RoundedArrow} />
+      </CatHeader>
       <ContentWrapper>
         <AppText>
-          This is Ellie. She's a {age} year old grey tabby who's hobbies include
-          getting brushies, fetching treats, and sleeping.
+          {currCat === "ellie" ? CAT_TEXT.ellie : CAT_TEXT.sesame}
         </AppText>
-        <CatImages />
+        <CatImages catType={currCat} />
         <LineWrapper>
           <LineText>
             <img src={Paw} alt="paw" height={16} width={20} loading="lazy" />
@@ -106,17 +106,52 @@ const Line = styled.img`
   }
 `;
 
-const Underline = styled.img`
-  display: block;
+const TopArrow = styled.img`
   position: absolute;
-  bottom: -56px;
-  left: 0px;
-  color: black;
-  visibility: visible;
-  z-index: -1;
+  top: -12px;
+  left: -18px;
+  width: 64px;
+
   @media ${landscapeTabletSize} {
-    right: 40px;
-    width: 300px;
+    top: -12px;
+    left: -36px;
+    width: 100px;
+  }
+`;
+
+const BottomArrow = styled.img`
+  position: absolute;
+  bottom: -46px;
+  right: 18px;
+  width: 64px;
+  rotate: 180deg;
+
+  @media ${landscapeTabletSize} {
+    width: 100px;
+    right: -36px;
+  }
+`;
+
+const CatHeader = styled(AppH1 as any).attrs<{ catType: CatType }>(
+  ({ catType }) => ({
+    "data-before": catType === "ellie" ? "Sesame" : "Ellie",
+  })
+)`
+  align-self: center;
+  #cat-name {
+    position: relative;
+    top: 0px;
+    left: 16px;
+  }
+
+  &::before {
+    content: attr(data-before);
+    position: absolute;
+    top: 24px;
+    left: 0px;
+    opacity: 0.25;
+    color: ${({ theme }) => theme.colors.yellow};
+    z-index: 0;
   }
 `;
 

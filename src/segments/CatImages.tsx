@@ -8,8 +8,70 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
 import { AdvancedImage } from "@cloudinary/react";
 import { lazyload } from "@cloudinary/react";
 import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
+import { CatType } from "./Cat";
+import React from "react";
 
-const CatImages = () => {
+const ellie1 = cloudinary
+  .image("portfolio/ellie1")
+  .resize(fill(417, 261))
+  .roundCorners(byRadius(16))
+  .quality("auto:best")
+  .format("png");
+
+const ellie2 = cloudinary
+  .image("portfolio/ellie2")
+  .resize(fill(417, 261))
+  .roundCorners(byRadius(16))
+  .quality("auto:best")
+  .format("png");
+
+const ellie3 = cloudinary
+  .image("portfolio/ellie3")
+  .resize(fill(417, 261))
+  .roundCorners(byRadius(16))
+  .quality("auto:best")
+  .format("png");
+
+const ellie4 = cloudinary
+  .image("portfolio/ellie4")
+  .resize(fill(417, 261))
+  .roundCorners(byRadius(16))
+  .quality("auto:best")
+  .format("png");
+
+const sesame1 = cloudinary
+  .image("portfolio/sesame-1")
+  .resize(fill(417, 261))
+  .roundCorners(byRadius(16))
+  .quality("auto:best")
+  .format("png");
+
+const sesame2 = cloudinary
+  .image("portfolio/sesame-2")
+  .resize(fill(417, 261))
+  .roundCorners(byRadius(16))
+  .quality("auto:best")
+  .format("png");
+
+const sesame3 = cloudinary
+  .image("portfolio/sesame-3")
+  .resize(fill(417, 261))
+  .roundCorners(byRadius(16))
+  .quality("auto:best")
+  .format("png");
+
+const sesame4 = cloudinary
+  .image("portfolio/sesame-4")
+  .resize(fill(417, 261))
+  .roundCorners(byRadius(16))
+  .quality("auto:best")
+  .format("png");
+
+interface CatImagesProps {
+  catType: CatType;
+}
+
+const CatImages: React.FC<CatImagesProps> = ({ catType }) => {
   const {
     earRef,
     earRef2,
@@ -22,34 +84,9 @@ const CatImages = () => {
     AnimateMeow,
   } = useCatAnimations();
 
-  const ellie1 = cloudinary
-    .image("portfolio/ellie1")
-    .resize(fill(417, 261))
-    .roundCorners(byRadius(16))
-    .quality("auto:best")
-    .format("png");
-  // .toURL();
-
-  const ellie2 = cloudinary
-    .image("portfolio/ellie2")
-    .resize(fill(417, 261))
-    .roundCorners(byRadius(16))
-    .quality("auto:best")
-    .format("png");
-
-  const ellie3 = cloudinary
-    .image("portfolio/ellie3")
-    .resize(fill(417, 261))
-    .roundCorners(byRadius(16))
-    .quality("auto:best")
-    .format("png");
-
-  const ellie4 = cloudinary
-    .image("portfolio/ellie4")
-    .resize(fill(417, 261))
-    .roundCorners(byRadius(16))
-    .quality("auto:best")
-    .format("png");
+  const images = catType === "ellie" 
+    ? [ellie1, ellie2, ellie3, ellie4]
+    : [sesame1, sesame2, sesame3, sesame4];
 
   return (
     <ImageGrid>
@@ -58,38 +95,38 @@ const CatImages = () => {
         onMouseEnter={AnimateEars}
       >
         <AdvancedImage
-          cldImg={ellie1}
+          cldImg={images[0]}
           style={{ width: "100%", height: "100%" }}
           plugins={[lazyload()]}
-          alt="ellie in a box"
+          alt={`${catType} in a box`}
         />
         <CatEar ref={earRef} />
         <CatEarAlt ref={earRef2} />
       </ImageContainer>
       <ImageContainer onTouchStart={AnimatePaw} onMouseEnter={AnimatePaw}>
         <AdvancedImage
-          cldImg={ellie2}
+          cldImg={images[1]}
           style={{ width: "100%", height: "100%" }}
           plugins={[lazyload()]}
-          alt="ellie scratching"
+          alt={`${catType} scratching`}
         />
         <CatPaw ref={pawRef} />
       </ImageContainer>
       <ImageContainer onTouchStart={AnimateTail} onMouseEnter={AnimateTail}>
         <AdvancedImage
-          cldImg={ellie3}
+          cldImg={images[2]}
           style={{ width: "100%", height: "100%" }}
           plugins={[lazyload()]}
-          alt="ellie sleeping"
+          alt={`${catType} sleeping`}
         />
         <CatTail ref={tailRef} />
       </ImageContainer>
       <ImageContainer onTouchStart={AnimateMeow} onMouseEnter={AnimateMeow}>
         <AdvancedImage
-          cldImg={ellie4}
+          cldImg={images[3]}
           style={{ width: "100%", height: "100%" }}
           plugins={[lazyload()]}
-          alt="ellie looking out a window"
+          alt={`${catType} looking out a window`}
         />
         <CatMeow ref={meowRef}>meow</CatMeow>
       </ImageContainer>
@@ -112,6 +149,7 @@ const ImageContainer = styled.div`
   max-height: 160px;
   aspect-ratio: 8/5;
   border-radius: 12px;
+  z-index: 1;
 `;
 
 const CatAnimated = styled.img.attrs({

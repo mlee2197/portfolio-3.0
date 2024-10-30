@@ -18,7 +18,7 @@ export const AppText = styled.p<Props>`
       : variant === "accent"
       ? theme.colors.yellow
       : theme.colors.white};
-  
+
   @media ${tabletSize} {
     font-size: ${({ size }) => size ?? 16}px;
   }
@@ -45,17 +45,18 @@ interface PositionProps extends Props {
 }
 
 export const DecoratorText = styled.span<PositionProps>`
-  font-family: ${({ theme }) => theme.fonts.subtitle};
+  font-family: ${({ theme }) => theme.fonts.text};
   color: ${({ theme }) => theme.colors.yellow};
-  font-size: ${({ size }) => size ?? 24}px;
+  font-size: ${({ size }) => size ?? 32}px;
   visibility: visible;
   position: absolute;
   top: ${({ top }) => (top !== undefined ? `${top}px` : "auto")};
   bottom: ${({ bottom }) => (bottom !== undefined ? `${bottom}px` : "auto")};
   right: ${({ right }) => (right !== undefined ? `${right}px` : "auto")};
   left: ${({ left }) => (left !== undefined ? `${left}px` : "auto")};
+  width: max-content;
   @media ${landscapeTabletSize} {
-  font-size: ${({ size }) => size ? size + 16 : 32}px;
+    font-size: ${({ size }) => (size ? size + 16 : 32)}px;
     top: ${({ desktopTop, top }) =>
       desktopTop ? `${desktopTop}px` : top !== undefined ? `${top}px` : "auto"};
     bottom: ${({ desktopBottom, bottom }) =>
