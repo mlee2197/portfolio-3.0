@@ -13,7 +13,6 @@ const About = React.lazy(() => import("./segments/About"));
 const BackToTop = React.lazy(() => import("./components/BackToTopButton"));
 
 function App() {
-  const nameRef = useRef(null);
   const wrapperRef = useRef(null);
 
   return (
@@ -24,7 +23,7 @@ function App() {
         <Suspense fallback={<div>...loading</div>}>
           <About />
           <Portfolio />
-          <Cat headerRef={nameRef} />
+          <Cat />
           <BackToTop wrapperRef={wrapperRef} />
         </Suspense>
         <ContactIcons />

@@ -58,6 +58,10 @@ const FixedHeaderWrapper = styled.div`
     margin: 0 auto;
     padding-left: calc(8px + 4%);
 }
+
+  .hide {
+    display: none;
+  }
 `;
 
 const StyledH1 = styled(AppH1)<NameProps>`

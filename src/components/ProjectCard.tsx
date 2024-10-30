@@ -123,7 +123,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <div style={{ padding: 8, overflow: "auto" }}>
           <h3>{title}</h3>
           <p>{description}</p>
-          <p>{description}</p>
         </div>
       </Grid>
     </Card>
@@ -135,7 +134,6 @@ const Grid = styled.div`
   flex-direction: column;
   grid-template-rows: 30% 32px 3fr;
   height: 100%;
-  background-color: purple;
 `;
 
 const ButtonsContainer = styled(Flex)`
