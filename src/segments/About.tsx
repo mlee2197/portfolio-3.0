@@ -120,7 +120,7 @@ const About = () => {
               interactive, unique, and user-friendly{" "}
               <TextBubble>web experiences</TextBubble>. Specializing in React
               and modern JavaScript frameworks, with a keen eye for design and
-              UX Currently. I am working as an{" "}
+              UX. Currently, I am working as an{" "}
               <TextBubble>front-end web engineer</TextBubble> at Rapptr Labs.
             </AppText>
           </CardContent>
